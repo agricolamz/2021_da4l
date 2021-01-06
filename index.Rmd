@@ -1,0 +1,16 @@
+--- 
+title: "Анализ данных для лингвистов"
+author: "Г. А. Мороз"
+bibliography:
+- bibliography.bib
+editor_options:
+  chunk_output_type: console
+link-citations: yes
+documentclass: book
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+
+# О курсе
+
+Материалы для курса Анализа данных для лингвистов, Школа лингвистики НИУ ВШЭ.
