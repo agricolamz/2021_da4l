@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-
+<link rel="next" href="ссылки-на-литературу.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -137,10 +137,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> О курсе</a></li>
 <li class="chapter" data-level="2" data-path="распределения.html"><a href="распределения.html"><i class="fa fa-check"></i><b>2</b> Распределения</a><ul>
-<li class="chapter" data-level="2.1" data-path="распределения.html"><a href="распределения.html#распределения-в-r"><i class="fa fa-check"></i><b>2.1</b> Распределения в R</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="распределения.html"><a href="распределения.html#task-1"><i class="fa fa-check"></i><b>2.1.1</b> Task 1</a></li>
-<li class="chapter" data-level="2.1.2" data-path="распределения.html"><a href="распределения.html#task-2"><i class="fa fa-check"></i><b>2.1.2</b> Task 2</a></li>
-</ul></li>
+<li class="chapter" data-level="2.1" data-path="распределения.html"><a href="распределения.html#распределения-в-r"><i class="fa fa-check"></i><b>2.1</b> Распределения в R</a></li>
 <li class="chapter" data-level="2.2" data-path="распределения.html"><a href="распределения.html#категориальные-переменные"><i class="fa fa-check"></i><b>2.2</b> Категориальные переменные</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="распределения.html"><a href="распределения.html#биномиальное-распределение"><i class="fa fa-check"></i><b>2.2.1</b> Биномиальное распределение</a></li>
 <li class="chapter" data-level="2.2.2" data-path="распределения.html"><a href="распределения.html#геометрическое-распределение"><i class="fa fa-check"></i><b>2.2.2</b> Геометрическое распределение</a></li>
@@ -154,6 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.5" data-path="распределения.html"><a href="распределения.html#что-еще-почитать-про-распределения"><i class="fa fa-check"></i><b>2.3.5</b> Что еще почитать про распределения?</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
 
       </nav>
@@ -187,19 +185,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-2"><a href="распределения.html#cb2-2"></a>       <span class="dt">PDF =</span> <span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">50</span>, <span class="dt">sd =</span> <span class="dv">10</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb2-3"><a href="распределения.html#cb2-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, PDF))<span class="op">+</span></span>
 <span id="cb2-4"><a href="распределения.html#cb2-4"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
-<span id="cb2-5"><a href="распределения.html#cb2-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;PDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
+<span id="cb2-5"><a href="распределения.html#cb2-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
+<span id="cb2-6"><a href="распределения.html#cb2-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;PDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="распределения.html#cb3-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</span>
 <span id="cb3-2"><a href="распределения.html#cb3-2"></a>       <span class="dt">CDF =</span> <span class="kw">pnorm</span>(x, <span class="dt">mean =</span> <span class="dv">50</span>, <span class="dt">sd =</span> <span class="dv">10</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb3-3"><a href="распределения.html#cb3-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, CDF))<span class="op">+</span></span>
 <span id="cb3-4"><a href="распределения.html#cb3-4"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
-<span id="cb3-5"><a href="распределения.html#cb3-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;CDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
+<span id="cb3-5"><a href="распределения.html#cb3-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
+<span id="cb3-6"><a href="распределения.html#cb3-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;CDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="распределения.html#cb4-1"></a><span class="kw">tibble</span>(<span class="dt">quantiles =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">by =</span> <span class="fl">0.01</span>),</span>
 <span id="cb4-2"><a href="распределения.html#cb4-2"></a>       <span class="dt">value =</span> <span class="kw">qnorm</span>(quantiles, <span class="dt">mean =</span> <span class="dv">50</span>, <span class="dt">sd =</span> <span class="dv">10</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb4-3"><a href="распределения.html#cb4-3"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(quantiles, value))<span class="op">+</span></span>
 <span id="cb4-4"><a href="распределения.html#cb4-4"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
-<span id="cb4-5"><a href="распределения.html#cb4-5"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;inverse CDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
+<span id="cb4-5"><a href="распределения.html#cb4-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
+<span id="cb4-6"><a href="распределения.html#cb4-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;inverse CDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="распределения.html#cb5-1"></a><span class="kw">tibble</span>(<span class="dt">sample =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">50</span>, <span class="dt">sd =</span> <span class="dv">10</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb5-2"><a href="распределения.html#cb5-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(sample))<span class="op">+</span></span>
@@ -207,22 +208,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-4"><a href="распределения.html#cb5-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;выборка нормально распределенных чисел (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
 <p>Если не использовать <code>set.seed()</code>, то результат работы рандомизатора нельзя будет повторить.</p>
-<div id="task-1" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Task 1</h3>
-<p>Какое значение имеет 25% квантиль нормального распределения со средним в 20 и стандартным отклонением 90 (ответ округлите до 3 знаков после запятой).</p>
-<form name="form_95140" onsubmit="return validate_form_95140()" method="post">
-<input type="text" name="answer_95140"><br><input type="submit" value="check">
-</form>
-<p id="result_95140">
+<div class="rmdtask">
+<p>
+Какое значение имеет 25% квантиль нормального распределения со средним в 20 и стандартным отклонением 90? Ответ округлите до трех знаков после запятой.
 </p>
-<script> function validate_form_95140() {var x, text; var x = document.forms["form_95140"]["answer_95140"].value;if (x == "-40.704"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_95140').innerHTML = text; return false;} </script>
 </div>
-<div id="task-2" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Task 2</h3>
-<p>Если взять данные из базы данных фонетических инвентарей PHOIBLE (<span class="citation">Moran, McCloy, and Wright (<a href="#ref-phoible" role="doc-biblioref">2014</a>)</span>)</p>
-<p>mean sd
-34.98158 13.37857</p>
+<form name="form_58966" onsubmit="return validate_form_58966()" method="post">
+<input type="text" name="answer_58966"><br><input type="submit" value="check">
+</form>
+<p id="result_58966">
+</p>
+<script> function validate_form_58966() {var x, text; var x = document.forms["form_58966"]["answer_58966"].value;if (x == "-40.704"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_58966').innerHTML = text; return false;} </script>
+<div class="rmdtask">
+<p>
+Данные из базы данных фонетических инвентарей PHOIBLE (<span class="citation"><span class="citation">Moran, McCloy, and Wright (<a href="#ref-phoible" role="doc-biblioref">2014</a>)</span></span>), достаточно сильно упрощая, можно описать нормальным распределением со средним 35 фонем и стандартным отклонением 13. Если мы ничего не знаем про язык, оцените с какой вероятностью, согласно этой модели произвольно взятый язык окажется в промежутке между 50 фонемами и 25? Ответ округлите до трех знаков после запятой.
+</p>
 </div>
+<form name="form_67398" onsubmit="return validate_form_67398()" method="post">
+<input type="text" name="answer_67398"><br><input type="submit" value="check">
+</form>
+<p id="result_67398">
+</p>
+<script> function validate_form_67398() {var x, text; var x = document.forms["form_67398"]["answer_67398"].value;if (x == "0.655"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_67398').innerHTML = text; return false;} </script>
+<div class="rmdtask">
+<p>
+Какие есть недостатки у модели из предыдущего задания?
+</p>
+</div>
+<p id="hint_169958", onclick="return show_hint_169958()">ответы:</p>
+<p id="result_169958">
+</p>
+<script> function show_hint_169958() {var x = document.getElementById("result_169958").innerHTML;if(!x){document.getElementById('result_169958').innerHTML = '<p id="hint_5951", onclick="return show_hint_5951()">недостаток 1</p><p id="result_5951"></p><p id="hint_60122", onclick="return show_hint_60122()">недостаток 2</p><p id="result_60122"></p>';}else {document.getElementById("result_169958").innerHTML = "";}}function show_hint_5951() {var x = document.getElementById("result_5951").innerHTML;if(!x){document.getElementById('result_5951').innerHTML = 'Согласно данной модели, количество фонем в языках может принимать значение равное любому действительному числу, в то время как в данных мы наблюдаем только целые числа.';}else {document.getElementById("result_5951").innerHTML = "";}}function show_hint_60122() {var x = document.getElementById("result_60122").innerHTML;if(!x){document.getElementById('result_60122').innerHTML = 'Данная модель предсказывает, что количество фонем 0.4% языков  меньше нуля, что представляется невозможным с точки зрения лингвистики.';}else {document.getElementById("result_60122").innerHTML = "";}}</script>
 </div>
 <div id="категориальные-переменные" class="section level2">
 <h2><span class="header-section-number">2.2</span> Категориальные переменные</h2>
@@ -237,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-4"><a href="распределения.html#cb6-4"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
 <span id="cb6-5"><a href="распределения.html#cb6-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
 <span id="cb6-6"><a href="распределения.html#cb6-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Биномиальное распределение p = 0.16, n = 50&quot;</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="геометрическое-распределение" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Геометрическое распределение</h3>
@@ -250,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-4"><a href="распределения.html#cb7-4"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
 <span id="cb7-5"><a href="распределения.html#cb7-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
 <span id="cb7-6"><a href="распределения.html#cb7-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Геометрическое распределение p = 0.16, n = 50&quot;</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="распределение-пуассона" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Распределение Пуассона</h3>
@@ -268,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-4"><a href="распределения.html#cb8-4"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
 <span id="cb8-5"><a href="распределения.html#cb8-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
 <span id="cb8-6"><a href="распределения.html#cb8-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;PDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="логнормальное-распределение" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Логнормальное распределение</h3>
@@ -280,7 +296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-4"><a href="распределения.html#cb9-4"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
 <span id="cb9-5"><a href="распределения.html#cb9-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
 <span id="cb9-6"><a href="распределения.html#cb9-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;PDF логнормального распределения (μ = 4, sd = 0.5)&quot;</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="экспоненциальное-распределение" class="section level3">
 <h3><span class="header-section-number">2.3.3</span> Экспоненциальное распределение</h3>
@@ -291,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-4"><a href="распределения.html#cb10-4"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
 <span id="cb10-5"><a href="распределения.html#cb10-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
 <span id="cb10-6"><a href="распределения.html#cb10-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;PDF экспоненциального распредления&quot;</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="унимодальное-распределение" class="section level3">
 <h3><span class="header-section-number">2.3.4</span> Унимодальное распределение</h3>
@@ -301,21 +317,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-4"><a href="распределения.html#cb11-4"></a><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></span>
 <span id="cb11-5"><a href="распределения.html#cb11-5"></a><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></span>
 <span id="cb11-6"><a href="распределения.html#cb11-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;PDF унимодального распредления (min = 5, max = 10)&quot;</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
 <div id="что-еще-почитать-про-распределения" class="section level3">
 <h3><span class="header-section-number">2.3.5</span> Что еще почитать про распределения?</h3>
 <p>В интернете много ресурсов, но вот еще есть <a href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html">вот этот</a>. А <a href="https://en.wikipedia.org/wiki/Conjugate_prior">здесь</a> можно найти соответсвия распределений и сопряжённым к ним априорных распределений.</p>
 
-<div id="refs" class="references">
-<div>
-<p>Moran, Steven, Daniel McCloy, and Richard Wright, eds. 2014. <em>PHOIBLE Online</em>. Leipzig: Max Planck Institute for Evolutionary Anthropology. <a href="https://phoible.org/">https://phoible.org/</a>.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<h3>References</h3>
+<h3>Ссылки на литературу</h3>
 <div id="refs" class="references">
 <div id="ref-phoible">
 <p>Moran, Steven, Daniel McCloy, and Richard Wright, eds. 2014. <em>PHOIBLE Online</em>. Leipzig: Max Planck Institute for Evolutionary Anthropology. <a href="https://phoible.org/">https://phoible.org/</a>.</p>
@@ -326,8 +337,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ссылки-на-литературу.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
