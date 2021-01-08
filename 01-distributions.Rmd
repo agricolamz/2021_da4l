@@ -171,12 +171,88 @@ tibble(k = 0:50,
 Попробуем воспользоваться распределением Пуассона для моделирования количества слогов в андийском языке. Количество слогов -- это всегда натуральное число (т. е. не бывает 2.5 слогов, не бывает -3 слогов и т. д., но в теории может быть 0 слогов), так что модель Пуассона здесь применима. Согласно модели Пуассона все слова независимо друг от друга получают сколько-то слогов согласно распределению Пуассона. Посмотрим на данные:
 
 ```{r}
-read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/andic_syllables.csv") %>% 
+andic_syllables <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/andic_syllables.csv") 
+
+andic_syllables %>% 
   ggplot(aes(n_syllables, count))+
   geom_col()+
   facet_wrap(~language, scales = "free")
 ```
 
+
+```{r, include=FALSE}
+andic_syllables %>% 
+  filter(language == "Andi") %>% 
+  uncount(count) %>% 
+  summarise(est = fitdistrplus::fitdist(n_syllables, distr = 'pois', method = 'mle')$estimate) %>% 
+  pull() %>% 
+  round(3) ->
+  est_lambda
+```
+
+Птичка напела (мы научимся узнавать, откуда птичка это знает на следующем занятии), что андийские данные можно описать при помощи распределения Пуассона с параметром $\lambda$ = `r est_lambda`.
+
+```{r}
+andic_syllables %>% 
+  filter(language == "Andi") %>% 
+  rename(observed = count) %>% 
+  mutate(predicted = dpois(n_syllables, lambda = 2.783)*sum(observed)) %>% 
+  pivot_longer(names_to = "type", values_to = "value", cols = c(observed, predicted)) %>% 
+  ggplot(aes(n_syllables, value, fill = type))+
+  geom_col(position = "dodge")
+```
+
+```{block, type = "rmdtask"}
+На графике представлены предсказания трех Пуассоновских моделей, какая кажется лучше?
+```
+
+```{r, echo = FALSE, fig.height=8}
+andic_syllables %>% 
+  filter(language == "Bagvalal") %>% 
+  rename(observed = count) %>% 
+  mutate(predicted = dpois(n_syllables, lambda = 1.452)*sum(observed)) %>% 
+  pivot_longer(names_to = "type", values_to = "value", cols = c(observed, predicted)) %>% 
+  ggplot(aes(n_syllables, value, fill = type))+
+  geom_col(position = "dodge")+
+  labs(title = "Багвалинские данные, λ = 1.452",
+       y = "",
+       x = "количество слогов") ->
+  p1
+
+andic_syllables %>% 
+  filter(language == "Bagvalal") %>% 
+  rename(observed = count) %>% 
+  mutate(predicted = dpois(n_syllables, lambda = 2.452)*sum(observed)) %>% 
+  pivot_longer(names_to = "type", values_to = "value", cols = c(observed, predicted)) %>% 
+  ggplot(aes(n_syllables, value, fill = type))+
+  geom_col(position = "dodge")+
+  labs(title = "Багвалинские данные, λ = 2.452",
+       y = "",
+       x = "количество слогов")->
+  p2
+
+andic_syllables %>% 
+  filter(language == "Bagvalal") %>% 
+  rename(observed = count) %>% 
+  mutate(predicted = dpois(n_syllables, lambda = 3.452)*sum(observed)) %>% 
+  pivot_longer(names_to = "type", values_to = "value", cols = c(observed, predicted)) %>% 
+  ggplot(aes(n_syllables, value, fill = type))+
+  geom_col(position = "dodge")+
+  labs(title = "Багвалинские данные, λ = 3.452",
+       y = "",
+       x = "количество слогов")->
+  p3
+
+plot(gridExtra::arrangeGrob(p1, p2, p3))
+```
+
+```{block, type = "rmdtask"}
+Выше было написано:
+
+> Согласно модели Пуассона все слова **независимо друг от друга** получают сколько-то слогов согласно распределению Пуассона.
+
+Какие проблемы есть у предположения о независимости друг от друга количества слогов разных слов в словаре?
+```
 
 ## Числовые переменные
 ### Нормальное распределение
