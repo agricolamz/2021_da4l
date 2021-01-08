@@ -10,11 +10,12 @@ library(tidyverse)
 theme_set(theme_bw())
 ```
 
+# Распределения
+
 ```{r, message=FALSE}
 library(tidyverse)
 ```
 
-# Распределения
 
 ## Распределения в R
 
