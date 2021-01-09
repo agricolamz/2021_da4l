@@ -271,6 +271,26 @@ tibble(x = 1:100,
   labs(title = "PDF нормального распределения (μ = 50, sd = 10)")
 ```
 
+```{r, include=FALSE}
+vowels <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/phonTools_hillenbrand_1995.csv") 
+
+vowels %>% 
+  summarise(est = fitdistrplus::fitdist(dur, distr = 'norm', method = 'mle')$estimate) %>% 
+  pull() %>% 
+  round(3)->
+  est_m_sd
+```
+
+Птичка напела, что длительность гласных американского английского из [@hillenbrand95] можно описать нормальным распределением с параметрами $\mu =$ `r est_m_sd[1]` и $\sigma =$ `r est_m_sd[2]`. Посмотрим, как можно совместить данные и это распределение:
+
+```{r}
+vowels <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/phonTools_hillenbrand_1995.csv") 
+vowels %>% 
+  ggplot(aes(dur)) + 
+  geom_histogram(aes(y =..density..)) + # обратите внимание на аргумент ..density..
+  stat_function(fun = dnorm, args = list(mean = 274.673, sd = 64.482), color = "red")
+```
+
 ### Логнормальное распределение
 
 $$P(x) = \frac{1}{\sqrt{x\sigma2\pi}}\times e^{-\frac{\left(\ln(x)-\mu\right)^2}{2\sigma^2}}$$
@@ -286,6 +306,29 @@ tibble(x = 1:100,
   labs(title = "PDF логнормального распределения (μ = 4, sd = 0.5)")
 ```
 
+```{r, include=FALSE}
+vowels %>% 
+  summarise(est = fitdistrplus::fitdist(dur, distr = 'lnorm', method = 'mle')$estimate) %>% 
+  pull() %>% 
+  round(3)->
+  est_ml_sdl
+```
+
+```{block, type = "rmdtask"}
+Какая из логнормальных моделей для длительности гласных американского английсокго из [@hillenbrand95] лучше подходит к данным? Попробуйте самостоятельно построить данный график.
+```
+
+```{r, echo = FALSE}
+vowels %>% 
+  ggplot(aes(dur)) + 
+  geom_histogram(aes(y =..density..), fill = "grey90") + 
+  stat_function(fun = dlnorm, args = list(mean = 5.587, sd = 0.242), color = "red")+
+  stat_function(fun = dlnorm, args = list(mean = 5.687, sd = 0.342), color = "darkgreen")+
+  stat_function(fun = dlnorm, args = list(mean = 5.487, sd = 0.262), color = "navy")+
+  labs(subtitle = "синяя: log μ = 5.487, log σ = 0.262\nкрасная: log μ = 5.687, log σ = 0.342\nзеленая: log μ = 5.487, log σ = 0.262\n")
+```
+
+
 ### Экспоненциальное распределение
 
 $$P(x)= \lambda \times e^{-\lambda x}$$
@@ -300,16 +343,6 @@ tibble(x = 1:20,
 ```
 
 
-### Унимодальное распределение
-
-```{r}
-tibble(x = 1:20,
-       PDF = dunif(x = x, min = 5, max = 10)) %>% 
-  ggplot(aes(x, PDF))+
-  geom_point()+
-  geom_line()+
-  labs(title = "PDF унимодального распредления (min = 5, max = 10)")
-```
 
 ### Что еще почитать про распределения?
-В интернете много ресурсов, но вот еще есть [вот этот](http://www.math.wm.edu/~leemis/chart/UDR/UDR.html). А [здесь](https://en.wikipedia.org/wiki/Conjugate_prior) можно найти соответсвия распределений и сопряжённым к ним априорных распределений.
+В интернете много ресурсов, но вот еще есть [вот этот](http://www.math.wm.edu/~leemis/chart/UDR/UDR.html).
