@@ -3,7 +3,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
+```{r setup01, include=FALSE}
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, comment = "")
 options(scipen=999)
 library(tidyverse)
@@ -12,7 +12,7 @@ theme_set(theme_bw())
 
 # Распределения
 
-```{r, message=FALSE}
+```{r}
 library(tidyverse)
 ```
 
@@ -288,7 +288,7 @@ vowels <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/maste
 vowels %>% 
   ggplot(aes(dur)) + 
   geom_histogram(aes(y =..density..)) + # обратите внимание на аргумент ..density..
-  stat_function(fun = dnorm, args = list(mean = 274.673, sd = 64.482), color = "red")
+    stat_function(fun = dnorm, args = list(mean = 274.673, sd = 64.482), color = "red")
 ```
 
 ### Логнормальное распределение
@@ -328,21 +328,6 @@ vowels %>%
   labs(subtitle = "синяя: log μ = 5.487, log σ = 0.262\nкрасная: log μ = 5.687, log σ = 0.342\nзеленая: log μ = 5.487, log σ = 0.262\n")
 ```
 
-
-### Экспоненциальное распределение
-
-$$P(x)= \lambda \times e^{-\lambda x}$$
-
-```{r}
-tibble(x = 1:20,
-       PDF = dexp(x = x, rate = 5)) %>% 
-  ggplot(aes(x, PDF))+
-  geom_point()+
-  geom_line()+
-  labs(title = "PDF экспоненциального распредления")
-```
-
-
-
 ### Что еще почитать про распределения?
-В интернете много ресурсов, но вот еще есть [вот этот](http://www.math.wm.edu/~leemis/chart/UDR/UDR.html).
+
+Люди придумали очень много разных распределений. Стоит, наверное, также понимать, что распределения не существуют отдельно в вакууме: многие из них математически связаны друг с другом. Про это можно посмотреть [вот здесь](http://www.math.wm.edu/~leemis/chart/UDR/UDR.html) или [здесь](https://en.wikipedia.org/wiki/Relationships_among_probability_distributions).

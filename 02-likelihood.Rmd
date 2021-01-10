@@ -1,0 +1,17 @@
+---
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup02, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, comment = "")
+options(scipen=999)
+library(tidyverse)
+theme_set(theme_bw())
+```
+
+# Функция правдоподобия
+
+```{r}
+library(tidyverse)
+```
