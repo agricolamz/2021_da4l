@@ -175,7 +175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="оценка-вероятности" class="section level2">
 <h2><span class="header-section-number">3.1</span> Оценка вероятности</h2>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="функция-правдоподобия.html#cb14-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
-<p>Когда у нас задано некоторое распределение, мы можем задавать к нему разные вопросы. Например, если мы верим что длительность гласных американского английского из <span class="citation">(Hillenbrand et al. <a href="#ref-hillenbrand95" role="doc-biblioref">1995</a>)</span> можно описать логнормальным распределением с параметрами <span class="math inline">\(log \mu =\)</span> 5.587 и <span class="math inline">\(log \sigma =\)</span> 0.242, то мы можем делать некотрые предсказания относительно интересующей нас переменной.</p>
+<p>Когда у нас задано некоторое распределение, мы можем задавать к нему разные вопросы. Например, если мы верим что длительность гласных американского английского из <span class="citation">(Hillenbrand et al. <a href="#ref-hillenbrand95" role="doc-biblioref">1995</a>)</span> можно описать логнормальным распределением с параметрами <span class="math inline">\(\ln{\mu} =\)</span> 5.587 и <span class="math inline">\(\ln{\sigma} =\)</span> 0.242, то мы можем делать некотрые предсказания относительно интересующей нас переменной.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="функция-правдоподобия.html#cb15-1"></a>vowels &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/phonTools_hillenbrand_1995.csv&quot;</span>) </span>
 <span id="cb15-2"><a href="функция-правдоподобия.html#cb15-2"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
 <span id="cb15-3"><a href="функция-правдоподобия.html#cb15-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dlnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="fl">5.587</span>, <span class="dt">sd =</span> <span class="fl">0.242</span>))<span class="op">+</span></span>
@@ -185,19 +185,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="da4l_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <div class="rmdtask">
 <p>
-Если принять на веру, что логнормальное распределение с параметрами <span class="math inline"><span class="math inline">\(\ln{\mu} =\)</span></span> <code>r est_ml_sdl[1]</code> и <span class="math inline"><span class="math inline">\(\ln{\sigma}=\)</span></span> <code>r est_ml_sdl[2]</code> описывают данные длительности гласных американского английского из <span class="citation"><span class="citation">(Hillenbrand et al. <a href="#ref-hillenbrand95" role="doc-biblioref">1995</a>)</span></span>, то какова вероятность наблюдать значения между 300 и 400 мс? То же самое можно записать используя математическую нотацию:
+Если принять на веру, что логнормальное распределение с параметрами <span class="math inline"><span class="math inline">\(\ln{\mu} =\)</span></span> 5.587 и <span class="math inline"><span class="math inline">\(\ln{\sigma}=\)</span></span> 0.242 описывают данные длительности гласных американского английского из <span class="citation"><span class="citation">(Hillenbrand et al. <a href="#ref-hillenbrand95" role="doc-biblioref">1995</a>)</span></span>, то какова вероятность наблюдать значения между 300 и 400 мс? То же самое можно записать, используя математическую нотацию:
 </p>
 <p>
 <span class="math display"><span class="math display">\[P\left(X \in [300,\, 400] | X \sim \ln{\mathcal{N}}(\ln{\mu} = 5.587, \ln{\sigma}=0.242)\right) = ??\]</span></span>
 </p>
 </div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<form name="form_58108" onsubmit="return validate_form_58108()" method="post">
-<input type="text" name="answer_58108"><br><input type="submit" value="check">
+<form name="form_61473" onsubmit="return validate_form_61473()" method="post">
+<input type="text" name="answer_61473"><br><input type="submit" value="check">
 </form>
-<p id="result_58108">
+<p id="result_61473">
 </p>
-<script> function validate_form_58108() {var x, text; var x = document.forms["form_58108"]["answer_58108"].value;if (x == "0.267"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_58108').innerHTML = text; return false;} </script>
+<script> function validate_form_61473() {var x, text; var x = document.forms["form_61473"]["answer_61473"].value;if (x == "0.267"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_61473').innerHTML = text; return false;} </script>
 
 </div>
 </div>
