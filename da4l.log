@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.9.10)  20 JAN 2021 11:42
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.9.10)  20 JAN 2021 14:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1337,18 +1337,18 @@ LaTeX Font Info:    Font shape `TU/iosevka-regular(0)/m/n' will be
 ]
 Глава 2.
 LaTeX Font Info:    Font shape `TU/iosevka-regular(0)/m/n' will be
-(Font)              scaled to size 6.99997pt on input line 223.
+(Font)              scaled to size 6.99997pt on input line 225.
 
 LaTeX Font Warning: Font shape `TU/iosevka-regular(0)/bx/n' undefined
-(Font)              using `TU/iosevka-regular(0)/m/n' instead on input line 224
+(Font)              using `TU/iosevka-regular(0)/m/n' instead on input line 226
 .
 
 LaTeX Font Info:    Font shape `TU/brill(0)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 229.
+(Font)              scaled to size 14.4pt on input line 231.
 LaTeX Font Info:    Font shape `TU/brill(0)/bx/n' will be
-(Font)              scaled to size 14.4pt on input line 229.
+(Font)              scaled to size 14.4pt on input line 231.
 LaTeX Font Info:    Font shape `TU/iosevka-regular(0)/bx/n' will be
-(Font)              scaled to size 6.99997pt on input line 249.
+(Font)              scaled to size 6.99997pt on input line 251.
 File: da4l_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-2-1.pdf>
 
@@ -1370,11 +1370,11 @@ File: images/task.png Graphic file (type bmp)
 File: images/task.png Graphic file (type bmp)
 <images/task.png>
 LaTeX Font Info:    Font shape `TU/brill(0)/bx/n' will be
-(Font)              scaled to size 12.0pt on input line 322.
+(Font)              scaled to size 12.0pt on input line 324.
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 326.
+(amsmath)                 on input line 328.
 
 File: da4l_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-9-1.pdf>
@@ -1419,31 +1419,31 @@ Underfull \vbox (badness 2970) has occurred while \output is active []
 File: da4l_files/figure-latex/unnamed-chunk-24-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-24-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 478--479
+Underfull \hbox (badness 10000) in paragraph at lines 480--481
 []\TU/brill(0)/m/n/10 Птичка напела, что длительность гласных американского анг
 лийского из
  []
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 478--479
+Underfull \hbox (badness 1292) in paragraph at lines 480--481
 \TU/brill(0)/m/n/10 ([]Hillenbrand et al.[], []1995[]) можно описать нормальным
  распределением с парамет-
  []
 
 
 LaTeX Font Warning: Font shape `TU/iosevka-regular(0)/m/it' undefined
-(Font)              using `TU/iosevka-regular(0)/m/n' instead on input line 485
+(Font)              using `TU/iosevka-regular(0)/m/n' instead on input line 487
 .
 
 File: da4l_files/figure-latex/unnamed-chunk-26-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-26-1.pdf>
 [16]
 LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 495.
+(Font)              scaled to size 10.0pt on input line 497.
 LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 495.
+(Font)              scaled to size 7.0pt on input line 497.
 LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 495.
+(Font)              scaled to size 5.0pt on input line 497.
 File: da4l_files/figure-latex/unnamed-chunk-27-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-27-1.pdf>
 
@@ -1455,9 +1455,9 @@ File: images/task.png Graphic file (type bmp)
 File: da4l_files/figure-latex/unnamed-chunk-30-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-30-1.pdf>
 LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 523.
+(Font)              scaled to size 8.0pt on input line 525.
 LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 523.
+(Font)              scaled to size 6.0pt on input line 525.
 [18]
 Глава 3.
 File: da4l_files/figure-latex/unnamed-chunk-33-1.pdf Graphic file (type pdf)
@@ -1483,7 +1483,7 @@ File: da4l_files/figure-latex/unnamed-chunk-41-1.pdf Graphic file (type pdf)
 File: da4l_files/figure-latex/unnamed-chunk-43-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-43-1.pdf>
 [22]
-Underfull \hbox (badness 5077) in paragraph at lines 653--654
+Underfull \hbox (badness 5077) in paragraph at lines 656--657
 \TU/brill(1)/m/n/10 Мы уже обсуждали, что длительность гласных американского ан
 глийского из
  []
@@ -1500,14 +1500,14 @@ File: da4l_files/figure-latex/unnamed-chunk-44-2.pdf Graphic file (type pdf)
 File: da4l_files/figure-latex/unnamed-chunk-44-3.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-44-3.pdf>
 [25] (./da4l.bbl [26])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 756.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 759.
 [27
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 756.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 759.
 (./da4l.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 756.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 756.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 759.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 759.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
