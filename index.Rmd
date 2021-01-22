@@ -18,3 +18,4 @@ biblio-style: apalike
 * [запись лекции 2020.01.13](https://youtu.be/HmLcBJnfipk)
 * [запись лекции 2020.01.15](https://youtu.be/V_c_K_wBMuY)
 * [запись лекции 2020.01.20](https://youtu.be/cRc5z9F3XNw)
+* [запись лекции 2020.01.22](https://youtu.be/zj-1-invsGM)
