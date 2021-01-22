@@ -32,6 +32,7 @@
   
 <link rel="prev" href="распределения.html"/>
 <link rel="next" href="ссылки-на-литературу.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,24 +50,22 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,24 +135,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> О курсе</a></li>
-<li class="chapter" data-level="2" data-path="распределения.html"><a href="распределения.html"><i class="fa fa-check"></i><b>2</b> Распределения</a><ul>
+<li class="chapter" data-level="2" data-path="распределения.html"><a href="распределения.html"><i class="fa fa-check"></i><b>2</b> Распределения</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="распределения.html"><a href="распределения.html#распределения-в-r"><i class="fa fa-check"></i><b>2.1</b> Распределения в R</a></li>
-<li class="chapter" data-level="2.2" data-path="распределения.html"><a href="распределения.html#дискретные-переменные"><i class="fa fa-check"></i><b>2.2</b> Дискретные переменные</a><ul>
+<li class="chapter" data-level="2.2" data-path="распределения.html"><a href="распределения.html#дискретные-переменные"><i class="fa fa-check"></i><b>2.2</b> Дискретные переменные</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="распределения.html"><a href="распределения.html#биномиальное-распределение"><i class="fa fa-check"></i><b>2.2.1</b> Биномиальное распределение</a></li>
 <li class="chapter" data-level="2.2.2" data-path="распределения.html"><a href="распределения.html#геометрическое-распределение"><i class="fa fa-check"></i><b>2.2.2</b> Геометрическое распределение</a></li>
 <li class="chapter" data-level="2.2.3" data-path="распределения.html"><a href="распределения.html#распределение-пуассона"><i class="fa fa-check"></i><b>2.2.3</b> Распределение Пуассона</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="распределения.html"><a href="распределения.html#числовые-переменные"><i class="fa fa-check"></i><b>2.3</b> Числовые переменные</a><ul>
+<li class="chapter" data-level="2.3" data-path="распределения.html"><a href="распределения.html#числовые-переменные"><i class="fa fa-check"></i><b>2.3</b> Числовые переменные</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="распределения.html"><a href="распределения.html#нормальное-распределение"><i class="fa fa-check"></i><b>2.3.1</b> Нормальное распределение</a></li>
 <li class="chapter" data-level="2.3.2" data-path="распределения.html"><a href="распределения.html#логнормальное-распределение"><i class="fa fa-check"></i><b>2.3.2</b> Логнормальное распределение</a></li>
 <li class="chapter" data-level="2.3.3" data-path="распределения.html"><a href="распределения.html#что-еще-почитать-про-распределения"><i class="fa fa-check"></i><b>2.3.3</b> Что еще почитать про распределения?</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html"><i class="fa fa-check"></i><b>3</b> Метод максимального правдоподобия</a><ul>
+<li class="chapter" data-level="3" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html"><i class="fa fa-check"></i><b>3</b> Метод максимального правдоподобия</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#оценка-вероятности"><i class="fa fa-check"></i><b>3.1</b> Оценка вероятности</a></li>
 <li class="chapter" data-level="3.2" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#функция-правдоподобия"><i class="fa fa-check"></i><b>3.2</b> Функция правдоподобия</a></li>
 <li class="chapter" data-level="3.3" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#пример-с-непрерывным-распределением"><i class="fa fa-check"></i><b>3.3</b> Пример с непрерывным распределением</a></li>
 <li class="chapter" data-level="3.4" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#метод-максимального-правдоподобия-mle"><i class="fa fa-check"></i><b>3.4</b> Метод максимального правдоподобия (MLE)</a></li>
+<li class="chapter" data-level="3.5" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#несколько-комментариев"><i class="fa fa-check"></i><b>3.5</b> Несколько комментариев</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
@@ -173,49 +177,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="метод-максимального-правдоподобия" class="section level1">
+<div id="метод-максимального-правдоподобия" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Метод максимального правдоподобия</h1>
-<div id="оценка-вероятности" class="section level2">
+<div id="оценка-вероятности" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Оценка вероятности</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="метод-максимального-правдоподобия.html#cb14-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
-<p>Когда у нас задано некоторое распределение, мы можем задавать к нему разные вопросы. Например, если мы верим что длительность гласных американского английского из <span class="citation">(Hillenbrand et al. <a href="#ref-hillenbrand95" role="doc-biblioref">1995</a>)</span> можно описать логнормальным распределением с параметрами <span class="math inline">\(\ln{\mu} =\)</span> 5.587 и <span class="math inline">\(\ln{\sigma} =\)</span> 0.242, то мы можем делать некотрые предсказания относительно интересующей нас переменной.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="метод-максимального-правдоподобия.html#cb15-1"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb15-2"><a href="метод-максимального-правдоподобия.html#cb15-2"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> dlnorm, <span class="dt">args =</span> <span class="kw">list</span>(<span class="dt">mean =</span> <span class="fl">5.587</span>, <span class="dt">sd =</span> <span class="fl">0.242</span>))<span class="op">+</span></span>
-<span id="cb15-3"><a href="метод-максимального-правдоподобия.html#cb15-3"></a><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">6</span><span class="op">*</span><span class="dv">100</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">650</span>))<span class="op">+</span></span>
-<span id="cb15-4"><a href="метод-максимального-правдоподобия.html#cb15-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;длительность гласного (мс)&quot;</span>,</span>
-<span id="cb15-5"><a href="метод-максимального-правдоподобия.html#cb15-5"></a>       <span class="dt">y =</span> <span class="st">&quot;значение функции плотности&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="метод-максимального-правдоподобия.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>Когда у нас задано некоторое распределение, мы можем задавать к нему разные вопросы. Например, если мы верим что длительность гласных американского английского из <span class="citation">(<a href="ссылки-на-литературу.html#ref-hillenbrand95" role="doc-biblioref">Hillenbrand et al. 1995</a>)</span> можно описать логнормальным распределением с параметрами <span class="math inline">\(\ln{\mu} =\)</span> 5.587 и <span class="math inline">\(\ln{\sigma} =\)</span> 0.242, то мы можем делать некотрые предсказания относительно интересующей нас переменной.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="метод-максимального-правдоподобия.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb15-2"><a href="метод-максимального-правдоподобия.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dlnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">5.587</span>, <span class="at">sd =</span> <span class="fl">0.242</span>))<span class="sc">+</span></span>
+<span id="cb15-3"><a href="метод-максимального-правдоподобия.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span><span class="sc">*</span><span class="dv">100</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">650</span>))<span class="sc">+</span></span>
+<span id="cb15-4"><a href="метод-максимального-правдоподобия.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;длительность гласного (мс)&quot;</span>,</span>
+<span id="cb15-5"><a href="метод-максимального-правдоподобия.html#cb15-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;значение функции плотности&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <div class="rmdtask">
 <p>
-Если принять на веру, что логнормальное распределение с параметрами <span class="math inline"><span class="math inline">\(\ln{\mu} =\)</span></span> 5.587 и <span class="math inline"><span class="math inline">\(\ln{\sigma}=\)</span></span> 0.242 описывает данные длительности гласных американского английского из <span class="citation"><span class="citation">(Hillenbrand et al. <a href="#ref-hillenbrand95" role="doc-biblioref">1995</a>)</span></span>, то какова вероятность наблюдать значения между 300 и 400 мс? То же самое можно записать, используя математическую нотацию:
+Если принять на веру, что логнормальное распределение с параметрами <span class="math inline"><span class="math inline">\(\ln{\mu} =\)</span></span> 5.587 и <span class="math inline"><span class="math inline">\(\ln{\sigma}=\)</span></span> 0.242 описывает данные длительности гласных американского английского из <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-hillenbrand95" role="doc-biblioref">Hillenbrand et al. 1995</a>)</span></span>, то какова вероятность наблюдать значения между 300 и 400 мс? То же самое можно записать, используя математическую нотацию:
 </p>
 <p>
 <span class="math display"><span class="math display">\[P\left(X \in [300,\, 400] | X \sim \ln{\mathcal{N}}(\ln{\mu} = 5.587, \ln{\sigma}=0.242)\right) = ??\]</span></span> Ответ округлите до трех и меньше знаков после запятой.
 </p>
 </div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<form name="form_34060" onsubmit="return validate_form_34060()" method="post">
-<input type="text" name="answer_34060"><br><input type="submit" value="check">
+<form name="form_75741" onsubmit="return validate_form_75741()" method="post">
+<input type="text" name="answer_75741"><br><input type="submit" value="check">
 </form>
-<p id="result_34060">
+<p id="result_75741">
 </p>
-<script> function validate_form_34060() {var x, text; var x = document.forms["form_34060"]["answer_34060"].value;if (x == "0.267"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_34060').innerHTML = text; return false;} </script>
+<script> function validate_form_75741() {var x, text; var x = document.forms["form_75741"]["answer_75741"].value;if (x == "0.267"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_75741').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
-Если принять на веру, что биномиальное распределение с параметрами <span class="math inline"><span class="math inline">\(p =\)</span></span> 0.9 описывает, согласно <span class="citation"><span class="citation">(Rosenbach <a href="#ref-rosenbach03" role="doc-biblioref">2003</a>: 394)</span></span> употребление <em>s</em>-генитивов в британском английском, то какова вероятность наблюдать значения между 300 и 350 генитивов в интервью, содержащее 400 генитивных контекстов? То же самое можно записать, используя математическую нотацию:
+Если принять на веру, что биномиальное распределение с параметрами <span class="math inline"><span class="math inline">\(p =\)</span></span> 0.9 описывает, согласно <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span> употребление <em>s</em>-генитивов в британском английском, то какова вероятность наблюдать значения между 300 и 350 генитивов в интервью, содержащее 400 генитивных контекстов? То же самое можно записать, используя математическую нотацию:
 </p>
 <p>
 <span class="math display"><span class="math display">\[P\left(X \in [300,\, 350] | X \sim Binom(n = 400, p = 0.9)\right) = ??\]</span></span> Ответ округлите до трех и меньше знаков после запятой.
 </p>
 </div>
-<form name="form_30603" onsubmit="return validate_form_30603()" method="post">
-<input type="text" name="answer_30603"><br><input type="submit" value="check">
+<form name="form_78175" onsubmit="return validate_form_78175()" method="post">
+<input type="text" name="answer_78175"><br><input type="submit" value="check">
 </form>
-<p id="result_30603">
+<p id="result_78175">
 </p>
-<script> function validate_form_30603() {var x, text; var x = document.forms["form_30603"]["answer_30603"].value;if (x == "0.06"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_30603').innerHTML = text; return false;} </script>
+<script> function validate_form_78175() {var x, text; var x = document.forms["form_78175"]["answer_78175"].value;if (x == "0.06"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_78175').innerHTML = text; return false;} </script>
 </div>
-<div id="функция-правдоподобия" class="section level2">
+<div id="функция-правдоподобия" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Функция правдоподобия</h2>
 <p>Если при поиске вероятностей, мы предполагали, что данные нам <strong>неизвестны</strong>, а распределение и его параметры <strong>известны</strong>, то функция правдоподобия позволяет этот процесс перевернуть, запустив поиск параметров распределения, при изветсных данных и семье распределения:</p>
 <p><span class="math display">\[L\left(X \sim Distr(...)|x\right) = ...\]</span></p>
@@ -223,23 +227,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Для примера рассмотрим наш s-генетив: мы провели интервью и нам встретилось 85 <em>s</em>-генетив из 100 случаев всех генетивов. Насколько хорошо подходит нам распределение с параметром <em>p</em> = 0.9?</p>
 <p><img src="da4l_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>Ответ:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="метод-максимального-правдоподобия.html#cb16-1"></a><span class="kw">dbinom</span>(<span class="dv">85</span>, <span class="dv">100</span>, <span class="fl">0.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="метод-максимального-правдоподобия.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">85</span>, <span class="dv">100</span>, <span class="fl">0.9</span>)</span></code></pre></div>
 <pre><code>[1] 0.03268244</code></pre>
 <p>Представим теперь это как функцию от параметра <em>p</em>:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="метод-максимального-правдоподобия.html#cb18-1"></a><span class="kw">tibble</span>(<span class="dt">p =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">by =</span> <span class="fl">0.01</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb18-2"><a href="метод-максимального-правдоподобия.html#cb18-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(p)) <span class="op">+</span></span>
-<span id="cb18-3"><a href="метод-максимального-правдоподобия.html#cb18-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(p) <span class="kw">dbinom</span>(<span class="dv">85</span>, <span class="dv">100</span>, p), <span class="dt">geom =</span> <span class="st">&quot;col&quot;</span>)<span class="op">+</span></span>
-<span id="cb18-4"><a href="метод-максимального-правдоподобия.html#cb18-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;параметр биномиального распределения p&quot;</span>,</span>
-<span id="cb18-5"><a href="метод-максимального-правдоподобия.html#cb18-5"></a>       <span class="dt">y =</span> <span class="st">&quot;значение функции правдоподобия</span><span class="ch">\n</span><span class="st">(одно наблюдение)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="метод-максимального-правдоподобия.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">p =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="метод-максимального-правдоподобия.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(p)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="метод-максимального-правдоподобия.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(p) <span class="fu">dbinom</span>(<span class="dv">85</span>, <span class="dv">100</span>, p), <span class="at">geom =</span> <span class="st">&quot;col&quot;</span>)<span class="sc">+</span></span>
+<span id="cb18-4"><a href="метод-максимального-правдоподобия.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;параметр биномиального распределения p&quot;</span>,</span>
+<span id="cb18-5"><a href="метод-максимального-правдоподобия.html#cb18-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;значение функции правдоподобия</span><span class="sc">\n</span><span class="st">(одно наблюдение)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <p>А что если мы располагаем двумя интервью одного актера? В первом на сто генитивов пришлось 85 s-генитивов, а во втором – 89. В таком случае, также как и с вероятностью наступления двух независимых событий, значения функции плотности перемножаются.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="метод-максимального-правдоподобия.html#cb19-1"></a><span class="kw">dbinom</span>(<span class="dv">85</span>, <span class="dv">100</span>, <span class="fl">0.9</span>)<span class="op">*</span><span class="kw">dbinom</span>(<span class="dv">89</span>, <span class="dv">100</span>, <span class="fl">0.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="метод-максимального-правдоподобия.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">85</span>, <span class="dv">100</span>, <span class="fl">0.9</span>)<span class="sc">*</span><span class="fu">dbinom</span>(<span class="dv">89</span>, <span class="dv">100</span>, <span class="fl">0.9</span>)</span></code></pre></div>
 <pre><code>[1] 0.003917892</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="метод-максимального-правдоподобия.html#cb21-1"></a><span class="kw">tibble</span>(<span class="dt">p =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">by =</span> <span class="fl">0.01</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb21-2"><a href="метод-максимального-правдоподобия.html#cb21-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(p)) <span class="op">+</span></span>
-<span id="cb21-3"><a href="метод-максимального-правдоподобия.html#cb21-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(p) <span class="kw">dbinom</span>(<span class="dv">85</span>, <span class="dv">100</span>, p)<span class="op">*</span><span class="kw">dbinom</span>(<span class="dv">89</span>, <span class="dv">100</span>, p), <span class="dt">geom =</span> <span class="st">&quot;col&quot;</span>)<span class="op">+</span></span>
-<span id="cb21-4"><a href="метод-максимального-правдоподобия.html#cb21-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;параметр биномиального распределения p&quot;</span>,</span>
-<span id="cb21-5"><a href="метод-максимального-правдоподобия.html#cb21-5"></a>       <span class="dt">y =</span> <span class="st">&quot;значение функции правдоподобия</span><span class="ch">\n</span><span class="st">(два наблюдения)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="метод-максимального-правдоподобия.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">p =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="метод-максимального-правдоподобия.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(p)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="метод-максимального-правдоподобия.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(p) <span class="fu">dbinom</span>(<span class="dv">85</span>, <span class="dv">100</span>, p)<span class="sc">*</span><span class="fu">dbinom</span>(<span class="dv">89</span>, <span class="dv">100</span>, p), <span class="at">geom =</span> <span class="st">&quot;col&quot;</span>)<span class="sc">+</span></span>
+<span id="cb21-4"><a href="метод-максимального-правдоподобия.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;параметр биномиального распределения p&quot;</span>,</span>
+<span id="cb21-5"><a href="метод-максимального-правдоподобия.html#cb21-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;значение функции правдоподобия</span><span class="sc">\n</span><span class="st">(два наблюдения)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 <p>В итоге:</p>
 <ul>
@@ -248,39 +252,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Интеграл распределения/сумма значений вероятностей равен/на 1. <a href="https://stats.stackexchange.com/a/31241/225843">Интеграл распределения/сумма значений правдоподобия может быть не равен/на 1</a>.</p>
 </div>
-<div id="пример-с-непрерывным-распределением" class="section level2">
+<div id="пример-с-непрерывным-распределением" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Пример с непрерывным распределением</h2>
-<p>Мы уже обсуждали, что длительность гласных американского английского из <span class="citation">(Hillenbrand et al. <a href="#ref-hillenbrand95" role="doc-biblioref">1995</a>)</span> можно описать логнормальным распределением с параметрами <span class="math inline">\(\ln\mu\)</span> и <span class="math inline">\(\ln\sigma\)</span>. Предположим, что <span class="math inline">\(\ln\sigma = 0.342\)</span>, построим функцию правдоподобия для <span class="math inline">\(\ln\mu\)</span>:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="метод-максимального-правдоподобия.html#cb22-1"></a>vowels &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/phonTools_hillenbrand_1995.csv&quot;</span>) </span>
-<span id="cb22-2"><a href="метод-максимального-правдоподобия.html#cb22-2"></a></span>
-<span id="cb22-3"><a href="метод-максимального-правдоподобия.html#cb22-3"></a><span class="kw">tibble</span>(<span class="dt">ln_mu =</span> <span class="kw">seq</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dt">by =</span> <span class="fl">0.001</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb22-4"><a href="метод-максимального-правдоподобия.html#cb22-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ln_mu)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb22-5"><a href="метод-максимального-правдоподобия.html#cb22-5"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(ln_mu) <span class="kw">dlnorm</span>(vowels<span class="op">$</span>dur[<span class="dv">1</span>], <span class="dt">meanlog =</span> ln_mu, <span class="dt">sdlog =</span> <span class="fl">0.242</span>))<span class="op">+</span></span>
-<span id="cb22-6"><a href="метод-максимального-правдоподобия.html#cb22-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;параметр логнормального распределения ln μ&quot;</span>,</span>
-<span id="cb22-7"><a href="метод-максимального-правдоподобия.html#cb22-7"></a>       <span class="dt">y =</span> <span class="st">&quot;значение функции правдоподобия</span><span class="ch">\n</span><span class="st">(одно наблюдение)&quot;</span>)</span></code></pre></div>
+<p>Мы уже обсуждали, что длительность гласных американского английского из <span class="citation">(<a href="ссылки-на-литературу.html#ref-hillenbrand95" role="doc-biblioref">Hillenbrand et al. 1995</a>)</span> можно описать логнормальным распределением с параметрами <span class="math inline">\(\ln\mu\)</span> и <span class="math inline">\(\ln\sigma\)</span>. Предположим, что <span class="math inline">\(\ln\sigma = 0.342\)</span>, построим функцию правдоподобия для <span class="math inline">\(\ln\mu\)</span>:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="метод-максимального-правдоподобия.html#cb22-1" aria-hidden="true" tabindex="-1"></a>vowels <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/phonTools_hillenbrand_1995.csv&quot;</span>) </span>
+<span id="cb22-2"><a href="метод-максимального-правдоподобия.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="метод-максимального-правдоподобия.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">ln_mu =</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="метод-максимального-правдоподобия.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(ln_mu)) <span class="sc">+</span> </span>
+<span id="cb22-5"><a href="метод-максимального-правдоподобия.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(ln_mu) <span class="fu">dlnorm</span>(vowels<span class="sc">$</span>dur[<span class="dv">1</span>], <span class="at">meanlog =</span> ln_mu, <span class="at">sdlog =</span> <span class="fl">0.242</span>))<span class="sc">+</span></span>
+<span id="cb22-6"><a href="метод-максимального-правдоподобия.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;параметр логнормального распределения ln μ&quot;</span>,</span>
+<span id="cb22-7"><a href="метод-максимального-правдоподобия.html#cb22-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;значение функции правдоподобия</span><span class="sc">\n</span><span class="st">(одно наблюдение)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="метод-максимального-правдоподобия.html#cb23-1"></a><span class="kw">tibble</span>(<span class="dt">ln_mu =</span> <span class="kw">seq</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dt">by =</span> <span class="fl">0.001</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-2"><a href="метод-максимального-правдоподобия.html#cb23-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ln_mu)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb23-3"><a href="метод-максимального-правдоподобия.html#cb23-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(ln_mu) <span class="kw">dlnorm</span>(vowels<span class="op">$</span>dur[<span class="dv">1</span>], <span class="dt">meanlog =</span> ln_mu, <span class="dt">sdlog =</span> <span class="fl">0.242</span>)<span class="op">*</span><span class="kw">dlnorm</span>(vowels<span class="op">$</span>dur[<span class="dv">2</span>], <span class="dt">meanlog =</span> ln_mu, <span class="dt">sdlog =</span> <span class="fl">0.242</span>))<span class="op">+</span></span>
-<span id="cb23-4"><a href="метод-максимального-правдоподобия.html#cb23-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;параметр логнормального распределения ln μ&quot;</span>,</span>
-<span id="cb23-5"><a href="метод-максимального-правдоподобия.html#cb23-5"></a>       <span class="dt">y =</span> <span class="st">&quot;значение функции правдоподобия</span><span class="ch">\n</span><span class="st">(два наблюдение)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="метод-максимального-правдоподобия.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">ln_mu =</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="метод-максимального-правдоподобия.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(ln_mu)) <span class="sc">+</span> </span>
+<span id="cb23-3"><a href="метод-максимального-правдоподобия.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(ln_mu) <span class="fu">dlnorm</span>(vowels<span class="sc">$</span>dur[<span class="dv">1</span>], <span class="at">meanlog =</span> ln_mu, <span class="at">sdlog =</span> <span class="fl">0.242</span>)<span class="sc">*</span><span class="fu">dlnorm</span>(vowels<span class="sc">$</span>dur[<span class="dv">2</span>], <span class="at">meanlog =</span> ln_mu, <span class="at">sdlog =</span> <span class="fl">0.242</span>))<span class="sc">+</span></span>
+<span id="cb23-4"><a href="метод-максимального-правдоподобия.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;параметр логнормального распределения ln μ&quot;</span>,</span>
+<span id="cb23-5"><a href="метод-максимального-правдоподобия.html#cb23-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;значение функции правдоподобия</span><span class="sc">\n</span><span class="st">(два наблюдение)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-44-2.png" width="672" /></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="метод-максимального-правдоподобия.html#cb24-1"></a><span class="kw">tibble</span>(<span class="dt">ln_mu =</span> <span class="kw">seq</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dt">by =</span> <span class="fl">0.001</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb24-2"><a href="метод-максимального-правдоподобия.html#cb24-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ln_mu)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb24-3"><a href="метод-максимального-правдоподобия.html#cb24-3"></a><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(ln_mu) <span class="kw">dlnorm</span>(vowels<span class="op">$</span>dur[<span class="dv">1</span>], <span class="dt">meanlog =</span> ln_mu, <span class="dt">sdlog =</span> <span class="fl">0.242</span>)<span class="op">*</span><span class="kw">dlnorm</span>(vowels<span class="op">$</span>dur[<span class="dv">2</span>], <span class="dt">meanlog =</span> ln_mu, <span class="dt">sdlog =</span> <span class="fl">0.242</span>)<span class="op">*</span><span class="kw">dlnorm</span>(vowels<span class="op">$</span>dur[<span class="dv">3</span>], <span class="dt">meanlog =</span> ln_mu, <span class="dt">sdlog =</span> <span class="fl">0.242</span>))<span class="op">+</span></span>
-<span id="cb24-4"><a href="метод-максимального-правдоподобия.html#cb24-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;параметр логнормального распределения ln μ&quot;</span>,</span>
-<span id="cb24-5"><a href="метод-максимального-правдоподобия.html#cb24-5"></a>       <span class="dt">y =</span> <span class="st">&quot;значение функции правдоподобия</span><span class="ch">\n</span><span class="st">(три наблюдение)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="метод-максимального-правдоподобия.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">ln_mu =</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="метод-максимального-правдоподобия.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(ln_mu)) <span class="sc">+</span> </span>
+<span id="cb24-3"><a href="метод-максимального-правдоподобия.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(ln_mu) <span class="fu">dlnorm</span>(vowels<span class="sc">$</span>dur[<span class="dv">1</span>], <span class="at">meanlog =</span> ln_mu, <span class="at">sdlog =</span> <span class="fl">0.242</span>)<span class="sc">*</span><span class="fu">dlnorm</span>(vowels<span class="sc">$</span>dur[<span class="dv">2</span>], <span class="at">meanlog =</span> ln_mu, <span class="at">sdlog =</span> <span class="fl">0.242</span>)<span class="sc">*</span><span class="fu">dlnorm</span>(vowels<span class="sc">$</span>dur[<span class="dv">3</span>], <span class="at">meanlog =</span> ln_mu, <span class="at">sdlog =</span> <span class="fl">0.242</span>))<span class="sc">+</span></span>
+<span id="cb24-4"><a href="метод-максимального-правдоподобия.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;параметр логнормального распределения ln μ&quot;</span>,</span>
+<span id="cb24-5"><a href="метод-максимального-правдоподобия.html#cb24-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;значение функции правдоподобия</span><span class="sc">\n</span><span class="st">(три наблюдение)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-44-3.png" width="672" /></p>
 <p>Для простоты в начале я использовал зафиксировал один из параметров логнормального распредления: лог стандартное отклонение. Конечно, это совсем необязательно делать: можно создать матрицу значений лог среднего и лог стандартного отклонения и получить для каждой ячейки матрицы значения функции правдоподобия.</p>
 </div>
-<div id="метод-максимального-правдоподобия-mle" class="section level2">
+<div id="метод-максимального-правдоподобия-mle" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Метод максимального правдоподобия (MLE)</h2>
 <p>Функция правдподобия позволяет подбирать параметры распределения. Оценка параметров распределения при помощи функции максимального правдоподобия получила названия метод максимального правдоподобия. Его я и использовал ранее для того, чтобы получить значения распределений для заданий из первого занятия:</p>
 <ul>
-<li>данные длительности американских гласных из <span class="citation">(Hillenbrand et al. <a href="#ref-hillenbrand95" role="doc-biblioref">1995</a>)</span> и логнормальное распределение</li>
+<li>данные длительности американских гласных из <span class="citation">(<a href="ссылки-на-литературу.html#ref-hillenbrand95" role="doc-biblioref">Hillenbrand et al. 1995</a>)</span> и логнормальное распределение</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="метод-максимального-правдоподобия.html#cb25-1"></a><span class="kw">library</span>(fitdistrplus)</span>
-<span id="cb25-2"><a href="метод-максимального-правдоподобия.html#cb25-2"></a><span class="kw">fitdist</span>(vowels<span class="op">$</span>dur, <span class="dt">distr =</span> <span class="st">&#39;lnorm&#39;</span>, <span class="dt">method =</span> <span class="st">&#39;mle&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="метод-максимального-правдоподобия.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fitdistrplus)</span>
+<span id="cb25-2"><a href="метод-максимального-правдоподобия.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fitdist</span>(vowels<span class="sc">$</span>dur, <span class="at">distr =</span> <span class="st">&#39;lnorm&#39;</span>, <span class="at">method =</span> <span class="st">&#39;mle&#39;</span>)</span></code></pre></div>
 <pre><code>Fitting of the distribution &#39; lnorm &#39; by maximum likelihood 
 Parameters:
          estimate  Std. Error
@@ -289,13 +293,13 @@ sdlog   0.2423978 0.004196453</code></pre>
 <ul>
 <li>количество андийских слогов в словах и распределение Пуассона</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="метод-максимального-правдоподобия.html#cb27-1"></a>andic_syllables &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/andic_syllables.csv&quot;</span>) </span>
-<span id="cb27-2"><a href="метод-максимального-правдоподобия.html#cb27-2"></a></span>
-<span id="cb27-3"><a href="метод-максимального-правдоподобия.html#cb27-3"></a>andic_syllables <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb27-4"><a href="метод-максимального-правдоподобия.html#cb27-4"></a><span class="st">  </span><span class="kw">filter</span>(language <span class="op">==</span><span class="st"> &quot;Andi&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb27-5"><a href="метод-максимального-правдоподобия.html#cb27-5"></a><span class="st">  </span><span class="kw">uncount</span>(count) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb27-6"><a href="метод-максимального-правдоподобия.html#cb27-6"></a><span class="st">  </span><span class="kw">pull</span>(n_syllables) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb27-7"><a href="метод-максимального-правдоподобия.html#cb27-7"></a><span class="st">  </span><span class="kw">fitdist</span>(<span class="dt">distr =</span> <span class="st">&#39;pois&#39;</span>, <span class="dt">method =</span> <span class="st">&#39;mle&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="метод-максимального-правдоподобия.html#cb27-1" aria-hidden="true" tabindex="-1"></a>andic_syllables <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/andic_syllables.csv&quot;</span>) </span>
+<span id="cb27-2"><a href="метод-максимального-правдоподобия.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="метод-максимального-правдоподобия.html#cb27-3" aria-hidden="true" tabindex="-1"></a>andic_syllables <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="метод-максимального-правдоподобия.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;Andi&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a href="метод-максимального-правдоподобия.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">uncount</span>(count) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-6"><a href="метод-максимального-правдоподобия.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n_syllables) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-7"><a href="метод-максимального-правдоподобия.html#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fitdist</span>(<span class="at">distr =</span> <span class="st">&#39;pois&#39;</span>, <span class="at">method =</span> <span class="st">&#39;mle&#39;</span>)</span></code></pre></div>
 <pre><code>Fitting of the distribution &#39; pois &#39; by maximum likelihood 
 Parameters:
        estimate Std. Error
@@ -304,17 +308,59 @@ lambda 2.782715 0.02128182</code></pre>
 <li>Есть и другие методы оценки параметров.</li>
 <li>Метод максимального правдоподобия может быть чувствителен к размеру выборки.</li>
 </ul>
+<div class="rmdtask">
+<p>
+Отфильтруйте из <a href="https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/andic_syllables.csv">данных с количеством слогов в андийских языках</a> багвалинский и, используя метод максимального правдоподобия, оцените для них параметры модели Пуассона.
+</p>
+</div>
+<div class="rmdtask">
+<p>
+В работе <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-coretta2016" role="doc-biblioref">Coretta 2016</a>)</span></span> собраны <a href="https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv">данные</a> длительности исландских гласных. Отфильтруйте данные, оставив односложные слова (переменная <code>syllables</code>) после придыхательного, произнесенные носителем <code>tt01</code> (переменная speaker) и постройте следующий график, моделирую длительность гласных нормальным и логнормальным распределением. Как вам кажется, какое распределение лучше подходит к данным? Докажите ваше утверждение, сравнив значения правдоподобия.
+</p>
+</div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+</div>
+<div id="несколько-комментариев" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Несколько комментариев</h2>
+<p>Так как в большинстве случаев нужно найти лишь максимум функции правдоподобия, а не саму функцию <span class="math inline">\(\ell(x|\theta)\)</span>, то для облегчения подсчетов используют логорифмическую функцию правдоподобия <span class="math inline">\(\ln\ell(x|\theta)\)</span>: в результате, вместо произведения появляется сумма<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<p><span class="math display">\[\text{argmax}_\theta \prod \ell(\theta|x) = \text{argmax}_\theta \sum \ln\ell(\theta|x) \]</span></p>
+<p>Во всех предыдущих примерах мы смотрели на 1-3 примера данных, давайте попробуем использовать функцию правдоподобия для большего набора данных.</p>
+<div class="rmdtask">
+<p>
+Представим, что мы проводим некоторый эксперимент, и у некоторых участников все получается с первой попытки, а некоторым нужно еще одну попытку или даже две. Дополните код функциями правдоподобия и логорифмической функции правдоподобия, чтобы получился график ниже.
+</p>
+</div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="метод-максимального-правдоподобия.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb29-2"><a href="метод-максимального-правдоподобия.html#cb29-2" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-3"><a href="метод-максимального-правдоподобия.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="метод-максимального-правдоподобия.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.99</span>, <span class="fl">0.01</span>), <span class="cf">function</span>(p){</span>
+<span id="cb29-5"><a href="метод-максимального-правдоподобия.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb29-6"><a href="метод-максимального-правдоподобия.html#cb29-6" aria-hidden="true" tabindex="-1"></a>}) <span class="ot">-&gt;</span></span>
+<span id="cb29-7"><a href="метод-максимального-правдоподобия.html#cb29-7" aria-hidden="true" tabindex="-1"></a>  likelihood</span>
+<span id="cb29-8"><a href="метод-максимального-правдоподобия.html#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="метод-максимального-правдоподобия.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.99</span>, <span class="fl">0.01</span>), <span class="cf">function</span>(p){</span>
+<span id="cb29-10"><a href="метод-максимального-правдоподобия.html#cb29-10" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb29-11"><a href="метод-максимального-правдоподобия.html#cb29-11" aria-hidden="true" tabindex="-1"></a>}) <span class="ot">-&gt;</span></span>
+<span id="cb29-12"><a href="метод-максимального-правдоподобия.html#cb29-12" aria-hidden="true" tabindex="-1"></a>  loglikelihood</span>
+<span id="cb29-13"><a href="метод-максимального-правдоподобия.html#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-14"><a href="метод-максимального-правдоподобия.html#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">p =</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.99</span>, <span class="fl">0.01</span>),</span>
+<span id="cb29-15"><a href="метод-максимального-правдоподобия.html#cb29-15" aria-hidden="true" tabindex="-1"></a>       loglikelihood,</span>
+<span id="cb29-16"><a href="метод-максимального-правдоподобия.html#cb29-16" aria-hidden="true" tabindex="-1"></a>       likelihood) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-17"><a href="метод-максимального-правдоподобия.html#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>, loglikelihood<span class="sc">:</span>likelihood) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-18"><a href="метод-максимального-правдоподобия.html#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(p, value))<span class="sc">+</span></span>
+<span id="cb29-19"><a href="метод-максимального-правдоподобия.html#cb29-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb29-20"><a href="метод-максимального-правдоподобия.html#cb29-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.33</span>, <span class="at">linetype =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb29-21"><a href="метод-максимального-правдоподобия.html#cb29-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>type, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb29-22"><a href="метод-максимального-правдоподобия.html#cb29-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="fl">0.25</span>, <span class="fl">0.33</span>))</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 
 </div>
 </div>
-<h3>Ссылки на литературу</h3>
-<div id="refs" class="references">
-<div id="ref-hillenbrand95">
-<p>Hillenbrand, James, Laura A Getty, Michael J Clark, and Kimberlee Wheeler. 1995. “Acoustic Characteristics of American English Vowels.” <em>The Journal of the Acoustical Society of America</em> 97 (5): 3099–3111.</p>
-</div>
-<div id="ref-rosenbach03">
-<p>Rosenbach, Anette. 2003. “Aspects of Iconicity and Economy in the Choice Between the <em>S-</em>Genitive and the <em>of-</em>Genitive in English.” In <em>Determinants of Grammatical Variation in English</em>, edited by Günter Rohdenburg and Britta Mondorf. Berlin, New York: Mouton de Gruyter.</p>
-</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Это просто свойство логарифмов: <code>log(5*5) = log(5)+log(5)</code><a href="метод-максимального-правдоподобия.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

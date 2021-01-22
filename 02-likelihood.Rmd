@@ -185,3 +185,105 @@ andic_syllables %>%
 
 * Есть и другие методы оценки параметров.
 * Метод максимального правдоподобия может быть чувствителен к размеру выборки.
+
+```{block, type = "rmdtask"}
+Отфильтруйте из [данных с количеством слогов в андийских языках](https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/andic_syllables.csv) багвалинский и, используя метод максимального правдоподобия, оцените для них параметры модели Пуассона.
+```
+
+```{block, type = "rmdtask"}
+В работе [@coretta2016] собраны [данные](https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv) длительности исландских гласных. Отфильтруйте данные, оставив односложные слова (переменная `syllables`) после придыхательного, произнесенные носителем `tt01` (переменная speaker) и постройте следующий график, моделирую длительность гласных нормальным и логнормальным распределением. Как вам кажется, какое распределение лучше подходит к данным? Докажите ваше утверждение, сравнив значения правдоподобия.
+```
+
+```{r, echo = FALSE}
+df <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv")
+
+df %>% 
+  filter(speaker == "tt01",
+         syllables == "mono",
+         aspiration == "yes") %>% 
+  pull(vowel.dur) ->
+  vowel_dur
+
+lnorm_params <- fitdist(vowel_dur, distr = 'lnorm', method = 'mle')
+norm_params <- fitdist(vowel_dur, distr = 'norm', method = 'mle')
+
+tibble(vowel_dur) %>% 
+  ggplot(aes(vowel_dur))+
+  geom_density()+
+  stat_function(fun = dlnorm, args = list(lnorm_params$estimate[1], lnorm_params$estimate[2]), color = "red")+
+  stat_function(fun = dnorm, args = list(norm_params$estimate[1], norm_params$estimate[2]), color = "darkgreen")+
+  labs(subtitle = "Черная линия -- данные,\nзеленая и красная линии -- нормальное и логнормальное распределения соответственно,\nполученные методом максимального правдоподобия",
+       x = "длительность гласных", 
+       y = "функция плотности",
+       caption = "данные [Coretta 2016]")
+
+# prod(dnorm(vowel_dur, norm_params$estimate[1], norm_params$estimate[2]))/prod(dlnorm(vowel_dur, lnorm_params$estimate[1], lnorm_params$estimate[2]))
+```
+
+
+## Несколько комментариев
+
+Так как в большинстве случаев нужно найти лишь максимум функции правдоподобия, а не саму функцию $\ell(x|\theta)$, то для облегчения подсчетов используют логорифмическую функцию правдоподобия $\ln\ell(x|\theta)$: в результате, вместо произведения появляется сумма[^log]:
+
+$$\text{argmax}_\theta \prod \ell(\theta|x) = \text{argmax}_\theta \sum \ln\ell(\theta|x) $$
+
+[^log]: Это просто свойство логарифмов: `log(5*5) = log(5)+log(5)`
+
+Во всех предыдущих примерах мы смотрели на 1-3 примера данных, давайте попробуем использовать функцию правдоподобия для большего набора данных.
+
+```{block, type = "rmdtask"}
+Представим, что мы проводим некоторый эксперимент, и у некоторых участников все получается с первой попытки, а некоторым нужно еще одну попытку или даже две. Дополните код функциями правдоподобия и логорифмической функции правдоподобия, чтобы получился график ниже.
+```
+
+```{r, eval = FALSE}
+set.seed(42)
+v <- sample(0:2, 10, replace = TRUE)
+
+sapply(seq(0.01, 0.99, 0.01), function(p){
+  ...
+}) ->
+  likelihood
+
+sapply(seq(0.01, 0.99, 0.01), function(p){
+  ...
+}) ->
+  loglikelihood
+
+tibble(p = seq(0.01, 0.99, 0.01),
+       loglikelihood,
+       likelihood) %>% 
+  pivot_longer(names_to = "type", values_to = "value", loglikelihood:likelihood) %>% 
+  ggplot(aes(p, value))+
+  geom_line()+
+  geom_vline(xintercept = 0.33, linetype = 2)+
+  facet_wrap(~type, scales = "free_y", nrow = 2)+
+  scale_x_continuous(breaks = c(0:5*0.25, 0.33))
+```
+
+
+
+```{r, echo = FALSE}
+set.seed(42)
+v <- sample(0:2, 10, replace = TRUE)
+
+sapply(seq(0.01, 0.99, 0.01), function(p){
+  prod(dgeom(v, prob = p))
+}) ->
+  likelihood
+
+sapply(seq(0.01, 0.99, 0.01), function(p){
+  sum(log(dgeom(v, prob = p)))
+}) ->
+  loglikelihood
+
+tibble(p = seq(0.01, 0.99, 0.01),
+       loglikelihood,
+       likelihood) %>% 
+  pivot_longer(names_to = "type", values_to = "value", loglikelihood:likelihood) %>% 
+  ggplot(aes(p, value))+
+  geom_line()+
+  geom_vline(xintercept = 0.59, linetype = 2)+
+  facet_wrap(~type, scales = "free_y", nrow = 2)+
+  scale_x_continuous(breaks = c(0:5*0.25, 0.59))
+```
+
