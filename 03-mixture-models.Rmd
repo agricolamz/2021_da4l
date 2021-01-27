@@ -1,0 +1,31 @@
+---
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup02, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, comment = "")
+options(scipen=999)
+library(tidyverse)
+theme_set(theme_bw())
+```
+
+# Модели смеси
+
+Не все переменные выглядят так же красиво, как распределения из учебников статистики. Для примера возьмем датасет, который содержит спамерские и обычные смс-сообщения, выложенный UCI Machine Learning [на kaggle](https://www.kaggle.com/uciml/sms-spam-collection-dataset).
+
+
+
+
+```{r}
+library(mixtools)
+
+vowel_dur_est <- normalmixEM(vowel_dur)
+
+tibble(vowel_dur) %>% 
+  ggplot(aes(vowel_dur))+
+  geom_histogram(aes(y = ..density..), fill = "gray90")+
+  stat_function(fun = function(x){dnorm(x, wait1$mu[1], wait1$sigma[1])*wait1$lambda[1]}, color = "red")+
+    stat_function(fun = function(x){dnorm(x, wait1$mu[2], wait1$sigma[2])*wait1$lambda[2]}, color = "darkgreen")
+```
+

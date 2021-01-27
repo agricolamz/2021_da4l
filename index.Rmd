@@ -27,3 +27,11 @@ biblio-style: apalike
     * вспомните пожалуйста, условные вероятности, формулу Байеса и при каких условиях ее применяют;
     * посмотрите освежающие материалы про условную вероятность и формулу Байеса.
 * [домашнее задание 1. (дедлайны: 2021.02.10, 2021.02.13)](https://classroom.github.com/a/4HZBlHhX)
+
+## Используемые пакеты
+
+```{r}
+packageVersion("tidyverse")
+packageVersion("fitdistrplus")
+packageVersion("mixtools")
+```
