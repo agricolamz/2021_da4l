@@ -234,7 +234,7 @@ $ n_char  &lt;int&gt; 111, 29, 155, 49, 61, 147, 77, 160, 157, 154, 109, 136, 15
 </div>
 <div id="модели-смеси-распределений-1" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Модели смеси распределений</h2>
-<p>Такого рода данные можно описать при помощи модели смеси разных распределений. Мы сейчас опишим нормальными распределениями, но, ясно, что семейство распределений можно было бы подобрать и получше.</p>
+<p>Такого рода данные можно описать при помощи модели смеси разных распределений. Мы сейчас опишем нормальными распределениями, но, ясно, что семейство распределений можно было бы подобрать и получше.</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="модели-смеси-распределений.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mixtools)</span>
 <span id="cb42-2"><a href="модели-смеси-распределений.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-3"><a href="модели-смеси-распределений.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
@@ -250,7 +250,7 @@ loglik at estimate:  -29421.36 </code></pre>
 <p>Класс, получаемый в результате работы функции <code>normalmixEM()</code> имеет встроеный график:</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="модели-смеси-распределений.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(spam_length_est, <span class="at">density =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-57-1.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-57-2.png" width="672" /></p>
-<p>Однако, если хочется больше контроля над получаемый разультат, я бы предложил использовать <code>ggplot()</code>:</p>
+<p>Однако, если хочется больше контроля над получаемым разультатом, я бы предложил использовать <code>ggplot()</code>:</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="модели-смеси-распределений.html#cb47-1" aria-hidden="true" tabindex="-1"></a>new_dnorm <span class="ot">&lt;-</span> <span class="cf">function</span>(x, mu, sigma, lambda){</span>
 <span id="cb47-2"><a href="модели-смеси-распределений.html#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(x, mu, sigma)<span class="sc">*</span>lambda</span>
 <span id="cb47-3"><a href="модели-смеси-распределений.html#cb47-3" aria-hidden="true" tabindex="-1"></a>}</span>
@@ -296,7 +296,7 @@ loglik at estimate:  -29421.36 </code></pre>
 {"columns":[{"label":["model_predict"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ham"],"name":[2],"type":["int"],"align":["right"]},{"label":["spam"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"predicted_ham","2":"2834","3":"25"},{"1":"predicted_spam","2":"1991","3":"722"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>Результат не идиальный, но лучше чем помечать как спам каждое 13 сообщение (<span class="math inline">\(747/(4825+747)\)</span>).</p>
+<p>Результат не идеальный, но лучше чем помечать как спам каждое 13 сообщение (<span class="math inline">\(747/(4825+747)\)</span>).</p>
 <div class="rmdtask">
 <p>
 В работе <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-coretta2016" role="doc-biblioref">Coretta 2016</a>)</span></span> собраны <a href="https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv">данные</a> длительности исландских гласных. Отфильтруйте данные, оставив наблюдения гласного [a] (переменная <code>vowel</code>), произнесенные носителем <code>tt01</code> (переменная <code>speaker</code>) и постройте следующие графики, моделируя длительность гласного (переменная <code>vowel.dur</code>) смесью трех нормальных распределений. Как вам кажется, насколько хорошо модель смеси справилась с заданием?
@@ -308,7 +308,7 @@ loglik at estimate:  -29421.36 </code></pre>
 <div id="несколько-замечаний" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Несколько замечаний</h2>
 <ul>
-<li>В наших примерах нам была доступна информация о классах (spam/ham, coronal/labial/velar), однако модель смесей распределений как раз имеет смысл применять, когда такой информции нет.</li>
+<li>В наших примерах нам была доступна информация о классах (spam/ham, coronal/labial/velar), однако модель смесей распределений как раз имеет смысл применять, когда такой информации нет.</li>
 <li>В смеси распределений может быть любое количество распределений.</li>
 <li>Модели смеси распределений не ограничены только нормальным распределением, алгоритм можно использовать и для других распределений.</li>
 <li>Чаще всего в моделях смеси распределений используются распределения одного семейства, однако можно себе представить и комбинации посложнее.</li>
