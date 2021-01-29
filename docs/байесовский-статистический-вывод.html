@@ -206,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>В литературе можно еще встретить такую запись:</p>
 <p><span class="math display">\[P(θ|Data) \propto P(Data|θ)\times P(θ)\]</span></p>
-<p>Стоп, в прошлый раз мы говорили, что <a href="https://stats.stackexchange.com/a/31241/225843">функция правдоподобия не обязана интегрироваться до 1</a>, тогда почему, назвав часть формулы Байеса <span class="math inline">\(P(Data|θ)\)</span> функцией правдоподобия, мы оставляем нотацию будто это функция вероятностей? Потому что это условная вероятность, <a href="https://stats.stackexchange.com/q/448852/225843">она не обязана интегрироваться до 1</a>.</p>
+<p>На прошлых занятиях мы говорили, что <a href="https://stats.stackexchange.com/a/31241/225843">функция правдоподобия не обязана интегрироваться до 1</a>, тогда почему, назвав часть формулы Байеса <span class="math inline">\(P(Data|θ)\)</span> функцией правдоподобия, мы оставляем нотацию будто это функция вероятностей? Потому что это условная вероятность, <a href="https://stats.stackexchange.com/q/448852/225843">она не обязана интегрироваться до 1</a>.</p>
 </div>
 <div id="категориальный-пример" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Категориальный пример</h2>
@@ -273,12 +273,12 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 Посчитайте вероятность гипотезы, что перед нами спамерское сообщение, если предположить, что каждое пятое сообщение – спам. Ответ округите до трех знаков после запятой.
 </p>
 </div>
-<form name="form_14690" onsubmit="return validate_form_14690()" method="post">
-<input type="text" name="answer_14690"><br><input type="submit" value="check">
+<form name="form_86347" onsubmit="return validate_form_86347()" method="post">
+<input type="text" name="answer_86347"><br><input type="submit" value="check">
 </form>
-<p id="result_14690">
+<p id="result_86347">
 </p>
-<script> function validate_form_14690() {var x, text; var x = document.forms["form_14690"]["answer_14690"].value;if (x == "0.905"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_14690').innerHTML = text; return false;} </script>
+<script> function validate_form_86347() {var x, text; var x = document.forms["form_86347"]["answer_86347"].value;if (x == "0.905"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_86347').innerHTML = text; return false;} </script>
 <p>Из формулы Байеса следует, что не обязательно каждый раз делить на нормализующий делитель, это можно сделать единожды.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="байесовский-статистический-вывод.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
 <span id="cb7-2"><a href="байесовский-статистический-вывод.html#cb7-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior =</span> <span class="fl">0.5</span>,</span>
@@ -305,6 +305,28 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
   </script>
 </div>
 <p>Самым главным отличием байесовского статистического вывода от фриквентистского, является то, что мы в результате получаем вероятность каждой из моделей. Это очень значительно отличается от фриквентистской практики нулевых гипотез и p-value, в соответствии с которыми мы можем лишь отвергнуть или не отвергнуть нулевую гипотезу.</p>
+<div class="rmdtask">
+<p>
+Вашего друга похитили а на почту отправили <a href="https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/weather.csv">датасет</a>, в котором записаны данные о погоде из пяти городов. Ваш телефон зазвонил, и друг сказал, что не знает куда его похитили, но за окном легкий дождь (<code>Rain</code>). А в какой-то из следующих дней — сильный дождь (<code>Rain, Thunderstorm</code>). Исходя из явно неверного предположения, что погода каждый день независят друг от друга, сделайте байесовский апдейт и предположите, в какой город вероятнее всего похитили друга (форма ожидает латиницу).
+</p>
+</div>
+<form name="form_49469" onsubmit="return validate_form_49469()" method="post">
+<select name="answer_49469"><option> Auckland </option><option> Beijing </option><option> Chicago </option><option> Mumbai </option><option> San Diego </option></select><br><input type="submit" value="check">
+</form>
+<p id="result_49469">
+</p>
+<script> function validate_form_49469() {var x, text; var x = document.forms["form_49469"]["answer_49469"].value;if (x == "San Diego"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_49469').innerHTML = text; return false;} </script>
+<div class="rmdtask">
+<p>
+Укажите получившуюся вероятность. Выполняя задание, округлите все вероятности и значения правдоподобия до 3 знаков после запятой.
+</p>
+</div>
+<form name="form_83386" onsubmit="return validate_form_83386()" method="post">
+<input type="text" name="answer_83386"><br><input type="submit" value="check">
+</form>
+<p id="result_83386">
+</p>
+<script> function validate_form_83386() {var x, text; var x = document.forms["form_83386"]["answer_83386"].value;if (x == "0.549"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_83386').innerHTML = text; return false;} </script>
 
 </div>
 </div>

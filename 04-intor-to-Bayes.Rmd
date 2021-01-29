@@ -136,8 +136,7 @@ tibble(model = c("ham", "spam"),
 Вашего друга похитили а на почту отправили [датасет](https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/weather.csv), в котором записаны данные о погоде из пяти городов. Ваш телефон зазвонил, и друг сказал, что не знает куда его похитили, но за окном легкий дождь (`Rain`). А в какой-то из следующих дней --- сильный дождь (`Rain, Thunderstorm`). Исходя из явно неверного предположения, что погода каждый день независят друг от друга, сделайте байесовский апдейт и предположите, в какой город вероятнее всего похитили друга (форма ожидает латиницу).
 ```
 
-
-```{r}
+```{r, include=FALSE}
 df <- read.csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/weather.csv")
 df %>%
   count(city, events) %>% 
@@ -157,3 +156,14 @@ tibble(model = c("Auckland", "Beijing", "Chicago", "Mumbai", "San Diego"),
            posterior_2 = product_2/sum(product_2))
 ```
 
+```{r, results='asis', echo=FALSE}
+check_question(answer = "San Diego", options = c("Auckland", "Beijing", "Chicago", "Mumbai", "San Diego"))
+```
+
+```{block, type = "rmdtask"}
+Укажите получившуюся вероятность. Выполняя задание, округлите все вероятности и значения правдоподобия до 3 знаков после запятой.
+```
+
+```{r, results='asis', echo=FALSE}
+check_question(answer = 0.549)
+```
