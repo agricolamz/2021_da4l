@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.9.10)  28 JAN 2021 21:27
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.9.10)  29 JAN 2021 07:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1583,26 +1583,40 @@ Underfull \hbox (badness 6173) in paragraph at lines 1137--1138
 [37]
 File: da4l_files/figure-latex/unnamed-chunk-63-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-63-1.pdf>
-[38] (./da4l.bbl [39] [40
 
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1225.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[38] [39]
+File: images/task.png Graphic file (type bmp)
+<images/task.png>
+[40]
+File: images/task.png Graphic file (type bmp)
+<images/task.png>
 [41]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1225.
+File: images/task.png Graphic file (type bmp)
+<images/task.png>
+File: images/gelman.png Graphic file (type bmp)
+<images/gelman.png>
+(./da4l.bbl [42])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1319.
+[43
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1319.
 (./da4l.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1225.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1225.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1319.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1319.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 30323 strings out of 492909
- 557615 string characters out of 6132923
- 788037 words of memory out of 5000000
- 34059 multiletter control sequences out of 15000+600000
+ 30332 strings out of 492909
+ 557977 string characters out of 6132923
+ 790151 words of memory out of 5000000
+ 34067 multiletter control sequences out of 15000+600000
  536380 words of font info for 81 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 58i,9n,118p,809b,634s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,9n,118p,809b,636s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on da4l.pdf (41 pages).
+Output written on da4l.pdf (43 pages).

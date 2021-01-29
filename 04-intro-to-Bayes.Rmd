@@ -167,3 +167,9 @@ check_question(answer = "San Diego", options = c("Auckland", "Beijing", "Chicago
 ```{r, results='asis', echo=FALSE}
 check_question(answer = 0.549)
 ```
+
+## Разница между фриквентиским и байесовским подходами
+
+![](images/gelman.png)
+
+Картинка из одной из моих любимых книг по статистике [@efron16: 34].
