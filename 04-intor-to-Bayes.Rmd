@@ -29,13 +29,13 @@ $$P(θ|Data) = \frac{P(Data|θ)\times P(θ)}{P(Data)}$$
 
 $$P(θ|Data) \propto P(Data|θ)\times P(θ)$$
 
-Стоп, в прошлый раз мы говорили, что [функция правдоподобия не обязана интегрироваться до 1](https://stats.stackexchange.com/a/31241/225843), тогда почему, назвав часть формулы Байеса $P(Data|θ)$ функцией правдоподобия, мы оставляем нотацию будто это функция вероятностей? Потому что это условная вероятность, [она не обязана интегрироваться до 1](https://stats.stackexchange.com/q/448852/225843).
+На прошлых занятиях мы говорили, что [функция правдоподобия не обязана интегрироваться до 1](https://stats.stackexchange.com/a/31241/225843), тогда почему, назвав часть формулы Байеса $P(Data|θ)$ функцией правдоподобия, мы оставляем нотацию будто это функция вероятностей? Потому что это условная вероятность, [она не обязана интегрироваться до 1](https://stats.stackexchange.com/q/448852/225843).
 
 ## Категориальный пример
 
 Для примера я взял датасет, который содержит спамерские и обычные смс-сообщения, выложенный UCI Machine Learning [на kaggle](https://www.kaggle.com/uciml/sms-spam-collection-dataset) и при помощи пакета `udpipe` токенизировал и определил часть речи:
 
-```{r}
+```{r, fig.width=9, fig.height=7}
 sms_pos <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/spam_sms_pos.csv")
 glimpse(sms_pos)
 
@@ -77,5 +77,83 @@ tibble(model = c("ham", "spam"),
        posterior_2 = product_2/sum(product_2))
 ```
 
-Уже на второй итерации, наша модель почти уверена, что это сообщение `spam`.
+Уже на второй итерации, наша модель почти уверена, что это сообщение `spam`. На третей итерации уверенность только растет:
+
+```{r}
+tibble(model = c("ham", "spam"),
+       prior_3 = c(0.161, 0.839),
+       likelihood_3 = c(0.016, 0.117),
+       product_3 = prior_3*likelihood_3,
+       posterior_3 = product_3/sum(product_3))
+```
+
+```{block, type = "rmdtask"}
+Посчитайте вероятность гипотезы, что перед нами спамерское сообщение, если предположить, что каждое пятое сообщение -- спам. Ответ округите до трех знаков после запятой.
+```
+
+```{r, echo = FALSE, results='asis'}
+library(checkdown)
+tibble(model = c("ham", "spam"),
+       prior = c(0.8, 0.2),
+       likelihood = c(0.135, 0.096),
+       likelihood_2 = c(0.016, 0.117),
+       product = prior*likelihood*likelihood_2*likelihood_2,
+       posterior = product/sum(product)) %>% 
+  slice(2) %>% 
+  pull(posterior) %>% 
+  round(3) %>% 
+  check_question()
+```
+
+Из формулы Байеса следует, что не обязательно каждый раз делить на нормализующий делитель, это можно сделать единожды.
+
+```{r}
+tibble(model = c("ham", "spam"),
+       prior = 0.5,
+       likelihood = c(0.135, 0.096),
+       likelihood_2 = c(0.016, 0.117),
+       product = prior*likelihood*likelihood_2*likelihood_2,
+       posterior = product/sum(product))
+```
+
+Из приведенных рассуждений также следует, что все равно в каком порядке мы производим байесовский апдейт: мы могли сначала умножить на значение правдоподобия для категории `NUM` и лишь в конце на значение правдоподобия `VERB`.
+
+Также стоит отметить, что если данных много, то через какое-то время становится все равно, какое у нас было априорное распределение. Даже в нашем примере, в котором мы проанализировали первые три слова сообщения, модель, что сообщение спамерское, выиграет даже, если, согласно априорное распределению, спамерским является каждое 20 сообщение:
+
+```{r}
+tibble(model = c("ham", "spam"),
+       prior = c(0.95, 0.05),
+       likelihood = c(0.135, 0.096),
+       likelihood_2 = c(0.016, 0.117),
+       product = prior*likelihood*likelihood_2*likelihood_2,
+       posterior = product/sum(product))
+```
+
+Самым главным отличием байесовского статистического вывода от фриквентистского, является то, что мы в результате получаем вероятность каждой из моделей. Это очень значительно отличается от фриквентистской практики нулевых гипотез и p-value, в соответствии с которыми мы можем лишь отвергнуть или не отвергнуть нулевую гипотезу.
+
+
+```{block, type = "rmdtask"}
+Вашего друга похитили а на почту отправили [датасет](https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/weather.csv), в котором записаны данные о погоде из пяти городов. Ваш телефон зазвонил, и друг сказал, что не знает куда его похитили, но за окном легкий дождь (`Rain`). А в какой-то из следующих дней --- сильный дождь (`Rain, Thunderstorm`). Исходя из явно неверного предположения, что погода каждый день независят друг от друга, сделайте байесовский апдейт и предположите, в какой город вероятнее всего похитили друга (форма ожидает латиницу).
+```
+
+
+```{r}
+df <- read.csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/weather.csv")
+df %>%
+  count(city, events) %>% 
+  group_by(city) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  ggplot(aes(city, prop, fill = events, label = round(prop, 3)))+
+  geom_col()+
+  geom_text(position = position_stack(vjust = 0.5), color = "white")
+
+tibble(model = c("Auckland", "Beijing", "Chicago", "Mumbai", "San Diego"),
+           prior_1 = 0.2,
+           likelihood_1 = c(0.484, 0, 0.161, 0, 0.29),
+           product_1 = prior_1*likelihood_1,
+           posterior_1 = product_1/sum(product_1),
+           likelihood_2 = c(0.032, 0, 0, 0, 0.065),
+           product_2 = posterior_1*likelihood_2,
+           posterior_2 = product_2/sum(product_2))
+```
 

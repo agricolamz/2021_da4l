@@ -211,22 +211,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="категориальный-пример" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Категориальный пример</h2>
 <p>Для примера я взял датасет, который содержит спамерские и обычные смс-сообщения, выложенный UCI Machine Learning <a href="https://www.kaggle.com/uciml/sms-spam-collection-dataset">на kaggle</a> и при помощи пакета <code>udpipe</code> токенизировал и определил часть речи:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="байесовский-статистический-вывод.html#cb52-1" aria-hidden="true" tabindex="-1"></a>sms_pos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/spam_sms_pos.csv&quot;</span>)</span>
-<span id="cb52-2"><a href="байесовский-статистический-вывод.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sms_pos)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="байесовский-статистический-вывод.html#cb1-1" aria-hidden="true" tabindex="-1"></a>sms_pos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/spam_sms_pos.csv&quot;</span>)</span>
+<span id="cb1-2"><a href="байесовский-статистический-вывод.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sms_pos)</span></code></pre></div>
 <pre><code>Rows: 34
 Columns: 3
 $ type &lt;chr&gt; &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;…
 $ upos &lt;chr&gt; &quot;ADJ&quot;, &quot;ADP&quot;, &quot;ADV&quot;, &quot;AUX&quot;, &quot;CCONJ&quot;, &quot;DET&quot;, &quot;INTJ&quot;, &quot;NOUN&quot;, &quot;NUM…
 $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 114…</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="байесовский-статистический-вывод.html#cb54-1" aria-hidden="true" tabindex="-1"></a>sms_pos <span class="sc">%&gt;%</span> </span>
-<span id="cb54-2"><a href="байесовский-статистический-вывод.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-3"><a href="байесовский-статистический-вывод.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> n<span class="sc">/</span><span class="fu">sum</span>(n),</span>
-<span id="cb54-4"><a href="байесовский-статистический-вывод.html#cb54-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">upos =</span> <span class="fu">fct_reorder</span>(upos, n, mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb54-5"><a href="байесовский-статистический-вывод.html#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(type, ratio))<span class="sc">+</span></span>
-<span id="cb54-6"><a href="байесовский-статистический-вывод.html#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
-<span id="cb54-7"><a href="байесовский-статистический-вывод.html#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(ratio, <span class="dv">3</span>)), <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
-<span id="cb54-8"><a href="байесовский-статистический-вывод.html#cb54-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>upos, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="байесовский-статистический-вывод.html#cb3-1" aria-hidden="true" tabindex="-1"></a>sms_pos <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="байесовский-статистический-вывод.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="байесовский-статистический-вывод.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> n<span class="sc">/</span><span class="fu">sum</span>(n),</span>
+<span id="cb3-4"><a href="байесовский-статистический-вывод.html#cb3-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">upos =</span> <span class="fu">fct_reorder</span>(upos, n, mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="байесовский-статистический-вывод.html#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(type, ratio))<span class="sc">+</span></span>
+<span id="cb3-6"><a href="байесовский-статистический-вывод.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
+<span id="cb3-7"><a href="байесовский-статистический-вывод.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(ratio, <span class="dv">3</span>)), <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
+<span id="cb3-8"><a href="байесовский-статистический-вывод.html#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>upos, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-1-1.png" width="864" /></p>
 <p>Давайте полученные доли считать нашей моделью: сумма всех чисел внутри каждого типа (<code>ham</code>/<code>spam</code>) дает в сумме 1. Мы получили новое сообщение</p>
 <blockquote>
 <p>Call FREEPHONE 0800 542 0825 now!</p>
@@ -236,28 +236,75 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <p>VERB NUM NUM NUM NUM ADV PUNCT</p>
 </blockquote>
 <p>Понятно, что это – спам, но мы пытаемся применить байесовский статистический вывод, чтобы определить тип сообшения. Предположим, что машина считает обе гипотизы равновероятными, т. е. ее априорное распределение гипотез равно 0.5 каждая. На минуту представим, что машина анализирует текст пословно. Первое слово типа <code>VERB</code>. Функция правдоподобия равны 0.135 и 0.096 для сообщений типа <code>ham</code> и <code>spam</code> соответственно. Применим байесовский апдейт:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="байесовский-статистический-вывод.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
-<span id="cb55-2"><a href="байесовский-статистический-вывод.html#cb55-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior =</span> <span class="fl">0.5</span>,</span>
-<span id="cb55-3"><a href="байесовский-статистический-вывод.html#cb55-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood =</span> <span class="fu">c</span>(<span class="fl">0.135</span>, <span class="fl">0.096</span>),</span>
-<span id="cb55-4"><a href="байесовский-статистический-вывод.html#cb55-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">product =</span> prior<span class="sc">*</span>likelihood,</span>
-<span id="cb55-5"><a href="байесовский-статистический-вывод.html#cb55-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">posterior =</span> product<span class="sc">/</span><span class="fu">sum</span>(product))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="байесовский-статистический-вывод.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
+<span id="cb4-2"><a href="байесовский-статистический-вывод.html#cb4-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior =</span> <span class="fl">0.5</span>,</span>
+<span id="cb4-3"><a href="байесовский-статистический-вывод.html#cb4-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood =</span> <span class="fu">c</span>(<span class="fl">0.135</span>, <span class="fl">0.096</span>),</span>
+<span id="cb4-4"><a href="байесовский-статистический-вывод.html#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">product =</span> prior<span class="sc">*</span>likelihood,</span>
+<span id="cb4-5"><a href="байесовский-статистический-вывод.html#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">posterior =</span> product<span class="sc">/</span><span class="fu">sum</span>(product))</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"ham","2":"0.5","3":"0.135","4":"0.0675","5":"0.5844156"},{"1":"spam","2":"0.5","3":"0.096","4":"0.0480","5":"0.4155844"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Вот мы и сделали байесовский апдейт. Теперь апостериорное распределение, которые мы получили на предыдущем шаге, мы можем использовать в новом апдейте. Следующее слово в сообщении типа <code>NUM</code>.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="байесовский-статистический-вывод.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
-<span id="cb56-2"><a href="байесовский-статистический-вывод.html#cb56-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior_2 =</span> <span class="fu">c</span>(<span class="fl">0.584</span>, <span class="fl">0.416</span>),</span>
-<span id="cb56-3"><a href="байесовский-статистический-вывод.html#cb56-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood_2 =</span> <span class="fu">c</span>(<span class="fl">0.016</span>, <span class="fl">0.117</span>),</span>
-<span id="cb56-4"><a href="байесовский-статистический-вывод.html#cb56-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">product_2 =</span> prior_2<span class="sc">*</span>likelihood_2,</span>
-<span id="cb56-5"><a href="байесовский-статистический-вывод.html#cb56-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">posterior_2 =</span> product_2<span class="sc">/</span><span class="fu">sum</span>(product_2))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="байесовский-статистический-вывод.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
+<span id="cb5-2"><a href="байесовский-статистический-вывод.html#cb5-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior_2 =</span> <span class="fu">c</span>(<span class="fl">0.584</span>, <span class="fl">0.416</span>),</span>
+<span id="cb5-3"><a href="байесовский-статистический-вывод.html#cb5-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood_2 =</span> <span class="fu">c</span>(<span class="fl">0.016</span>, <span class="fl">0.117</span>),</span>
+<span id="cb5-4"><a href="байесовский-статистический-вывод.html#cb5-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">product_2 =</span> prior_2<span class="sc">*</span>likelihood_2,</span>
+<span id="cb5-5"><a href="байесовский-статистический-вывод.html#cb5-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">posterior_2 =</span> product_2<span class="sc">/</span><span class="fu">sum</span>(product_2))</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior_2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood_2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product_2"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior_2"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"ham","2":"0.584","3":"0.016","4":"0.009344","5":"0.161059"},{"1":"spam","2":"0.416","3":"0.117","4":"0.048672","5":"0.838941"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>Уже на второй итерации, наша модель почти уверена, что это сообщение <code>spam</code>.</p>
+<p>Уже на второй итерации, наша модель почти уверена, что это сообщение <code>spam</code>. На третей итерации уверенность только растет:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="байесовский-статистический-вывод.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
+<span id="cb6-2"><a href="байесовский-статистический-вывод.html#cb6-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior_3 =</span> <span class="fu">c</span>(<span class="fl">0.161</span>, <span class="fl">0.839</span>),</span>
+<span id="cb6-3"><a href="байесовский-статистический-вывод.html#cb6-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood_3 =</span> <span class="fu">c</span>(<span class="fl">0.016</span>, <span class="fl">0.117</span>),</span>
+<span id="cb6-4"><a href="байесовский-статистический-вывод.html#cb6-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">product_3 =</span> prior_3<span class="sc">*</span>likelihood_3,</span>
+<span id="cb6-5"><a href="байесовский-статистический-вывод.html#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">posterior_3 =</span> product_3<span class="sc">/</span><span class="fu">sum</span>(product_3))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior_3"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood_3"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product_3"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior_3"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"ham","2":"0.161","3":"0.016","4":"0.002576","5":"0.02557103"},{"1":"spam","2":"0.839","3":"0.117","4":"0.098163","5":"0.97442897"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="rmdtask">
+<p>
+Посчитайте вероятность гипотезы, что перед нами спамерское сообщение, если предположить, что каждое пятое сообщение – спам. Ответ округите до трех знаков после запятой.
+</p>
+</div>
+<form name="form_14690" onsubmit="return validate_form_14690()" method="post">
+<input type="text" name="answer_14690"><br><input type="submit" value="check">
+</form>
+<p id="result_14690">
+</p>
+<script> function validate_form_14690() {var x, text; var x = document.forms["form_14690"]["answer_14690"].value;if (x == "0.905"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_14690').innerHTML = text; return false;} </script>
+<p>Из формулы Байеса следует, что не обязательно каждый раз делить на нормализующий делитель, это можно сделать единожды.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="байесовский-статистический-вывод.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
+<span id="cb7-2"><a href="байесовский-статистический-вывод.html#cb7-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior =</span> <span class="fl">0.5</span>,</span>
+<span id="cb7-3"><a href="байесовский-статистический-вывод.html#cb7-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood =</span> <span class="fu">c</span>(<span class="fl">0.135</span>, <span class="fl">0.096</span>),</span>
+<span id="cb7-4"><a href="байесовский-статистический-вывод.html#cb7-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood_2 =</span> <span class="fu">c</span>(<span class="fl">0.016</span>, <span class="fl">0.117</span>),</span>
+<span id="cb7-5"><a href="байесовский-статистический-вывод.html#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">product =</span> prior<span class="sc">*</span>likelihood<span class="sc">*</span>likelihood_2<span class="sc">*</span>likelihood_2,</span>
+<span id="cb7-6"><a href="байесовский-статистический-вывод.html#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">posterior =</span> product<span class="sc">/</span><span class="fu">sum</span>(product))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["likelihood_2"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["product"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["posterior"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"ham","2":"0.5","3":"0.135","4":"0.016","5":"0.000017280","6":"0.0256246"},{"1":"spam","2":"0.5","3":"0.096","4":"0.117","5":"0.000657072","6":"0.9743754"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Из приведенных рассуждений также следует, что все равно в каком порядке мы производим байесовский апдейт: мы могли сначала умножить на значение правдоподобия для категории <code>NUM</code> и лишь в конце на значение правдоподобия <code>VERB</code>.</p>
+<p>Также стоит отметить, что если данных много, то через какое-то время становится все равно, какое у нас было априорное распределение. Даже в нашем примере, в котором мы проанализировали первые три слова сообщения, модель, что сообщение спамерское, выиграет даже, если, согласно априорное распределению, спамерским является каждое 20 сообщение:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="байесовский-статистический-вывод.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
+<span id="cb8-2"><a href="байесовский-статистический-вывод.html#cb8-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior =</span> <span class="fu">c</span>(<span class="fl">0.95</span>, <span class="fl">0.05</span>),</span>
+<span id="cb8-3"><a href="байесовский-статистический-вывод.html#cb8-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood =</span> <span class="fu">c</span>(<span class="fl">0.135</span>, <span class="fl">0.096</span>),</span>
+<span id="cb8-4"><a href="байесовский-статистический-вывод.html#cb8-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood_2 =</span> <span class="fu">c</span>(<span class="fl">0.016</span>, <span class="fl">0.117</span>),</span>
+<span id="cb8-5"><a href="байесовский-статистический-вывод.html#cb8-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">product =</span> prior<span class="sc">*</span>likelihood<span class="sc">*</span>likelihood_2<span class="sc">*</span>likelihood_2,</span>
+<span id="cb8-6"><a href="байесовский-статистический-вывод.html#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">posterior =</span> product<span class="sc">/</span><span class="fu">sum</span>(product))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["likelihood_2"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["product"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["posterior"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"ham","2":"0.95","3":"0.135","4":"0.016","5":"0.0000328320","6":"0.3331872"},{"1":"spam","2":"0.05","3":"0.096","4":"0.117","5":"0.0000657072","6":"0.6668128"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Самым главным отличием байесовского статистического вывода от фриквентистского, является то, что мы в результате получаем вероятность каждой из моделей. Это очень значительно отличается от фриквентистской практики нулевых гипотез и p-value, в соответствии с которыми мы можем лишь отвергнуть или не отвергнуть нулевую гипотезу.</p>
 
 </div>
 </div>
