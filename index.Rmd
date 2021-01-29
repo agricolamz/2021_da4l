@@ -20,6 +20,7 @@ biblio-style: apalike
 * [запись лекции 2021.01.20](https://youtu.be/cRc5z9F3XNw)
 * [запись лекции 2021.01.22](https://youtu.be/zj-1-invsGM)
 * [запись лекции 2021.01.27](https://youtu.be/2YRAdMLT4N0)
+* [запись лекции 2021.01.29](https://youtu.be/FA-_Qbpmb6s)
 
 ## Домашние задания
 
