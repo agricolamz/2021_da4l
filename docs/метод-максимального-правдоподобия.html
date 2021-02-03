@@ -174,6 +174,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#нотация"><i class="fa fa-check"></i><b>5.1</b> Нотация</a></li>
 <li class="chapter" data-level="5.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#категориальный-пример"><i class="fa fa-check"></i><b>5.2</b> Категориальный пример</a></li>
 <li class="chapter" data-level="5.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#разница-между-фриквентиским-и-байесовским-подходами"><i class="fa fa-check"></i><b>5.3</b> Разница между фриквентиским и байесовским подходами</a></li>
+<li class="chapter" data-level="5.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#биномиальные-данные"><i class="fa fa-check"></i><b>5.4</b> Биномиальные данные</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#биномиальное-распределение-1"><i class="fa fa-check"></i><b>5.4.1</b> Биномиальное распределение</a></li>
+<li class="chapter" data-level="5.4.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#бета-распределение"><i class="fa fa-check"></i><b>5.4.2</b> Бета распределение</a></li>
+<li class="chapter" data-level="5.4.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных"><i class="fa fa-check"></i><b>5.4.3</b> Байесовский апдейт биномиальных данных</a></li>
+<li class="chapter" data-level="5.4.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных-несколько-моделей"><i class="fa fa-check"></i><b>5.4.4</b> Байесовский апдейт биномиальных данных: несколько моделей</a></li>
+<li class="chapter" data-level="5.4.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать"><i class="fa fa-check"></i><b>5.4.5</b> Что почитать?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
@@ -214,12 +222,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
-<form name="form_23789" onsubmit="return validate_form_23789()" method="post">
-<input type="text" name="answer_23789"><br><input type="submit" value="check">
+<form name="form_81552" onsubmit="return validate_form_81552()" method="post">
+<input type="text" name="answer_81552"><br><input type="submit" value="check">
 </form>
-<p id="result_23789">
+<p id="result_81552">
 </p>
-<script> function validate_form_23789() {var x, text; var x = document.forms["form_23789"]["answer_23789"].value;if (x == "0.267"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_23789').innerHTML = text; return false;} </script>
+<script> function validate_form_81552() {var x, text; var x = document.forms["form_81552"]["answer_81552"].value;if (x == "0.267"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_81552').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 Если принять на веру, что биномиальное распределение с параметрами <span class="math inline"><span class="math inline">\(p =\)</span></span> 0.9 описывает, согласно <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span> употребление <em>s</em>-генитивов в британском английском, то какова вероятность наблюдать значения между 300 и 350 генитивов в интервью, содержащее 400 генитивных контекстов? То же самое можно записать, используя математическую нотацию:
@@ -228,12 +236,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="math display"><span class="math display">\[P\left(X \in [300,\, 350] | X \sim Binom(n = 400, p = 0.9)\right) = ??\]</span></span> Ответ округлите до трех и меньше знаков после запятой.
 </p>
 </div>
-<form name="form_20235" onsubmit="return validate_form_20235()" method="post">
-<input type="text" name="answer_20235"><br><input type="submit" value="check">
+<form name="form_6142" onsubmit="return validate_form_6142()" method="post">
+<input type="text" name="answer_6142"><br><input type="submit" value="check">
 </form>
-<p id="result_20235">
+<p id="result_6142">
 </p>
-<script> function validate_form_20235() {var x, text; var x = document.forms["form_20235"]["answer_20235"].value;if (x == "0.06"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_20235').innerHTML = text; return false;} </script>
+<script> function validate_form_6142() {var x, text; var x = document.forms["form_6142"]["answer_6142"].value;if (x == "0.06"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_6142').innerHTML = text; return false;} </script>
 </div>
 <div id="функция-правдоподобия" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Функция правдоподобия</h2>

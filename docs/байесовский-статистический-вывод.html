@@ -174,6 +174,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#нотация"><i class="fa fa-check"></i><b>5.1</b> Нотация</a></li>
 <li class="chapter" data-level="5.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#категориальный-пример"><i class="fa fa-check"></i><b>5.2</b> Категориальный пример</a></li>
 <li class="chapter" data-level="5.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#разница-между-фриквентиским-и-байесовским-подходами"><i class="fa fa-check"></i><b>5.3</b> Разница между фриквентиским и байесовским подходами</a></li>
+<li class="chapter" data-level="5.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#биномиальные-данные"><i class="fa fa-check"></i><b>5.4</b> Биномиальные данные</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#биномиальное-распределение-1"><i class="fa fa-check"></i><b>5.4.1</b> Биномиальное распределение</a></li>
+<li class="chapter" data-level="5.4.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#бета-распределение"><i class="fa fa-check"></i><b>5.4.2</b> Бета распределение</a></li>
+<li class="chapter" data-level="5.4.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных"><i class="fa fa-check"></i><b>5.4.3</b> Байесовский апдейт биномиальных данных</a></li>
+<li class="chapter" data-level="5.4.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных-несколько-моделей"><i class="fa fa-check"></i><b>5.4.4</b> Байесовский апдейт биномиальных данных: несколько моделей</a></li>
+<li class="chapter" data-level="5.4.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать"><i class="fa fa-check"></i><b>5.4.5</b> Что почитать?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
@@ -228,7 +236,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <span id="cb54-7"><a href="байесовский-статистический-вывод.html#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(ratio, <span class="dv">3</span>)), <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
 <span id="cb54-8"><a href="байесовский-статистический-вывод.html#cb54-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>upos, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-63-1.png" width="864" /></p>
-<p>Давайте полученные доли считать нашей моделью: сумма всех чисел внутри каждого типа (<code>ham</code>/<code>spam</code>) дает в сумме 1. Мы получили новое сообщение</p>
+<p>Давайте полученные доли считать нашей моделью: сумма всех чисел внутри каждого типа (<code>ham</code>/<code>spam</code>) дает в сумме 1. Мы получили новое сообщение:</p>
 <blockquote>
 <p>Call FREEPHONE 0800 542 0825 now!</p>
 </blockquote>
@@ -236,7 +244,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <blockquote>
 <p>VERB NUM NUM NUM NUM ADV PUNCT</p>
 </blockquote>
-<p>Понятно, что это – спам, но мы пытаемся применить байесовский статистический вывод, чтобы определить тип сообшения. Предположим, что машина считает обе гипотизы равновероятными, т. е. ее априорное распределение гипотез равно 0.5 каждая. На минуту представим, что машина анализирует текст пословно. Первое слово типа <code>VERB</code>. Функция правдоподобия равны 0.135 и 0.096 для сообщений типа <code>ham</code> и <code>spam</code> соответственно. Применим байесовский апдейт:</p>
+<p>Понятно, что это – спам, но мы попытаемся применить байесовский статистический вывод, чтобы определить тип сообшения. Предположим, что машина считает обе гипотезы равновероятными, т. е. ее априорное распределение гипотез равно 0.5 каждая. На минуту представим, что машина анализирует текст пословно. Первое слово типа <code>VERB</code>. Функции правдоподобия равны 0.135 и 0.096 для сообщений типа <code>ham</code> и <code>spam</code> соответственно. Применим байесовский апдейт:</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="байесовский-статистический-вывод.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
 <span id="cb55-2"><a href="байесовский-статистический-вывод.html#cb55-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior =</span> <span class="fl">0.5</span>,</span>
 <span id="cb55-3"><a href="байесовский-статистический-вывод.html#cb55-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood =</span> <span class="fu">c</span>(<span class="fl">0.135</span>, <span class="fl">0.096</span>),</span>
@@ -258,7 +266,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 {"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior_2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood_2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product_2"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior_2"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"ham","2":"0.584","3":"0.016","4":"0.009344","5":"0.161059"},{"1":"spam","2":"0.416","3":"0.117","4":"0.048672","5":"0.838941"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>Уже на второй итерации, наша модель почти уверена, что это сообщение <code>spam</code>. На третей итерации уверенность только растет:</p>
+<p>Уже на второй итерации, наша модель почти уверена, что это сообщение <code>spam</code>. На третьей итерации уверенность только растет:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="байесовский-статистический-вывод.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
 <span id="cb57-2"><a href="байесовский-статистический-вывод.html#cb57-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior_3 =</span> <span class="fu">c</span>(<span class="fl">0.161</span>, <span class="fl">0.839</span>),</span>
 <span id="cb57-3"><a href="байесовский-статистический-вывод.html#cb57-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood_3 =</span> <span class="fu">c</span>(<span class="fl">0.016</span>, <span class="fl">0.117</span>),</span>
@@ -293,7 +301,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
   </script>
 </div>
 <p>Из приведенных рассуждений также следует, что все равно в каком порядке мы производим байесовский апдейт: мы могли сначала умножить на значение правдоподобия для категории <code>NUM</code> и лишь в конце на значение правдоподобия <code>VERB</code>.</p>
-<p>Также стоит отметить, что если данных много, то через какое-то время становится все равно, какое у нас было априорное распределение. Даже в нашем примере, в котором мы проанализировали первые три слова сообщения, модель, что сообщение спамерское, выиграет даже, если, согласно априорное распределению, спамерским является каждое 20 сообщение:</p>
+<p>Также стоит отметить, что если данных много, то через какое-то время становится все равно, какое у нас было априорное распределение. Даже в нашем примере, в котором мы проанализировали первые три слова сообщения, модель, прогнозирующая, что сообщение спамерское, выиграет, даже если, согласно априорному распределению, спамерским является каждое 20 сообщение:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="байесовский-статистический-вывод.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
 <span id="cb59-2"><a href="байесовский-статистический-вывод.html#cb59-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior =</span> <span class="fu">c</span>(<span class="fl">0.95</span>, <span class="fl">0.05</span>),</span>
 <span id="cb59-3"><a href="байесовский-статистический-вывод.html#cb59-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood =</span> <span class="fu">c</span>(<span class="fl">0.135</span>, <span class="fl">0.096</span>),</span>
@@ -308,7 +316,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <p>Самым главным отличием байесовского статистического вывода от фриквентистского, является то, что мы в результате получаем вероятность каждой из моделей. Это очень значительно отличается от фриквентистской практики нулевых гипотез и p-value, в соответствии с которыми мы можем лишь отвергнуть или не отвергнуть нулевую гипотезу.</p>
 <div class="rmdtask">
 <p>
-Вашего друга похитили а на почту отправили <a href="https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/weather.csv">датасет</a>, в котором записаны данные о погоде из пяти городов. Ваш телефон зазвонил, и друг сказал, что не знает куда его похитили, но за окном легкий дождь (<code>Rain</code>). А в какой-то из следующих дней — сильный дождь (<code>Rain, Thunderstorm</code>). Исходя из явно неверного предположения, что погода каждый день независят друг от друга, сделайте байесовский апдейт и предположите, в какой город вероятнее всего похитили друга (форма ожидает латиницу).
+Вашего друга похитили а на почту отправили <a href="https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/weather.csv">датасет</a>, в котором записаны данные о погоде из пяти городов. Ваш телефон зазвонил, и друг сказал, что не знает куда его похитили, но за окном легкий дождь (<code>Rain</code>). А в какой-то из следующих дней — сильный дождь (<code>Rain, Thunderstorm</code>). Исходя из явно неверного предположения, что погодные условия каждый день не зависят друг от друга, сделайте байесовский апдейт и предположите, в какой город вероятнее всего похитили друга.
 </p>
 </div>
 <form name="form_5403" onsubmit="return validate_form_5403()" method="post">
@@ -333,7 +341,69 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <h2><span class="header-section-number">5.3</span> Разница между фриквентиским и байесовским подходами</h2>
 <p><img src="images/gelman.png" /></p>
 <p>Картинка из одной из моих любимых книг по статистике <span class="citation">(<a href="ссылки-на-литературу.html#ref-efron16" role="doc-biblioref">Efron and Hastie 2016</a>: 34)</span>.</p>
+</div>
+<div id="биномиальные-данные" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Биномиальные данные</h2>
+<p>Биномиальные данные возникают, когда нас интересует доля успехов в какой-то серии эксперементов Бернулли.</p>
+<div id="биномиальное-распределение-1" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Биномиальное распределение</h3>
+<p>Биномиальное распределение — распределение количества успехов эксперементов Бернулли из <em>n</em> попыток с вероятностью успеха <em>p</em>.</p>
+<p><span class="math display">\[P(k | n, p) = \frac{n!}{k!(n-k)!} \times p^k \times (1-p)^{n-k} =  {n \choose k} \times p^k \times (1-p)^{n-k}\]</span>
+<span class="math display">\[ 0 \leq p \leq 1; n, k &gt; 0\]</span></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="байесовский-статистический-вывод.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>,</span>
+<span id="cb60-2"><a href="байесовский-статистический-вывод.html#cb60-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">density =</span> <span class="fu">dbinom</span>(<span class="at">x =</span> x, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="fl">0.16</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-3"><a href="байесовский-статистический-вывод.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, density))<span class="sc">+</span></span>
+<span id="cb60-4"><a href="байесовский-статистический-вывод.html#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb60-5"><a href="байесовский-статистический-вывод.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb60-6"><a href="байесовский-статистический-вывод.html#cb60-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Биномиальное распределение p = 0.16, n = 50&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+</div>
+<div id="бета-распределение" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Бета распределение</h3>
+<p><span class="math display">\[P(x; α, β) = \frac{x^{α-1}\times (1-x)^{β-1}}{B(α, β)}; 0 \leq x \leq 1; α, β &gt; 0\]</span></p>
+<p>Бета функция:</p>
+<p><span class="math display">\[Β(α, β) = \frac{Γ(α)\times Γ(β)}{Γ(α+β)} = \frac{(α-1)!(β-1)!}{(α+β-1)!} \]</span></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="байесовский-статистический-вывод.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>),</span>
+<span id="cb61-2"><a href="байесовский-статистический-вывод.html#cb61-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">density =</span> <span class="fu">dbeta</span>(<span class="at">x =</span> x, <span class="at">shape1 =</span> <span class="dv">8</span>, <span class="at">shape2 =</span> <span class="dv">42</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb61-3"><a href="байесовский-статистический-вывод.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, density))<span class="sc">+</span></span>
+<span id="cb61-4"><a href="байесовский-статистический-вывод.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb61-5"><a href="байесовский-статистический-вывод.html#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb61-6"><a href="байесовский-статистический-вывод.html#cb61-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Бета распределение α = 8, β = 42&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+<p>Можно поиграть с разными параметрами:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="байесовский-статистический-вывод.html#cb62-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runGitHub</span>(<span class="st">&quot;agricolamz/beta_distribution_shiny&quot;</span>) </span></code></pre></div>
+<p><span class="math display">\[\mu = \frac{\alpha}{\alpha+\beta}\]</span></p>
+<p><span class="math display">\[\sigma^2 = \frac{\alpha\times\beta}{(\alpha+\beta)^2\times(\alpha+\beta+1)}\]</span></p>
+</div>
+<div id="байесовский-апдейт-биномиальных-данных" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Байесовский апдейт биномиальных данных</h3>
+<p><span class="math display">\[Beta_{post}(\alpha_{post}, \beta_{post}) = Beta(\alpha_{prior}+\alpha_{data}, \beta_{prior}+\beta_{data}),\]</span>
+где <span class="math inline">\(Beta\)</span> — это бета распределение</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="байесовский-статистический-вывод.html#cb63-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runGitHub</span>(<span class="st">&quot;agricolamz/bayes_for_binomial_app&quot;</span>) </span></code></pre></div>
+</div>
+<div id="байесовский-апдейт-биномиальных-данных-несколько-моделей" class="section level3" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Байесовский апдейт биномиальных данных: несколько моделей</h3>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="байесовский-статистический-вывод.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>), <span class="dv">6</span>),</span>
+<span id="cb64-2"><a href="байесовский-статистический-вывод.html#cb64-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">density =</span> <span class="fu">c</span>(<span class="fu">dbeta</span>(<span class="fu">unique</span>(x), <span class="at">shape1 =</span> <span class="dv">8</span>, <span class="at">shape2 =</span> <span class="dv">42</span>),</span>
+<span id="cb64-3"><a href="байесовский-статистический-вывод.html#cb64-3" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">dbeta</span>(<span class="fu">unique</span>(x), <span class="at">shape1 =</span> <span class="dv">16</span>, <span class="at">shape2 =</span> <span class="dv">34</span>),</span>
+<span id="cb64-4"><a href="байесовский-статистический-вывод.html#cb64-4" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">dbeta</span>(<span class="fu">unique</span>(x), <span class="at">shape1 =</span> <span class="dv">24</span>, <span class="at">shape2 =</span> <span class="dv">26</span>),</span>
+<span id="cb64-5"><a href="байесовский-статистический-вывод.html#cb64-5" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">dbeta</span>(<span class="fu">unique</span>(x), <span class="at">shape1 =</span> <span class="dv">8</span><span class="sc">+</span><span class="dv">4</span>, <span class="at">shape2 =</span> <span class="dv">42</span><span class="sc">+</span><span class="dv">16</span>),</span>
+<span id="cb64-6"><a href="байесовский-статистический-вывод.html#cb64-6" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">dbeta</span>(<span class="fu">unique</span>(x), <span class="at">shape1 =</span> <span class="dv">16</span><span class="sc">+</span><span class="dv">4</span>, <span class="at">shape2 =</span> <span class="dv">34</span><span class="sc">+</span><span class="dv">16</span>),</span>
+<span id="cb64-7"><a href="байесовский-статистический-вывод.html#cb64-7" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">dbeta</span>(<span class="fu">unique</span>(x), <span class="at">shape1 =</span> <span class="dv">24</span><span class="sc">+</span><span class="dv">4</span>, <span class="at">shape2 =</span> <span class="dv">26</span><span class="sc">+</span><span class="dv">16</span>)),</span>
+<span id="cb64-8"><a href="байесовский-статистический-вывод.html#cb64-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;prior&quot;</span>, <span class="st">&quot;prior&quot;</span>, <span class="st">&quot;prior&quot;</span>, <span class="st">&quot;posterior&quot;</span>, <span class="st">&quot;posterior&quot;</span>, <span class="st">&quot;posterior&quot;</span>), <span class="at">each =</span> <span class="dv">100</span>),</span>
+<span id="cb64-9"><a href="байесовский-статистический-вывод.html#cb64-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">dataset =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;prior: 8, 42&quot;</span>, <span class="st">&quot;prior: 16, 34&quot;</span>, <span class="st">&quot;prior: 24, 26&quot;</span>,</span>
+<span id="cb64-10"><a href="байесовский-статистический-вывод.html#cb64-10" aria-hidden="true" tabindex="-1"></a>                           <span class="st">&quot;prior: 8, 42&quot;</span>, <span class="st">&quot;prior: 16, 34&quot;</span>, <span class="st">&quot;prior: 24, 26&quot;</span>), <span class="at">each =</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb64-11"><a href="байесовский-статистический-вывод.html#cb64-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, density, <span class="at">color =</span> type))<span class="sc">+</span></span>
+<span id="cb64-12"><a href="байесовский-статистический-вывод.html#cb64-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb64-13"><a href="байесовский-статистический-вывод.html#cb64-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dataset)<span class="sc">+</span></span>
+<span id="cb64-14"><a href="байесовский-статистический-вывод.html#cb64-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;data = 4, 16&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+</div>
+<div id="что-почитать" class="section level3" number="5.4.5">
+<h3><span class="header-section-number">5.4.5</span> Что почитать?</h3>
+<p>Если остались неясности, то можно посмотреть 2-ую главу <span class="citation">(<a href="ссылки-на-литературу.html#ref-robinson17" role="doc-biblioref">Robinson 2017</a>)</span>.</p>
 
+</div>
 </div>
 </div>
             </section>
