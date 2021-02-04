@@ -205,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">5</span> Байесовский статистический вывод</h1>
 <div id="нотация" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Нотация</h2>
-<p>В байесовском подоходе статистический вывод описывается формулой Байеса</p>
+<p>В байесовском подходе статистический вывод описывается формулой Байеса</p>
 <p><span class="math display">\[P(θ|Data) = \frac{P(Data|θ)\times P(θ)}{P(Data)}\]</span></p>
 <ul>
 <li><span class="math inline">\(P(θ|Data)\)</span> — апостериорная вероятность (posterior)</li>
@@ -215,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>В литературе можно еще встретить такую запись:</p>
 <p><span class="math display">\[P(θ|Data) \propto P(Data|θ)\times P(θ)\]</span></p>
-<p>На прошлых занятиях мы говорили, что <a href="https://stats.stackexchange.com/a/31241/225843">функция правдоподобия не обязана интегрироваться до 1</a>, тогда почему, назвав часть формулы Байеса <span class="math inline">\(P(Data|θ)\)</span> функцией правдоподобия, мы оставляем нотацию будто это функция вероятностей? Потому что это условная вероятность, <a href="https://stats.stackexchange.com/q/448852/225843">она не обязана интегрироваться до 1</a>.</p>
+<p>На прошлых занятиях мы говорили, что <a href="https://stats.stackexchange.com/a/31241/225843">функция правдоподобия не обязана интегрироваться до 1</a>, тогда почему, назвав часть формулы Байеса <span class="math inline">\(P(Data|θ)\)</span> функцией правдоподобия, мы оставляем нотацию, будто это функция вероятностей? Потому что это условная вероятность, <a href="https://stats.stackexchange.com/q/448852/225843">она не обязана интегрироваться до 1</a>.</p>
 </div>
 <div id="категориальный-пример" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Категориальный пример</h2>
@@ -244,7 +244,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <blockquote>
 <p>VERB NUM NUM NUM NUM ADV PUNCT</p>
 </blockquote>
-<p>Понятно, что это – спам, но мы попытаемся применить байесовский статистический вывод, чтобы определить тип сообшения. Предположим, что машина считает обе гипотезы равновероятными, т. е. ее априорное распределение гипотез равно 0.5 каждая. На минуту представим, что машина анализирует текст пословно. Первое слово типа <code>VERB</code>. Функции правдоподобия равны 0.135 и 0.096 для сообщений типа <code>ham</code> и <code>spam</code> соответственно. Применим байесовский апдейт:</p>
+<p>Понятно, что это – спам, но мы попытаемся применить байесовский статистический вывод, чтобы определить тип сообщения. Предположим, что машина считает обе гипотезы равновероятными, т. е. ее априорное распределение гипотез равно 0.5 каждая. На минуту представим, что машина анализирует текст пословно. Первое слово типа <code>VERB</code>. Функции правдоподобия равны 0.135 и 0.096 для сообщений типа <code>ham</code> и <code>spam</code> соответственно. Применим байесовский апдейт:</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="байесовский-статистический-вывод.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
 <span id="cb55-2"><a href="байесовский-статистический-вывод.html#cb55-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior =</span> <span class="fl">0.5</span>,</span>
 <span id="cb55-3"><a href="байесовский-статистический-вывод.html#cb55-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood =</span> <span class="fu">c</span>(<span class="fl">0.135</span>, <span class="fl">0.096</span>),</span>
@@ -255,7 +255,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 {"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"ham","2":"0.5","3":"0.135","4":"0.0675","5":"0.5844156"},{"1":"spam","2":"0.5","3":"0.096","4":"0.0480","5":"0.4155844"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>Вот мы и сделали байесовский апдейт. Теперь апостериорное распределение, которые мы получили на предыдущем шаге, мы можем использовать в новом апдейте. Следующее слово в сообщении типа <code>NUM</code>.</p>
+<p>Вот мы и сделали байесовский апдейт. Теперь апостериорное распределение, которое мы получили на предыдущем шаге, мы можем использовать в новом апдейте. Следующее слово в сообщении типа <code>NUM</code>.</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="байесовский-статистический-вывод.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
 <span id="cb56-2"><a href="байесовский-статистический-вывод.html#cb56-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior_2 =</span> <span class="fu">c</span>(<span class="fl">0.584</span>, <span class="fl">0.416</span>),</span>
 <span id="cb56-3"><a href="байесовский-статистический-вывод.html#cb56-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">likelihood_2 =</span> <span class="fu">c</span>(<span class="fl">0.016</span>, <span class="fl">0.117</span>),</span>
@@ -279,7 +279,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 </div>
 <div class="rmdtask">
 <p>
-Посчитайте вероятность гипотезы, что перед нами спамерское сообщение, если предположить, что каждое пятое сообщение – спам. Ответ округите до трех знаков после запятой.
+Посчитайте вероятность гипотезы, что перед нами спамерское сообщение, если предположить, что каждое пятое сообщение – спам. Ответ округлите до трех знаков после запятой.
 </p>
 </div>
 <form name="form_64809" onsubmit="return validate_form_64809()" method="post">

@@ -303,7 +303,7 @@ tibble(x = 1:100,
   ggplot(aes(x, PDF))+
   geom_point()+
   geom_line()+
-  labs(title = "PDF логнормального распределения (μ = 4, σ = 0.5)")
+  labs(title = "PDF логнормального распределения (μ = 3, σ = 0.5)")
 ```
 
 ```{r, include=FALSE}
