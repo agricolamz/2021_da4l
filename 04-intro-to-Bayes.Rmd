@@ -232,6 +232,27 @@ $$Beta_{post}(\alpha_{post}, \beta_{post}) = Beta(\alpha_{prior}+\alpha_{data}, 
 shiny::runGitHub("agricolamz/bayes_for_binomial_app") 
 ```
 
+```{block, type = "rmdtask"}
+Немного упрощая данные из статьи [@rosenbach03: 394], можно сказать что носители британского английского предпочитают *s*-генитив (90%) *of*-генитиву (10%). Проведите байесовский апдейт, если Вы наблюдаете в интервью британского актера из 120 контекстов 92 *s*-генитивов? Априорное распределение берите соразмерное данным. Ответ округлите до трёх или менее знаков после запятой.
+```
+
+
+```{block, type = "rmdtask"}
+Параметр альфа:
+```
+
+```{r, echo=FALSE, results='asis'}
+library(checkdown)
+check_question(108+92)
+```
+
+```{block, type = "rmdtask"}
+Параметр бета:
+```
+
+```{r, echo=FALSE, results='asis'}
+check_question(12+28)
+```
 
 ### Байесовский апдейт биномиальных данных: несколько моделей
 
@@ -256,3 +277,101 @@ tibble(x = rep(seq(0, 1, length.out = 100), 6),
 ### Что почитать?
 
 Если остались неясности, то можно посмотреть 2-ую главу [@robinson17].
+
+## Байесовский апдейт нормального распределения
+
+Встроенный датасет `ChickWeight` содержит вес цыплят (`weight`) в зависимости от типа диеты (`Diet`). Мы будем анализировать 20-дневных птенцов.
+
+```{r}
+ChickWeight %>% 
+  filter(Time == 20) ->
+  chicks
+
+chicks %>% 
+  ggplot(aes(weight))+
+  geom_density()
+```
+
+Начнем с апостериорных параметров для наблюдений $x_1, ... x_n$ со средним $\mu_{data}$ известной дисперсией $\sigma_{known}^2$
+
+
+### Байесовский апдейт нормального распределения: выбор из нескольких моделей
+
+Мы можем рассматривать эту задачу как выбор между несколькими моделями с разными средними:
+
+```{r}
+tibble(x = rep(1:400, 6),
+           density = c(dnorm(unique(x), mean = 125, sd = 70),
+                       dnorm(unique(x), mean = 150, sd = 70),
+                       dnorm(unique(x), mean = 175, sd = 70),
+                       dnorm(unique(x), mean = 200, sd = 70),
+                       dnorm(unique(x), mean = 225, sd = 70),
+                       dnorm(unique(x), mean = 250, sd = 70)),
+           dataset = rep(1:6, each = 400)) %>% 
+  ggplot(aes(x, density, color = factor(dataset)))+
+  geom_line()
+```
+
+Дальше мы можем точно так же апдейтить, как мы делали раньше:
+
+```{r}
+tibble(mu = seq(125, 250, by = 25),
+           prior = 1/6,
+           likelihood = c(prod(dnorm(chicks$weight, mean = 125, sd = 70)),
+                          prod(dnorm(chicks$weight, mean = 150, sd = 70)),
+                          prod(dnorm(chicks$weight, mean = 175, sd = 70)),
+                          prod(dnorm(chicks$weight, mean = 200, sd = 70)),
+                          prod(dnorm(chicks$weight, mean = 225, sd = 70)),
+                          prod(dnorm(chicks$weight, mean = 250, sd = 70))),
+           product = prior*likelihood,
+           posterior = product/sum(product)) ->
+  results
+results
+results %>% 
+  select(mu, prior, posterior) %>% 
+  gather(type, probability, prior:posterior) %>% 
+  ggplot(aes(mu, probability, color = type))+
+  geom_point()+
+  labs(title = "изменение вероятностей для каждой из моделей",
+       x = "μ")
+```
+
+### Байесовский апдейт нормального распределения: непрерывный вариант
+
+Во первых, нам понадобится некоторая мера, которая называется *точность* (precision):
+
+$$\tau = \frac{1}{\sigma^2}$$
+
+$$\tau_{post} = \tau_{prior} + \tau_{data} \Rightarrow \sigma^2_{post} = \frac{1}{\tau_{post}}$$
+
+
+$$\mu_{post} = \frac{\mu_{prior} \times \tau_{prior} + \mu_{data} \times \tau_{data}}{\tau_{post}}$$
+
+Так что если нашим априорным распределением мы назовем нормальное распределение со средним около 180 и стандартным отклонением 90, то процесс байсовского апдейта будет выглядеть вот так:
+
+```{r}
+sd_prior <- 90 
+sd_data <- sd(chicks$weight)
+sd_post <- (1/sd_prior+1/sd_data)^(-1)
+mean_prior <- 180
+mean_data <- mean(chicks$weight)
+mean_post <- weighted.mean(c(mean_prior, mean_data), c(1/sd_prior, 1/sd_data))
+
+tibble(x = rep(1:400, 3),
+           density = c(dnorm(unique(x), mean = mean_prior, sd = sd_prior),
+                       dnorm(unique(x), mean = mean_data, sd = sd_data),
+                       dnorm(unique(x), mean = mean_post, sd = sd_post)),
+           dataset = rep(c("prior", "data", "posterior"), each = 400)) %>% 
+  ggplot(aes(x, density, color = dataset))+
+  geom_line()
+```
+
+```{r, eval = FALSE}
+shiny::runGitHub("agricolamz/bayes_for_normal_app") 
+```
+
+### Что почитать?
+
+* [Murphy K. P. (2007) Conjugate Bayesian analysis of the Gaussian distribution](https://www.cs.ubc.ca/~murphyk/Papers/bayesGauss.pdf)
+* [Jordan M. I. (2010) The Conjugate Prior for the Normal Distribution](https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/lectures/lecture5.pdf)
+* раздел 2.5 в Gelman A. et. al (2014) Bayesian Data Analysis
