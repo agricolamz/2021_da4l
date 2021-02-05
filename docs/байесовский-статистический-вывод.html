@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения"><i class="fa fa-check"></i><b>5.5</b> Байесовский апдейт нормального распределения</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-дискретный-вариант"><i class="fa fa-check"></i><b>5.5.1</b> Байесовский апдейт нормального распределения: дискретный вариант</a></li>
+<li class="chapter" data-level="5.5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-выбор-из-нескольких-моделей"><i class="fa fa-check"></i><b>5.5.1</b> Байесовский апдейт нормального распределения: выбор из нескольких моделей</a></li>
 <li class="chapter" data-level="5.5.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-непрерывный-вариант"><i class="fa fa-check"></i><b>5.5.2</b> Байесовский апдейт нормального распределения: непрерывный вариант</a></li>
 <li class="chapter" data-level="5.5.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать-1"><i class="fa fa-check"></i><b>5.5.3</b> Что почитать?</a></li>
 </ul></li>
@@ -288,12 +288,12 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 Посчитайте вероятность гипотезы, что перед нами спамерское сообщение, если предположить, что каждое пятое сообщение – спам. Ответ округлите до трех знаков после запятой.
 </p>
 </div>
-<form name="form_6471" onsubmit="return validate_form_6471()" method="post">
-<input type="text" name="answer_6471"><br><input type="submit" value="check">
+<form name="form_870" onsubmit="return validate_form_870()" method="post">
+<input type="text" name="answer_870"><br><input type="submit" value="check">
 </form>
-<p id="result_6471">
+<p id="result_870">
 </p>
-<script> function validate_form_6471() {var x, text; var x = document.forms["form_6471"]["answer_6471"].value;if (x == "0.905"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_6471').innerHTML = text; return false;} </script>
+<script> function validate_form_870() {var x, text; var x = document.forms["form_870"]["answer_870"].value;if (x == "0.905"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_870').innerHTML = text; return false;} </script>
 <p>Из формулы Байеса следует, что не обязательно каждый раз делить на нормализующий делитель, это можно сделать единожды.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="байесовский-статистический-вывод.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">model =</span> <span class="fu">c</span>(<span class="st">&quot;ham&quot;</span>, <span class="st">&quot;spam&quot;</span>),</span>
 <span id="cb7-2"><a href="байесовский-статистический-вывод.html#cb7-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">prior =</span> <span class="fl">0.5</span>,</span>
@@ -325,23 +325,23 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 Вашего друга похитили а на почту отправили <a href="https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/weather.csv">датасет</a>, в котором записаны данные о погоде из пяти городов. Ваш телефон зазвонил, и друг сказал, что не знает куда его похитили, но за окном легкий дождь (<code>Rain</code>). А в какой-то из следующих дней — сильный дождь (<code>Rain, Thunderstorm</code>). Исходя из явно неверного предположения, что погодные условия каждый день не зависят друг от друга, сделайте байесовский апдейт и предположите, в какой город вероятнее всего похитили друга.
 </p>
 </div>
-<form name="form_92317" onsubmit="return validate_form_92317()" method="post">
-<select name="answer_92317"><option> Auckland </option><option> Beijing </option><option> Chicago </option><option> Mumbai </option><option> San Diego </option></select><br><input type="submit" value="check">
+<form name="form_89934" onsubmit="return validate_form_89934()" method="post">
+<select name="answer_89934"><option> Auckland </option><option> Beijing </option><option> Chicago </option><option> Mumbai </option><option> San Diego </option></select><br><input type="submit" value="check">
 </form>
-<p id="result_92317">
+<p id="result_89934">
 </p>
-<script> function validate_form_92317() {var x, text; var x = document.forms["form_92317"]["answer_92317"].value;if (x == "San Diego"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_92317').innerHTML = text; return false;} </script>
+<script> function validate_form_89934() {var x, text; var x = document.forms["form_89934"]["answer_89934"].value;if (x == "San Diego"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_89934').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 Укажите получившуюся вероятность. Выполняя задание, округлите все вероятности и значения правдоподобия до 3 знаков после запятой.
 </p>
 </div>
-<form name="form_71408" onsubmit="return validate_form_71408()" method="post">
-<input type="text" name="answer_71408"><br><input type="submit" value="check">
+<form name="form_20510" onsubmit="return validate_form_20510()" method="post">
+<input type="text" name="answer_20510"><br><input type="submit" value="check">
 </form>
-<p id="result_71408">
+<p id="result_20510">
 </p>
-<script> function validate_form_71408() {var x, text; var x = document.forms["form_71408"]["answer_71408"].value;if (x == "0.549"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_71408').innerHTML = text; return false;} </script>
+<script> function validate_form_20510() {var x, text; var x = document.forms["form_20510"]["answer_20510"].value;if (x == "0.549"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_20510').innerHTML = text; return false;} </script>
 </div>
 <div id="разница-между-фриквентиским-и-байесовским-подходами" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Разница между фриквентиским и байесовским подходами</h2>
@@ -396,23 +396,23 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 Параметр альфа:
 </p>
 </div>
-<form name="form_26677" onsubmit="return validate_form_26677()" method="post">
-<input type="text" name="answer_26677"><br><input type="submit" value="check">
+<form name="form_17594" onsubmit="return validate_form_17594()" method="post">
+<input type="text" name="answer_17594"><br><input type="submit" value="check">
 </form>
-<p id="result_26677">
+<p id="result_17594">
 </p>
-<script> function validate_form_26677() {var x, text; var x = document.forms["form_26677"]["answer_26677"].value;if (x == "200"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_26677').innerHTML = text; return false;} </script>
+<script> function validate_form_17594() {var x, text; var x = document.forms["form_17594"]["answer_17594"].value;if (x == "200"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_17594').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 Параметр бета:
 </p>
 </div>
-<form name="form_21141" onsubmit="return validate_form_21141()" method="post">
-<input type="text" name="answer_21141"><br><input type="submit" value="check">
+<form name="form_51047" onsubmit="return validate_form_51047()" method="post">
+<input type="text" name="answer_51047"><br><input type="submit" value="check">
 </form>
-<p id="result_21141">
+<p id="result_51047">
 </p>
-<script> function validate_form_21141() {var x, text; var x = document.forms["form_21141"]["answer_21141"].value;if (x == "40"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_21141').innerHTML = text; return false;} </script>
+<script> function validate_form_51047() {var x, text; var x = document.forms["form_51047"]["answer_51047"].value;if (x == "40"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_51047').innerHTML = text; return false;} </script>
 </div>
 <div id="байесовский-апдейт-биномиальных-данных-несколько-моделей" class="section level3" number="5.4.4">
 <h3><span class="header-section-number">5.4.4</span> Байесовский апдейт биномиальных данных: несколько моделей</h3>
@@ -449,8 +449,8 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <span id="cb14-7"><a href="байесовский-статистический-вывод.html#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>Начнем с апостериорных параметров для наблюдений <span class="math inline">\(x_1, ... x_n\)</span> со средним <span class="math inline">\(\mu_{data}\)</span> известной дисперсией <span class="math inline">\(\sigma_{known}^2\)</span></p>
-<div id="байесовский-апдейт-нормального-распределения-дискретный-вариант" class="section level3" number="5.5.1">
-<h3><span class="header-section-number">5.5.1</span> Байесовский апдейт нормального распределения: дискретный вариант</h3>
+<div id="байесовский-апдейт-нормального-распределения-выбор-из-нескольких-моделей" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Байесовский апдейт нормального распределения: выбор из нескольких моделей</h3>
 <p>Мы можем рассматривать эту задачу как выбор между несколькими моделями с разными средними:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="байесовский-статистический-вывод.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">400</span>, <span class="dv">6</span>),</span>
 <span id="cb15-2"><a href="байесовский-статистический-вывод.html#cb15-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">density =</span> <span class="fu">c</span>(<span class="fu">dnorm</span>(<span class="fu">unique</span>(x), <span class="at">mean =</span> <span class="dv">125</span>, <span class="at">sd =</span> <span class="dv">70</span>),</span>
@@ -483,7 +483,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 </div>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="байесовский-статистический-вывод.html#cb17-1" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span> </span>
 <span id="cb17-2"><a href="байесовский-статистический-вывод.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mu, prior, posterior) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="байесовский-статистический-вывод.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(type, probability, prior<span class="sc">:</span>posterior) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="байесовский-статистический-вывод.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;probability&quot;</span>, prior<span class="sc">:</span>posterior) <span class="sc">%&gt;%</span> </span>
 <span id="cb17-4"><a href="байесовский-статистический-вывод.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(mu, probability, <span class="at">color =</span> type))<span class="sc">+</span></span>
 <span id="cb17-5"><a href="байесовский-статистический-вывод.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb17-6"><a href="байесовский-статистический-вывод.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;изменение вероятностей для каждой из моделей&quot;</span>,</span>

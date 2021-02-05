@@ -329,7 +329,7 @@ tibble(mu = seq(125, 250, by = 25),
 results
 results %>% 
   select(mu, prior, posterior) %>% 
-  gather(type, probability, prior:posterior) %>% 
+  pivot_longer(names_to = "type", values_to = "probability", prior:posterior) %>% 
   ggplot(aes(mu, probability, color = type))+
   geom_point()+
   labs(title = "изменение вероятностей для каждой из моделей",
