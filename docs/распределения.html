@@ -182,6 +182,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных-несколько-моделей"><i class="fa fa-check"></i><b>5.4.4</b> Байесовский апдейт биномиальных данных: несколько моделей</a></li>
 <li class="chapter" data-level="5.4.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать"><i class="fa fa-check"></i><b>5.4.5</b> Что почитать?</a></li>
 </ul></li>
+<li class="chapter" data-level="5.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения"><i class="fa fa-check"></i><b>5.5</b> Байесовский апдейт нормального распределения</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-выбор-из-нескольких-моделей"><i class="fa fa-check"></i><b>5.5.1</b> Байесовский апдейт нормального распределения: выбор из нескольких моделей</a></li>
+<li class="chapter" data-level="5.5.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-непрерывный-вариант"><i class="fa fa-check"></i><b>5.5.2</b> Байесовский апдейт нормального распределения: непрерывный вариант</a></li>
+<li class="chapter" data-level="5.5.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать-1"><i class="fa fa-check"></i><b>5.5.3</b> Что почитать?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#другие-распределения"><i class="fa fa-check"></i><b>5.6</b> Другие распределения</a></li>
+<li class="chapter" data-level="5.7" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#вопросы-к-апостериорному-распределению"><i class="fa fa-check"></i><b>5.7</b> Вопросы к апостериорному распределению</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html"><i class="fa fa-check"></i><b>6</b> Байесовский доверительный интервал</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#фреквентисткий-доверительный-интервал"><i class="fa fa-check"></i><b>6.1</b> Фреквентисткий доверительный интервал</a></li>
+<li class="chapter" data-level="6.2" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#байесовский-доверительный-интервал-1"><i class="fa fa-check"></i><b>6.2</b> Байесовский доверительный интервал</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
@@ -246,32 +259,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Какое значение имеет 25% квантиль нормального распределения со средним в 20 и стандартным отклонением 90? Ответ округлите до трех знаков после запятой.
 </p>
 </div>
-<form name="form_87377" onsubmit="return validate_form_87377()" method="post">
-<input type="text" name="answer_87377"><br><input type="submit" value="check">
+<form name="form_60707" onsubmit="return validate_form_60707()" method="post">
+<input type="text" name="answer_60707"><br><input type="submit" value="check">
 </form>
-<p id="result_87377">
+<p id="result_60707">
 </p>
-<script> function validate_form_87377() {var x, text; var x = document.forms["form_87377"]["answer_87377"].value;if (x == "-40.704"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_87377').innerHTML = text; return false;} </script>
+<script> function validate_form_60707() {var x, text; var x = document.forms["form_60707"]["answer_60707"].value;if (x == "-40.704"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_60707').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 Данные из базы данных фонетических инвентарей PHOIBLE <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-phoible" role="doc-biblioref">Moran, McCloy, and Wright 2014</a>)</span></span>, достаточно сильно упрощая, можно описать нормальным распределением со средним 35 фонем и стандартным отклонением 13. Если мы ничего не знаем про язык, оцените с какой вероятностью, согласно этой модели произвольно взятый язык окажется в промежутке между 25 и 50 фонемами? Ответ округлите до трех знаков после запятой.
 </p>
 </div>
-<form name="form_8912" onsubmit="return validate_form_8912()" method="post">
-<input type="text" name="answer_8912"><br><input type="submit" value="check">
+<form name="form_52257" onsubmit="return validate_form_52257()" method="post">
+<input type="text" name="answer_52257"><br><input type="submit" value="check">
 </form>
-<p id="result_8912">
+<p id="result_52257">
 </p>
-<script> function validate_form_8912() {var x, text; var x = document.forms["form_8912"]["answer_8912"].value;if (x == "0.655"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_8912').innerHTML = text; return false;} </script>
+<script> function validate_form_52257() {var x, text; var x = document.forms["form_52257"]["answer_52257"].value;if (x == "0.655"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_52257').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 Какие есть недостатки у модели из предыдущего задания?
 </p>
 </div>
-<p id="hint_109339", onclick="return show_hint_109339()">ответы:</p>
-<p id="result_109339">
+<p id="hint_116474", onclick="return show_hint_116474()">ответы:</p>
+<p id="result_116474">
 </p>
-<script> function show_hint_109339() {var x = document.getElementById("result_109339").innerHTML;if(!x){document.getElementById('result_109339').innerHTML = '<p id="hint_35546", onclick="return show_hint_35546()">недостаток 1</p><p id="result_35546"></p><p id="hint_81810", onclick="return show_hint_81810()">недостаток 2</p><p id="result_81810"></p>';}else {document.getElementById("result_109339").innerHTML = "";}}function show_hint_35546() {var x = document.getElementById("result_35546").innerHTML;if(!x){document.getElementById('result_35546').innerHTML = 'Согласно данной модели, количество фонем в языках может принимать значение равное любому действительному числу, в то время как в данных мы наблюдаем только целые числа.';}else {document.getElementById("result_35546").innerHTML = "";}}function show_hint_81810() {var x = document.getElementById("result_81810").innerHTML;if(!x){document.getElementById('result_81810').innerHTML = 'Данная модель предсказывает, что количество фонем 0.4% языков  меньше нуля, что представляется невозможным с точки зрения лингвистики.';}else {document.getElementById("result_81810").innerHTML = "";}}</script>
+<script> function show_hint_116474() {var x = document.getElementById("result_116474").innerHTML;if(!x){document.getElementById('result_116474').innerHTML = '<p id="hint_67666", onclick="return show_hint_67666()">недостаток 1</p><p id="result_67666"></p><p id="hint_3591", onclick="return show_hint_3591()">недостаток 2</p><p id="result_3591"></p>';}else {document.getElementById("result_116474").innerHTML = "";}}function show_hint_67666() {var x = document.getElementById("result_67666").innerHTML;if(!x){document.getElementById('result_67666').innerHTML = 'Согласно данной модели, количество фонем в языках может принимать значение равное любому действительному числу, в то время как в данных мы наблюдаем только целые числа.';}else {document.getElementById("result_67666").innerHTML = "";}}function show_hint_3591() {var x = document.getElementById("result_3591").innerHTML;if(!x){document.getElementById('result_3591').innerHTML = 'Данная модель предсказывает, что количество фонем 0.4% языков  меньше нуля, что представляется невозможным с точки зрения лингвистики.';}else {document.getElementById("result_3591").innerHTML = "";}}</script>
 </div>
 <div id="дискретные-переменные" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Дискретные переменные</h2>
@@ -292,23 +305,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Немного упрощая данные из статьи <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span>, можно сказать что носители британского английского предпочитают <em>s</em>-генитив (90%) <em>of</em>-генитиву (10%). Какова вероятность, согласно этим данным, что в интервью британского актера из 118 контекстов будет 102 <em>s</em>-генитивов? Ответ округлите до трёх или менее знаков после запятой.
 </p>
 </div>
-<form name="form_3583" onsubmit="return validate_form_3583()" method="post">
-<input type="text" name="answer_3583"><br><input type="submit" value="check">
+<form name="form_76754" onsubmit="return validate_form_76754()" method="post">
+<input type="text" name="answer_76754"><br><input type="submit" value="check">
 </form>
-<p id="result_3583">
+<p id="result_76754">
 </p>
-<script> function validate_form_3583() {var x, text; var x = document.forms["form_3583"]["answer_3583"].value;if (x == "0.05"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_3583').innerHTML = text; return false;} </script>
+<script> function validate_form_76754() {var x, text; var x = document.forms["form_76754"]["answer_76754"].value;if (x == "0.05"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_76754').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 А какое значение количества <em>s</em>-генитивов наиболее ожидаемо, согласно этой модели?
 </p>
 </div>
-<form name="form_56495" onsubmit="return validate_form_56495()" method="post">
-<input type="text" name="answer_56495"><br><input type="submit" value="check">
+<form name="form_67997" onsubmit="return validate_form_67997()" method="post">
+<input type="text" name="answer_67997"><br><input type="submit" value="check">
 </form>
-<p id="result_56495">
+<p id="result_67997">
 </p>
-<script> function validate_form_56495() {var x, text; var x = document.forms["form_56495"]["answer_56495"].value;if (x == "107"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_56495').innerHTML = text; return false;} </script>
+<script> function validate_form_67997() {var x, text; var x = document.forms["form_67997"]["answer_67997"].value;if (x == "107"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_67997').innerHTML = text; return false;} </script>
 </div>
 <div id="геометрическое-распределение" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Геометрическое распределение</h3>
@@ -327,12 +340,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Приняв модель из <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span>, какова вероятность, что в интервью с британским актером первый <em>of</em>-генитив будет третьим по счету?
 </p>
 </div>
-<form name="form_9296" onsubmit="return validate_form_9296()" method="post">
-<input type="text" name="answer_9296"><br><input type="submit" value="check">
+<form name="form_47533" onsubmit="return validate_form_47533()" method="post">
+<input type="text" name="answer_47533"><br><input type="submit" value="check">
 </form>
-<p id="result_9296">
+<p id="result_47533">
 </p>
-<script> function validate_form_9296() {var x, text; var x = document.forms["form_9296"]["answer_9296"].value;if (x == "0.081"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_9296').innerHTML = text; return false;} </script>
+<script> function validate_form_47533() {var x, text; var x = document.forms["form_47533"]["answer_47533"].value;if (x == "0.081"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_47533').innerHTML = text; return false;} </script>
 </div>
 <div id="распределение-пуассона" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Распределение Пуассона</h3>

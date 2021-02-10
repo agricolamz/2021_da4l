@@ -182,6 +182,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных-несколько-моделей"><i class="fa fa-check"></i><b>5.4.4</b> Байесовский апдейт биномиальных данных: несколько моделей</a></li>
 <li class="chapter" data-level="5.4.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать"><i class="fa fa-check"></i><b>5.4.5</b> Что почитать?</a></li>
 </ul></li>
+<li class="chapter" data-level="5.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения"><i class="fa fa-check"></i><b>5.5</b> Байесовский апдейт нормального распределения</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-выбор-из-нескольких-моделей"><i class="fa fa-check"></i><b>5.5.1</b> Байесовский апдейт нормального распределения: выбор из нескольких моделей</a></li>
+<li class="chapter" data-level="5.5.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-непрерывный-вариант"><i class="fa fa-check"></i><b>5.5.2</b> Байесовский апдейт нормального распределения: непрерывный вариант</a></li>
+<li class="chapter" data-level="5.5.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать-1"><i class="fa fa-check"></i><b>5.5.3</b> Что почитать?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#другие-распределения"><i class="fa fa-check"></i><b>5.6</b> Другие распределения</a></li>
+<li class="chapter" data-level="5.7" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#вопросы-к-апостериорному-распределению"><i class="fa fa-check"></i><b>5.7</b> Вопросы к апостериорному распределению</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html"><i class="fa fa-check"></i><b>6</b> Байесовский доверительный интервал</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#фреквентисткий-доверительный-интервал"><i class="fa fa-check"></i><b>6.1</b> Фреквентисткий доверительный интервал</a></li>
+<li class="chapter" data-level="6.2" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#байесовский-доверительный-интервал-1"><i class="fa fa-check"></i><b>6.2</b> Байесовский доверительный интервал</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
@@ -229,7 +242,7 @@ $ n_char  &lt;int&gt; 111, 29, 155, 49, 61, 147, 77, 160, 157, 154, 109, 136, 15
 <span id="cb40-4"><a href="модели-смеси-распределений.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">&quot;данные из kaggle.com/uciml/sms-spam-collection-dataset&quot;</span>,</span>
 <span id="cb40-5"><a href="модели-смеси-распределений.html#cb40-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;количество символов&quot;</span>,</span>
 <span id="cb40-6"><a href="модели-смеси-распределений.html#cb40-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;значение функции плотности&quot;</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 <p>Мы видим два явных горба и, как можно догадаться, это связано с тем, что спамерские сообщения в среднем длиннее и сосредоточены вокруг ограничения смс в 160 символов:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="модели-смеси-распределений.html#cb41-1" aria-hidden="true" tabindex="-1"></a>spam_sms <span class="sc">%&gt;%</span> </span>
 <span id="cb41-2"><a href="модели-смеси-распределений.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n_char))<span class="sc">+</span></span>
@@ -239,7 +252,7 @@ $ n_char  &lt;int&gt; 111, 29, 155, 49, 61, 147, 77, 160, 157, 154, 109, 136, 15
 <span id="cb41-6"><a href="модели-смеси-распределений.html#cb41-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;количество символов&quot;</span>,</span>
 <span id="cb41-7"><a href="модели-смеси-распределений.html#cb41-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;значение функции плотности&quot;</span>)<span class="sc">+</span></span>
 <span id="cb41-8"><a href="модели-смеси-распределений.html#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">160</span>, <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="fl">0.3</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 </div>
 <div id="модели-смеси-распределений-1" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Модели смеси распределений</h2>
@@ -258,7 +271,7 @@ sigma  13.398985  60.921536
 loglik at estimate:  -29421.36 </code></pre>
 <p>Класс, получаемый в результате работы функции <code>normalmixEM()</code> имеет встроеный график:</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="модели-смеси-распределений.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(spam_length_est, <span class="at">density =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-57-1.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-57-2.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-58-1.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-58-2.png" width="672" /></p>
 <p>Однако, если хочется больше контроля над получаемым разультатом, я бы предложил использовать <code>ggplot()</code>:</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="модели-смеси-распределений.html#cb47-1" aria-hidden="true" tabindex="-1"></a>new_dnorm <span class="ot">&lt;-</span> <span class="cf">function</span>(x, mu, sigma, lambda){</span>
 <span id="cb47-2"><a href="модели-смеси-распределений.html#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dnorm</span>(x, mu, sigma)<span class="sc">*</span>lambda</span>
@@ -281,7 +294,7 @@ loglik at estimate:  -29421.36 </code></pre>
 <span id="cb47-19"><a href="модели-смеси-распределений.html#cb47-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;количество символов&quot;</span>,</span>
 <span id="cb47-20"><a href="модели-смеси-распределений.html#cb47-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;значение функции плотности&quot;</span>)<span class="sc">+</span></span>
 <span id="cb47-21"><a href="модели-смеси-распределений.html#cb47-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">160</span>, <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="fl">0.3</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>Таким образом мы получили классификатор</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="модели-смеси-распределений.html#cb48-1" aria-hidden="true" tabindex="-1"></a>first <span class="ot">&lt;-</span> <span class="fu">new_dnorm</span>(<span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">750</span>, <span class="at">by =</span> <span class="dv">1</span>), </span>
 <span id="cb48-2"><a href="модели-смеси-распределений.html#cb48-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mu =</span> spam_length_est<span class="sc">$</span>mu[<span class="dv">1</span>],</span>
@@ -312,7 +325,7 @@ loglik at estimate:  -29421.36 </code></pre>
 </p>
 </div>
 <pre><code>number of iterations= 114 </code></pre>
-<p><img src="da4l_files/figure-html/unnamed-chunk-62-1.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-62-2.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-63-1.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-63-2.png" width="672" /></p>
 </div>
 <div id="несколько-замечаний" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Несколько замечаний</h2>

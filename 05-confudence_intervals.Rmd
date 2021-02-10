@@ -3,7 +3,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup04, include=FALSE}
+```{r setup05, include=FALSE}
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, comment = "")
 options(scipen=999)
 library(tidyverse)
@@ -24,7 +24,7 @@ tibble(x = seq(0, 1, by = 0.001),
   geom_line()
 ```
 
-## 2. Фреквентисткий доверительный интервал
+## Фреквентисткий доверительный интервал
 Фреквентистский доверительный интервал (по-английски confidence interval) основан на правиле трех сигм нормального распределения:
 
 ```{r, echo = FALSE, fig.height= 2.5}
@@ -88,7 +88,7 @@ tibble(x = seq(0, 1, by = 0.001),
 
 В базовом пакете функция `binom.test()` не позволяет выбирать тип доверительного интервала. `ci.method = "Clopper-Pearson"` возможна, если включить библиотеку `mosaic`. 
 
-## 3. Байесовский доверительный интервал
+## Байесовский доверительный интервал
 Байесовский доверительный $k$-% интервал (по-английски credible interval) --- это интервал $[\frac{k}{2}, 1-\frac{k}{2}]$ от апостериорного распределения.
 
 ```{r}

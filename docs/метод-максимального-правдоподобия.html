@@ -182,6 +182,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных-несколько-моделей"><i class="fa fa-check"></i><b>5.4.4</b> Байесовский апдейт биномиальных данных: несколько моделей</a></li>
 <li class="chapter" data-level="5.4.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать"><i class="fa fa-check"></i><b>5.4.5</b> Что почитать?</a></li>
 </ul></li>
+<li class="chapter" data-level="5.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения"><i class="fa fa-check"></i><b>5.5</b> Байесовский апдейт нормального распределения</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-выбор-из-нескольких-моделей"><i class="fa fa-check"></i><b>5.5.1</b> Байесовский апдейт нормального распределения: выбор из нескольких моделей</a></li>
+<li class="chapter" data-level="5.5.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-непрерывный-вариант"><i class="fa fa-check"></i><b>5.5.2</b> Байесовский апдейт нормального распределения: непрерывный вариант</a></li>
+<li class="chapter" data-level="5.5.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать-1"><i class="fa fa-check"></i><b>5.5.3</b> Что почитать?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#другие-распределения"><i class="fa fa-check"></i><b>5.6</b> Другие распределения</a></li>
+<li class="chapter" data-level="5.7" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#вопросы-к-апостериорному-распределению"><i class="fa fa-check"></i><b>5.7</b> Вопросы к апостериорному распределению</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html"><i class="fa fa-check"></i><b>6</b> Байесовский доверительный интервал</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#фреквентисткий-доверительный-интервал"><i class="fa fa-check"></i><b>6.1</b> Фреквентисткий доверительный интервал</a></li>
+<li class="chapter" data-level="6.2" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#байесовский-доверительный-интервал-1"><i class="fa fa-check"></i><b>6.2</b> Байесовский доверительный интервал</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
@@ -222,12 +235,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
-<form name="form_57105" onsubmit="return validate_form_57105()" method="post">
-<input type="text" name="answer_57105"><br><input type="submit" value="check">
+<form name="form_30309" onsubmit="return validate_form_30309()" method="post">
+<input type="text" name="answer_30309"><br><input type="submit" value="check">
 </form>
-<p id="result_57105">
+<p id="result_30309">
 </p>
-<script> function validate_form_57105() {var x, text; var x = document.forms["form_57105"]["answer_57105"].value;if (x == "0.267"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_57105').innerHTML = text; return false;} </script>
+<script> function validate_form_30309() {var x, text; var x = document.forms["form_30309"]["answer_30309"].value;if (x == "0.267"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_30309').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 Если принять на веру, что биномиальное распределение с параметрами <span class="math inline"><span class="math inline">\(p =\)</span></span> 0.9 описывает, согласно <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span> употребление <em>s</em>-генитивов в британском английском, то какова вероятность наблюдать значения между 300 и 350 генитивов в интервью, содержащее 400 генитивных контекстов? То же самое можно записать, используя математическую нотацию:
@@ -236,12 +249,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="math display"><span class="math display">\[P\left(X \in [300,\, 350] | X \sim Binom(n = 400, p = 0.9)\right) = ??\]</span></span> Ответ округлите до трех и меньше знаков после запятой.
 </p>
 </div>
-<form name="form_31742" onsubmit="return validate_form_31742()" method="post">
-<input type="text" name="answer_31742"><br><input type="submit" value="check">
+<form name="form_53321" onsubmit="return validate_form_53321()" method="post">
+<input type="text" name="answer_53321"><br><input type="submit" value="check">
 </form>
-<p id="result_31742">
+<p id="result_53321">
 </p>
-<script> function validate_form_31742() {var x, text; var x = document.forms["form_31742"]["answer_31742"].value;if (x == "0.06"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_31742').innerHTML = text; return false;} </script>
+<script> function validate_form_53321() {var x, text; var x = document.forms["form_53321"]["answer_53321"].value;if (x == "0.06"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_53321').innerHTML = text; return false;} </script>
 </div>
 <div id="функция-правдоподобия" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Функция правдоподобия</h2>
