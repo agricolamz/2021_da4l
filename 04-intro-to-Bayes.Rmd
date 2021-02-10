@@ -352,22 +352,43 @@ $$\mu_{post} = \frac{\mu_{prior} \times \tau_{prior} + \mu_{data} \times \tau_{d
 ```{r}
 sd_prior <- 90 
 sd_data <- sd(chicks$weight)
-sd_post <- (1/sd_prior+1/sd_data)^(-1)
+sd_post <- 1/sqrt(1/sd_prior^2 + 1/sd_data^2)
 mean_prior <- 180
 mean_data <- mean(chicks$weight)
-mean_post <- weighted.mean(c(mean_prior, mean_data), c(1/sd_prior, 1/sd_data))
+mean_post <- weighted.mean(c(mean_prior, mean_data), c(1/sd_prior^2, 1/sd_data^2))
 
-tibble(x = rep(1:400, 3),
-           density = c(dnorm(unique(x), mean = mean_prior, sd = sd_prior),
-                       dnorm(unique(x), mean = mean_data, sd = sd_data),
-                       dnorm(unique(x), mean = mean_post, sd = sd_post)),
-           dataset = rep(c("prior", "data", "posterior"), each = 400)) %>% 
-  ggplot(aes(x, density, color = dataset))+
-  geom_line()
+chicks %>% 
+  ggplot(aes(weight)) +
+  geom_histogram(aes(y = ..density..))+
+  stat_function(fun = dnorm, args = list(mean_prior,  sd_prior), color = "lightblue")+
+  stat_function(fun = dnorm, args = list(mean_post,  sd_post), color = "red")
 ```
 
 ```{r, eval = FALSE}
 shiny::runGitHub("agricolamz/bayes_for_normal_app") 
+```
+
+```{block, type = "rmdtask"}
+В работе [@coretta2016] собраны [данные](https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv) длительности исландских гласных. Отфильтруйте данные, произнесенные носителем `tt01` (переменная `speaker`), произведите байесовский апдейт данных, моделируя  длительность гласных (переменная `vowel.dur`) нормальным распределением и постройте график. В качестве априорного распределения используйте нормальное распределение со средним 87 и стандартным отклонением 25. 
+```
+
+```{r, echo=FALSE}
+read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv") %>% 
+  filter(speaker == "tt01") ->
+  vowels
+
+sd_prior <- 25
+sd_data <- sd(vowels$vowel.dur)
+sd_post <- 1/sqrt(1/sd_prior^2 + 1/sd_data^2)
+mean_prior <- 87
+mean_data <- mean(vowels$vowel.dur)
+mean_post <- weighted.mean(c(mean_prior, mean_data), c(1/sd_prior^2, 1/sd_data^2))
+
+vowels %>% 
+  ggplot(aes(vowel.dur)) +
+  geom_histogram(aes(y = ..density..))+
+  stat_function(fun = dnorm, args = list(mean_prior,  sd_prior), color = "lightblue")+
+  stat_function(fun = dnorm, args = list(mean_post,  sd_post), color = "red")
 ```
 
 ### Что почитать?
@@ -375,3 +396,39 @@ shiny::runGitHub("agricolamz/bayes_for_normal_app")
 * [Murphy K. P. (2007) Conjugate Bayesian analysis of the Gaussian distribution](https://www.cs.ubc.ca/~murphyk/Papers/bayesGauss.pdf)
 * [Jordan M. I. (2010) The Conjugate Prior for the Normal Distribution](https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/lectures/lecture5.pdf)
 * раздел 2.5 в Gelman A. et. al (2014) Bayesian Data Analysis
+
+## Другие распределения
+
+Мы обсудили биномиальные и нормальнораспределенные данные. Так случилось, что для них есть короткий путь сделать байесовский апдейт, не применяя формулы байеса. И нам так повезло, что связки априорного/апосториорного распределений и функции правдоподобия такие простые:
+
+* априорного/апосториорного распределены как бета распределение, значит функция правдоподобия -- биномиальное распределение
+* если мы моделируем данные при помощи нормального распределения, то все три распределения (априорное, функция правдопдобия и апосториорное) -- нормальные.
+
+Такие отношения между распределениями называют сопряженными (conjugate). В результате для разных семейств функции правдоподобия существует список соответствующих сопряженных априорных распределений (conjugate prior), который можно найти, например, [здесь](https://en.wikipedia.org/wiki/Conjugate_prior).
+
+В более случаях используется (а на самом деле почти всегда) Марковские цепи Монте-Карло (MCMC).
+
+## Вопросы к апостериорному распределению
+
+> A frequentist uses impeccable logic to answer the wrong question, while a Bayesian answers the right question by making assumptions that nobody can fully believe in. (P. G. Hammer)
+
+1) попытка оценить параметр θ и/или какой-нибудь интервал, в котором он лежит.
+    * среднее апостериорного распределения (mean of the posterior estimation, MAP)
+    * максимум апостериорного распределения (maximum a posteriori estimation, MAP)
+    * байесовский доверительный интервал
+2) ответить на вопросы вроде
+    * какая вероятность что значение θ больше некоторого значения $x$?
+    * какая вероятность что значение θ лежит в интервале $[x; y]$?
+    * и т. п.
+3) Выборки из апостериорного распределения (Posterior simulation):
+    * симулируйте большую выборку из апостериорного распределения
+    * используйте полученныую выборку для статистического вывода.
+    
+Например, допустим мы получили апостериорное бета распределение с параметрами 20 и 70. Какова вероятность наблюдать значения больше 0.3?
+
+```{r}
+posterior_simulation <- rbeta(n = 10000, shape1 = 20, shape2 = 70)
+sum(posterior_simulation > 0.3)/10000
+```
+
+И это не p-value! Это настоящие вероятности!

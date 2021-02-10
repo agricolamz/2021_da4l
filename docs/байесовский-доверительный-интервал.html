@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Байесовский доверительный интервал | Анализ данных для лингвистов</title>
+  <meta name="description" content="6 Байесовский доверительный интервал | Анализ данных для лингвистов" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Байесовский доверительный интервал | Анализ данных для лингвистов" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Байесовский доверительный интервал | Анализ данных для лингвистов" />
+  
+  
+  
+
+<meta name="author" content="Г. А. Мороз" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="байесовский-статистический-вывод.html"/>
+<link rel="next" href="ссылки-на-литературу.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Анализ данных для лингвистов</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> О курсе</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#домашние-задания"><i class="fa fa-check"></i><b>1.1</b> Домашние задания</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#используемые-пакеты"><i class="fa fa-check"></i><b>1.2</b> Используемые пакеты</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="распределения.html"><a href="распределения.html"><i class="fa fa-check"></i><b>2</b> Распределения</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="распределения.html"><a href="распределения.html#распределения-в-r"><i class="fa fa-check"></i><b>2.1</b> Распределения в R</a></li>
+<li class="chapter" data-level="2.2" data-path="распределения.html"><a href="распределения.html#дискретные-переменные"><i class="fa fa-check"></i><b>2.2</b> Дискретные переменные</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="распределения.html"><a href="распределения.html#биномиальное-распределение"><i class="fa fa-check"></i><b>2.2.1</b> Биномиальное распределение</a></li>
+<li class="chapter" data-level="2.2.2" data-path="распределения.html"><a href="распределения.html#геометрическое-распределение"><i class="fa fa-check"></i><b>2.2.2</b> Геометрическое распределение</a></li>
+<li class="chapter" data-level="2.2.3" data-path="распределения.html"><a href="распределения.html#распределение-пуассона"><i class="fa fa-check"></i><b>2.2.3</b> Распределение Пуассона</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="распределения.html"><a href="распределения.html#числовые-переменные"><i class="fa fa-check"></i><b>2.3</b> Числовые переменные</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="распределения.html"><a href="распределения.html#нормальное-распределение"><i class="fa fa-check"></i><b>2.3.1</b> Нормальное распределение</a></li>
+<li class="chapter" data-level="2.3.2" data-path="распределения.html"><a href="распределения.html#логнормальное-распределение"><i class="fa fa-check"></i><b>2.3.2</b> Логнормальное распределение</a></li>
+<li class="chapter" data-level="2.3.3" data-path="распределения.html"><a href="распределения.html#что-еще-почитать-про-распределения"><i class="fa fa-check"></i><b>2.3.3</b> Что еще почитать про распределения?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html"><i class="fa fa-check"></i><b>3</b> Метод максимального правдоподобия</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#оценка-вероятности"><i class="fa fa-check"></i><b>3.1</b> Оценка вероятности</a></li>
+<li class="chapter" data-level="3.2" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#функция-правдоподобия"><i class="fa fa-check"></i><b>3.2</b> Функция правдоподобия</a></li>
+<li class="chapter" data-level="3.3" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#пример-с-непрерывным-распределением"><i class="fa fa-check"></i><b>3.3</b> Пример с непрерывным распределением</a></li>
+<li class="chapter" data-level="3.4" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#метод-максимального-правдоподобия-mle"><i class="fa fa-check"></i><b>3.4</b> Метод максимального правдоподобия (MLE)</a></li>
+<li class="chapter" data-level="3.5" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#логорифм-функции-правдоподобия"><i class="fa fa-check"></i><b>3.5</b> Логорифм функции правдоподобия</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="модели-смеси-распределений.html"><a href="модели-смеси-распределений.html"><i class="fa fa-check"></i><b>4</b> Модели смеси распределений</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="модели-смеси-распределений.html"><a href="модели-смеси-распределений.html#cмеси-распределений"><i class="fa fa-check"></i><b>4.1</b> Cмеси распределений</a></li>
+<li class="chapter" data-level="4.2" data-path="модели-смеси-распределений.html"><a href="модели-смеси-распределений.html#модели-смеси-распределений-1"><i class="fa fa-check"></i><b>4.2</b> Модели смеси распределений</a></li>
+<li class="chapter" data-level="4.3" data-path="модели-смеси-распределений.html"><a href="модели-смеси-распределений.html#несколько-замечаний"><i class="fa fa-check"></i><b>4.3</b> Несколько замечаний</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html"><i class="fa fa-check"></i><b>5</b> Байесовский статистический вывод</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#нотация"><i class="fa fa-check"></i><b>5.1</b> Нотация</a></li>
+<li class="chapter" data-level="5.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#категориальный-пример"><i class="fa fa-check"></i><b>5.2</b> Категориальный пример</a></li>
+<li class="chapter" data-level="5.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#разница-между-фриквентиским-и-байесовским-подходами"><i class="fa fa-check"></i><b>5.3</b> Разница между фриквентиским и байесовским подходами</a></li>
+<li class="chapter" data-level="5.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#биномиальные-данные"><i class="fa fa-check"></i><b>5.4</b> Биномиальные данные</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#биномиальное-распределение-1"><i class="fa fa-check"></i><b>5.4.1</b> Биномиальное распределение</a></li>
+<li class="chapter" data-level="5.4.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#бета-распределение"><i class="fa fa-check"></i><b>5.4.2</b> Бета распределение</a></li>
+<li class="chapter" data-level="5.4.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных"><i class="fa fa-check"></i><b>5.4.3</b> Байесовский апдейт биномиальных данных</a></li>
+<li class="chapter" data-level="5.4.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных-несколько-моделей"><i class="fa fa-check"></i><b>5.4.4</b> Байесовский апдейт биномиальных данных: несколько моделей</a></li>
+<li class="chapter" data-level="5.4.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать"><i class="fa fa-check"></i><b>5.4.5</b> Что почитать?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения"><i class="fa fa-check"></i><b>5.5</b> Байесовский апдейт нормального распределения</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-выбор-из-нескольких-моделей"><i class="fa fa-check"></i><b>5.5.1</b> Байесовский апдейт нормального распределения: выбор из нескольких моделей</a></li>
+<li class="chapter" data-level="5.5.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-непрерывный-вариант"><i class="fa fa-check"></i><b>5.5.2</b> Байесовский апдейт нормального распределения: непрерывный вариант</a></li>
+<li class="chapter" data-level="5.5.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать-1"><i class="fa fa-check"></i><b>5.5.3</b> Что почитать?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#другие-распределения"><i class="fa fa-check"></i><b>5.6</b> Другие распределения</a></li>
+<li class="chapter" data-level="5.7" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#вопросы-к-апостериорному-распределению"><i class="fa fa-check"></i><b>5.7</b> Вопросы к апостериорному распределению</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html"><i class="fa fa-check"></i><b>6</b> Байесовский доверительный интервал</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#фреквентисткий-доверительный-интервал"><i class="fa fa-check"></i><b>6.1</b> 2. Фреквентисткий доверительный интервал</a></li>
+<li class="chapter" data-level="6.2" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#байесовский-доверительный-интервал-1"><i class="fa fa-check"></i><b>6.2</b> 3. Байесовский доверительный интервал</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Анализ данных для лингвистов</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="байесовский-доверительный-интервал" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Байесовский доверительный интервал</h1>
+<p>Рассмотрим простенькую задачу, которую мы видели раньше:</p>
+<div class="rmdtask">
+<p>
+Немного упрощая данные из статьи <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span>, можно сказать что носители британского английского предпочитают <em>s</em>-генитив (90%) <em>of</em>-генитиву (10%). Проведите байесовский апдейт, если Вы наблюдаете в интервью британского актера из 120 контекстов 92 <em>s</em>-генитивов? Априорное распределение берите соразмерное данным. Ответ округлите до трёх или менее знаков после запятой.
+</p>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="байесовский-доверительный-интервал.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.001</span>),</span>
+<span id="cb1-2"><a href="байесовский-доверительный-интервал.html#cb1-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">dbeta</span>(x, <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span>, <span class="dv">12</span><span class="sc">+</span><span class="dv">28</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="байесовский-доверительный-интервал.html#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y))<span class="sc">+</span></span>
+<span id="cb1-4"><a href="байесовский-доверительный-интервал.html#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div id="фреквентисткий-доверительный-интервал" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> 2. Фреквентисткий доверительный интервал</h2>
+<p>Фреквентистский доверительный интервал (по-английски confidence interval) основан на правиле трех сигм нормального распределения:</p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><strong>z-score</strong>:</p>
+<ul>
+<li>95% данных находится в 1.96 стандартных отклонений</li>
+<li>99% данных находится в 2.58 стандартных отклонений</li>
+</ul>
+<p>Доверительный интервал:</p>
+<ul>
+<li>предположим что данные генеральной совокупности нормально распределены</li>
+<li>тогда доверительные интервалы выборок взятых из генеральной совокупности будут <a href="https://rpsychologist.com/d3/CI/">покрывать среднее генеральной совокупности</a></li>
+</ul>
+<p><span class="math display">\[\bar{x} \pm z \times \frac{\sigma}{\sqrt{n}}\text{, где } z \text{ — это центральная } 1 - \frac{\alpha}{2} \text{ часть данных}\]</span></p>
+<p>Распространение этой логики на биномиальные данные называется интервал Вальда:</p>
+<p><span class="math display">\[\bar{x} = \theta; \sigma = \sqrt{\frac{\theta\times(1-\theta)}{n}}\]</span></p>
+<p>Тогда интервал Вальда:</p>
+<p><span class="math display">\[\theta \pm  z\times\sqrt{\frac{\theta\times(1-\theta)} {n}}\]</span></p>
+<p>Есть только одна проблема: работает он плохо. Его аналоги перечислены в других работ:</p>
+<ul>
+<li>assymptotic method with continuity correction</li>
+<li>Wilson score</li>
+<li>Wilson Score method with continuity correction</li>
+<li>Jeffreys interval</li>
+<li>Clopper–Pearson interval (default in R <code>binom.test()</code>)</li>
+<li>Agresti–Coull interval</li>
+<li>… см. пакет <code>binom</code></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="байесовский-доверительный-интервал.html#cb2-1" aria-hidden="true" tabindex="-1"></a>low_ci <span class="ot">&lt;-</span> <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span>, <span class="at">n =</span> <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span><span class="sc">+</span><span class="dv">12</span><span class="sc">+</span><span class="dv">28</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span>
+<span id="cb2-2"><a href="байесовский-доверительный-интервал.html#cb2-2" aria-hidden="true" tabindex="-1"></a>up_ci <span class="ot">&lt;-</span>  <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span>, <span class="at">n =</span> <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span><span class="sc">+</span><span class="dv">12</span><span class="sc">+</span><span class="dv">28</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span>
+<span id="cb2-3"><a href="байесовский-доверительный-интервал.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="байесовский-доверительный-интервал.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.001</span>),</span>
+<span id="cb2-5"><a href="байесовский-доверительный-интервал.html#cb2-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">dbeta</span>(x, <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span>, <span class="dv">12</span><span class="sc">+</span><span class="dv">28</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-6"><a href="байесовский-доверительный-интервал.html#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y))<span class="sc">+</span></span>
+<span id="cb2-7"><a href="байесовский-доверительный-интервал.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb2-8"><a href="байесовский-доверительный-интервал.html#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xmin =</span> low_ci, <span class="at">xmax =</span> up_ci, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb2-9"><a href="байесовский-доверительный-интервал.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Апостериорное распределение&quot;</span>,</span>
+<span id="cb2-10"><a href="байесовский-доверительный-интервал.html#cb2-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;красным фреквентисткий 95% доверительный интервал&quot;</span>,</span>
+<span id="cb2-11"><a href="байесовский-доверительный-интервал.html#cb2-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>В базовом пакете функция <code>binom.test()</code> не позволяет выбирать тип доверительного интервала. <code>ci.method = "Clopper-Pearson"</code> возможна, если включить библиотеку <code>mosaic</code>.</p>
+</div>
+<div id="байесовский-доверительный-интервал-1" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> 3. Байесовский доверительный интервал</h2>
+<p>Байесовский доверительный <span class="math inline">\(k\)</span>-% интервал (по-английски credible interval) — это интервал <span class="math inline">\([\frac{k}{2}, 1-\frac{k}{2}]\)</span> от апостериорного распределения.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="байесовский-доверительный-интервал.html#cb3-1" aria-hidden="true" tabindex="-1"></a>low_ci <span class="ot">&lt;-</span> <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span>, <span class="at">n =</span> <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span><span class="sc">+</span><span class="dv">12</span><span class="sc">+</span><span class="dv">28</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span>
+<span id="cb3-2"><a href="байесовский-доверительный-интервал.html#cb3-2" aria-hidden="true" tabindex="-1"></a>up_ci <span class="ot">&lt;-</span>  <span class="fu">binom.test</span>(<span class="at">x =</span> <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span>, <span class="at">n =</span> <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span><span class="sc">+</span><span class="dv">12</span><span class="sc">+</span><span class="dv">28</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span>
+<span id="cb3-3"><a href="байесовский-доверительный-интервал.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="байесовский-доверительный-интервал.html#cb3-4" aria-hidden="true" tabindex="-1"></a>cred_int_l <span class="ot">&lt;-</span> <span class="fu">qbeta</span>(<span class="fl">0.025</span>, <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span>, <span class="dv">12</span><span class="sc">+</span><span class="dv">28</span>)</span>
+<span id="cb3-5"><a href="байесовский-доверительный-интервал.html#cb3-5" aria-hidden="true" tabindex="-1"></a>cred_int_h <span class="ot">&lt;-</span> <span class="fu">qbeta</span>(<span class="fl">0.975</span>, <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span>, <span class="dv">12</span><span class="sc">+</span><span class="dv">28</span>)</span>
+<span id="cb3-6"><a href="байесовский-доверительный-интервал.html#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="байесовский-доверительный-интервал.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.001</span>),</span>
+<span id="cb3-8"><a href="байесовский-доверительный-интервал.html#cb3-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">dbeta</span>(x, <span class="dv">108</span><span class="sc">+</span><span class="dv">92</span>, <span class="dv">12</span><span class="sc">+</span><span class="dv">28</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-9"><a href="байесовский-доверительный-интервал.html#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y))<span class="sc">+</span></span>
+<span id="cb3-10"><a href="байесовский-доверительный-интервал.html#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb3-11"><a href="байесовский-доверительный-интервал.html#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xmin =</span> low_ci, <span class="at">xmax =</span> up_ci, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb3-12"><a href="байесовский-доверительный-интервал.html#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="at">y =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">xmin =</span> cred_int_l, <span class="at">xmax =</span> cred_int_h, <span class="at">color =</span> <span class="st">&quot;lightblue&quot;</span>)<span class="sc">+</span></span>
+<span id="cb3-13"><a href="байесовский-доверительный-интервал.html#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Апостериорное распределение&quot;</span>,</span>
+<span id="cb3-14"><a href="байесовский-доверительный-интервал.html#cb3-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;красным фреквентисткий 95% доверительный интервал</span><span class="sc">\n</span><span class="st">синим байесовский 95% доверительный интервал&quot;</span>,</span>
+<span id="cb3-15"><a href="байесовский-доверительный-интервал.html#cb3-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="байесовский-статистический-вывод.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ссылки-на-литературу.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/agricolamz/2021_da4l/edit/master/05-confudence_intervals.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["da4l.pdf"],
+"toc": {
+"collapse": "section"
+},
+"self_contained": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
