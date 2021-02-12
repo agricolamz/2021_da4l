@@ -196,6 +196,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#фреквентисткий-доверительный-интервал"><i class="fa fa-check"></i><b>6.1</b> Фреквентисткий доверительный интервал</a></li>
 <li class="chapter" data-level="6.2" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#байесовский-доверительный-интервал-1"><i class="fa fa-check"></i><b>6.2</b> Байесовский доверительный интервал</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html"><i class="fa fa-check"></i><b>7</b> Коэффициент Байеса</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html#коэффициент-байеса-1"><i class="fa fa-check"></i><b>7.1</b> Коэффициент Байеса</a></li>
+<li class="chapter" data-level="7.2" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html#формула-байеса-опять"><i class="fa fa-check"></i><b>7.2</b> Формула Байеса опять</a></li>
+<li class="chapter" data-level="7.3" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html#биномиальный-вариант"><i class="fa fa-check"></i><b>7.3</b> Биномиальный вариант</a></li>
+<li class="chapter" data-level="7.4" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html#интерпретация-коэффициента-байеса"><i class="fa fa-check"></i><b>7.4</b> <span>Интерпретация коэффициента Байеса</span></a></li>
+<li class="chapter" data-level="7.5" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html#дискретный-вариант"><i class="fa fa-check"></i><b>7.5</b> Дискретный вариант</a></li>
+<li class="chapter" data-level="7.6" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html#несколько-точечных-моделей"><i class="fa fa-check"></i><b>7.6</b> Несколько точечных моделей</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
 
@@ -395,7 +404,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="байесовский-статистический-вывод.html#cb63-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runGitHub</span>(<span class="st">&quot;agricolamz/bayes_for_binomial_app&quot;</span>) </span></code></pre></div>
 <div class="rmdtask">
 <p>
-Немного упрощая данные из статьи <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span>, можно сказать что носители британского английского предпочитают <em>s</em>-генитив (90%) <em>of</em>-генитиву (10%). Проведите байесовский апдейт, если Вы наблюдаете в интервью британского актера из 120 контекстов 92 <em>s</em>-генитивов? Априорное распределение берите соразмерное данным. Ответ округлите до трёх или менее знаков после запятой.
+Немного упрощая данные из статьи <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span>, можно сказать что носители британского английского предпочитают <em>s</em>-генитив (90%) <em>of</em>-генитиву (10%). Проведите байесовский апдейт, если Вы наблюдаете в интервью британского актера из 120 контекстов 92 <em>s</em>-генитивов. Априорное распределение берите соразмерное данным. Ответ округлите до трёх или менее знаков после запятой.
 </p>
 </div>
 <div class="rmdtask">
@@ -503,7 +512,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <p><span class="math display">\[\tau = \frac{1}{\sigma^2}\]</span></p>
 <p><span class="math display">\[\tau_{post} = \tau_{prior} + \tau_{data} \Rightarrow \sigma^2_{post} = \frac{1}{\tau_{post}}\]</span></p>
 <p><span class="math display">\[\mu_{post} = \frac{\mu_{prior} \times \tau_{prior} + \mu_{data} \times \tau_{data}}{\tau_{post}}\]</span></p>
-<p>Так что если нашим априорным распределением мы назовем нормальное распределение со средним около 180 и стандартным отклонением 90, то процесс байсовского апдейта будет выглядеть вот так:</p>
+<p>Так что если нашим априорным распределением мы назовем нормальное распределение со средним около 180 и стандартным отклонением 90, то процесс байесовского апдейта будет выглядеть вот так:</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="байесовский-статистический-вывод.html#cb69-1" aria-hidden="true" tabindex="-1"></a>sd_prior <span class="ot">&lt;-</span> <span class="dv">90</span> </span>
 <span id="cb69-2"><a href="байесовский-статистический-вывод.html#cb69-2" aria-hidden="true" tabindex="-1"></a>sd_data <span class="ot">&lt;-</span> <span class="fu">sd</span>(chicks<span class="sc">$</span>weight)</span>
 <span id="cb69-3"><a href="байесовский-статистический-вывод.html#cb69-3" aria-hidden="true" tabindex="-1"></a>sd_post <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>sd_prior<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>sd_data<span class="sc">^</span><span class="dv">2</span>)</span>
@@ -558,17 +567,17 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 </ul></li>
 <li>ответить на вопросы вроде
 <ul>
-<li>какая вероятность что значение θ больше некоторого значения <span class="math inline">\(x\)</span>?</li>
-<li>какая вероятность что значение θ лежит в интервале <span class="math inline">\([x; y]\)</span>?</li>
+<li>какова вероятность, что значение θ больше некоторого значения <span class="math inline">\(x\)</span>?</li>
+<li>какова вероятность, что значение θ лежит в интервале <span class="math inline">\([x; y]\)</span>?</li>
 <li>и т. п.</li>
 </ul></li>
 <li>Выборки из апостериорного распределения (Posterior simulation):
 <ul>
-<li>симулируйте большую выборку из апостериорного распределения</li>
-<li>используйте полученныую выборку для статистического вывода.</li>
+<li>симулируйте большую выборку из апостериорного распределения;</li>
+<li>используйте полученную выборку для статистического вывода.</li>
 </ul></li>
 </ol>
-<p>Например, допустим мы получили апостериорное бета распределение с параметрами 20 и 70. Какова вероятность наблюдать значения больше 0.3?</p>
+<p>Допустим, мы получили апостериорное бета распределение с параметрами 20 и 70. Какова вероятность наблюдать значения больше 0.3?</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="байесовский-статистический-вывод.html#cb71-1" aria-hidden="true" tabindex="-1"></a>posterior_simulation <span class="ot">&lt;-</span> <span class="fu">rbeta</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">shape1 =</span> <span class="dv">20</span>, <span class="at">shape2 =</span> <span class="dv">70</span>)</span>
 <span id="cb71-2"><a href="байесовский-статистический-вывод.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(posterior_simulation <span class="sc">&gt;</span> <span class="fl">0.3</span>)<span class="sc">/</span><span class="dv">10000</span></span></code></pre></div>
 <pre><code>[1] 0.0424</code></pre>

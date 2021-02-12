@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.9.10)  10 FEB 2021 12:14
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.9.10)  12 FEB 2021 11:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -928,7 +928,8 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip65
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count306
-) (./da4l.aux)
+)
+No file da4l.aux.
 \openout1 = `da4l.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 204.
@@ -1230,6 +1231,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 204.
 LaTeX Info: Redefining \pageref on input line 204.
 LaTeX Info: Redefining \nameref on input line 204.
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `TU/brill(0)/m/n' will be
@@ -1275,26 +1279,6 @@ LaTeX Font Info:    Font shape `TU/brill(0)/m/n' will be
 (Font)              scaled to size 24.88pt on input line 209.
 LaTeX Font Info:    Font shape `TU/brill(0)/bx/n' will be
 (Font)              scaled to size 24.88pt on input line 209.
-(./da4l.toc
-LaTeX Font Info:    Font shape `TU/brill(0)/bx/n' will be
-(Font)              scaled to size 10.0pt on input line 2.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.57777pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 4.69841pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 9.39774pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.57841pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 4.69887pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.39575pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.57703pt on input line 3.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.69788pt on input line 3.
-)
 \tf@toc=\write5
 \openout5 = `da4l.toc'.
 
@@ -1306,6 +1290,22 @@ LaTeX Font Info:    Font shape `TU/brill(0)/m/n' will be
 (Font)              scaled to size 20.74pt on input line 212.
 LaTeX Font Info:    Font shape `TU/brill(0)/bx/n' will be
 (Font)              scaled to size 20.74pt on input line 212.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.57777pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 4.69841pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 9.39774pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.57841pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 4.69887pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.39575pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.57703pt on input line 219.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.69788pt on input line 219.
 LaTeX Font Info:    Font shape `TU/brill(0)/m/n' will be
 (Font)              scaled to size 7.0pt on input line 219.
 LaTeX Font Info:    Font shape `TU/brill(0)/m/n' will be
@@ -1319,12 +1319,14 @@ LaTeX Font Info:    Font shape `TU/iosevka-regular(0)/m/n' will be
 LaTeX Font Info:    Font shape `TU/iosevka-regular(0)/m/n' will be
 (Font)              scaled to size 3.49998pt on input line 221.
 LaTeX Font Info:    Font shape `TU/brill(0)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 237.
+(Font)              scaled to size 14.4pt on input line 239.
 LaTeX Font Info:    Font shape `TU/brill(0)/bx/n' will be
-(Font)              scaled to size 14.4pt on input line 237.
+(Font)              scaled to size 14.4pt on input line 239.
+LaTeX Font Info:    Font shape `TU/brill(0)/bx/n' will be
+(Font)              scaled to size 10.0pt on input line 249.
 [5]
 LaTeX Font Info:    Font shape `TU/iosevka-regular(0)/m/n' will be
-(Font)              scaled to size 6.99997pt on input line 259.
+(Font)              scaled to size 6.99997pt on input line 261.
 [6]
 Глава 2.
 File: da4l_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
@@ -1350,11 +1352,11 @@ File: images/task.png Graphic file (type bmp)
 File: images/task.png Graphic file (type bmp)
 <images/task.png>
 LaTeX Font Info:    Font shape `TU/brill(0)/bx/n' will be
-(Font)              scaled to size 12.0pt on input line 391.
+(Font)              scaled to size 12.0pt on input line 393.
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 395.
+(amsmath)                 on input line 397.
 
 File: da4l_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-10-1.pdf>
@@ -1399,31 +1401,23 @@ Underfull \vbox (badness 2970) has occurred while \output is active []
 File: da4l_files/figure-latex/unnamed-chunk-25-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-25-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 547--548
-[]\TU/brill(0)/m/n/10 Птичка напела, что длительность гласных американского анг
-лийского из
- []
-
-
-Underfull \hbox (badness 1292) in paragraph at lines 547--548
-\TU/brill(0)/m/n/10 ([]Hillenbrand et al.[], []1995[]) можно описать нормальным
- распределением с парамет-
- []
+Package natbib Warning: Citation `hillenbrand95' on page 16 undefined on input 
+line 549.
 
 
 LaTeX Font Warning: Font shape `TU/iosevka-regular(0)/m/it' undefined
-(Font)              using `TU/iosevka-regular(0)/m/n' instead on input line 554
+(Font)              using `TU/iosevka-regular(0)/m/n' instead on input line 556
 .
 
 File: da4l_files/figure-latex/unnamed-chunk-27-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-27-1.pdf>
 [16]
 LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 564.
+(Font)              scaled to size 10.0pt on input line 566.
 LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 564.
+(Font)              scaled to size 7.0pt on input line 566.
 LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 564.
+(Font)              scaled to size 5.0pt on input line 566.
 File: da4l_files/figure-latex/unnamed-chunk-28-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-28-1.pdf>
 
@@ -1435,11 +1429,15 @@ File: images/task.png Graphic file (type bmp)
 File: da4l_files/figure-latex/unnamed-chunk-31-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-31-1.pdf>
 LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 592.
+(Font)              scaled to size 8.0pt on input line 594.
 LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 592.
+(Font)              scaled to size 6.0pt on input line 594.
 [18]
 Глава 3.
+
+Package natbib Warning: Citation `hillenbrand95' on page 19 undefined on input 
+line 608.
+
 File: da4l_files/figure-latex/unnamed-chunk-34-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-34-1.pdf>
 
@@ -1460,25 +1458,24 @@ File: da4l_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file (type pdf)
 [21]
 
 LaTeX Font Warning: Font shape `TU/iosevka-regular(0)/bx/n' undefined
-(Font)              using `TU/iosevka-regular(0)/m/n' instead on input line 676
+(Font)              using `TU/iosevka-regular(0)/m/n' instead on input line 678
 .
 
 File: da4l_files/figure-latex/unnamed-chunk-42-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-42-1.pdf>
 LaTeX Font Info:    Font shape `TU/iosevka-regular(0)/bx/n' will be
-(Font)              scaled to size 6.99997pt on input line 700.
+(Font)              scaled to size 6.99997pt on input line 702.
 File: da4l_files/figure-latex/unnamed-chunk-44-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-44-1.pdf>
 [22]
-Underfull \hbox (badness 5077) in paragraph at lines 723--724
-\TU/brill(1)/m/n/10 Мы уже обсуждали, что длительность гласных американского ан
-глийского из
- []
+
+Package natbib Warning: Citation `hillenbrand95' on page 23 undefined on input 
+line 725.
 
 File: da4l_files/figure-latex/unnamed-chunk-45-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-45-1.pdf>
 
-Underfull \vbox (badness 6001) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [23]
 File: da4l_files/figure-latex/unnamed-chunk-45-2.pdf Graphic file (type pdf)
@@ -1486,25 +1483,29 @@ File: da4l_files/figure-latex/unnamed-chunk-45-2.pdf Graphic file (type pdf)
 [24]
 File: da4l_files/figure-latex/unnamed-chunk-45-3.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-45-3.pdf>
+
+Package natbib Warning: Citation `hillenbrand95' on page 25 undefined on input 
+line 775.
+
 [25]
 File: images/task.png Graphic file (type bmp)
 <images/task.png>
 File: images/task.png Graphic file (type bmp)
 <images/task.png>
 
-Underfull \hbox (badness 3965) in paragraph at lines 832--842
+Underfull \hbox (badness 3965) in paragraph at lines 834--844
 \TU/brill(1)/m/n/10 Отфильтруйте данные, оставив односложные слова (переменная 
 \TU/iosevka-regular(0)/bx/n/10 syllables\TU/brill(1)/m/n/10 )
  []
 
 
-Underfull \hbox (badness 1902) in paragraph at lines 832--842
+Underfull \hbox (badness 1902) in paragraph at lines 834--844
 \TU/brill(1)/m/n/10 гласных (переменная \TU/iosevka-regular(0)/bx/n/10 vowel.du
 r\TU/brill(1)/m/n/10 ) нормальным и логнормальным распределе-
  []
 
 
-Underfull \hbox (badness 2698) in paragraph at lines 832--842
+Underfull \hbox (badness 2698) in paragraph at lines 834--844
 \TU/brill(1)/m/n/10 нием. Как вам кажется, какое распределение лучше подходит к
  данным?
  []
@@ -1516,7 +1517,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [26]
 LaTeX Font Info:    Font shape `TU/brill(0)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 851.
+(Font)              scaled to size 5.0pt on input line 853.
 File: images/task.png Graphic file (type bmp)
 <images/task.png>
 [27]
@@ -1540,7 +1541,7 @@ File: da4l_files/figure-latex/unnamed-chunk-58-1.pdf Graphic file (type pdf)
 File: da4l_files/figure-latex/unnamed-chunk-58-2.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-58-2.pdf>
 [31]
-Underfull \vbox (badness 1087) detected at line 1031
+Underfull \vbox (badness 1087) detected at line 1033
  []
 
 [32]
@@ -1554,7 +1555,7 @@ File: da4l_files/figure-latex/unnamed-chunk-63-1.pdf Graphic file (type pdf)
 File: da4l_files/figure-latex/unnamed-chunk-63-2.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-63-2.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 1093--1094
+Underfull \hbox (badness 10000) in paragraph at lines 1095--1096
 [][]
  []
 
@@ -1562,7 +1563,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1093--1094
 Underfull \vbox (badness 5832) has occurred while \output is active []
 
 [34]
-Underfull \hbox (badness 1735) in paragraph at lines 1101--1103
+Underfull \hbox (badness 1735) in paragraph at lines 1103--1105
 []\TU/brill(1)/m/n/10 В наших примерах нам была доступна информация о классах (
 spam/ham,
  []
@@ -1572,7 +1573,7 @@ spam/ham,
 ]
 Глава 5.
 
-Underfull \hbox (badness 6173) in paragraph at lines 1143--1144
+Underfull \hbox (badness 6173) in paragraph at lines 1145--1146
 \TU/brill(1)/m/n/10 Для примера я взял датасет, который содержит спамерские и о
 бычные смс-
  []
@@ -1595,6 +1596,10 @@ File: images/task.png Graphic file (type bmp)
 File: images/gelman.png Graphic file (type bmp)
 <images/gelman.png>
 
+Package natbib Warning: Citation `efron16' on page 42 undefined on input line 1
+323.
+
+
 Underfull \vbox (badness 1442) has occurred while \output is active []
 
 [42]
@@ -1616,13 +1621,17 @@ File: da4l_files/figure-latex/unnamed-chunk-86-1.pdf Graphic file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [45]
+
+Package natbib Warning: Citation `robinson17' on page 46 undefined on input lin
+e 1441.
+
 File: da4l_files/figure-latex/unnamed-chunk-87-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-87-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [46]
-Underfull \hbox (badness 1783) in paragraph at lines 1463--1463
+Underfull \hbox (badness 1783) in paragraph at lines 1465--1465
 []\TU/brill(0)/bx/n/12 Байесовский апдейт нормального распределения: выбор из
  []
 
@@ -1635,7 +1644,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: da4l_files/figure-latex/unnamed-chunk-89-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-89-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 1532--1533
+Underfull \hbox (badness 10000) in paragraph at lines 1534--1535
 \TU/brill(1)/m/n/10 Во первых, нам понадобится некоторая мера, которая называет
 ся \TU/brill(0)/m/it/10 точность
  []
@@ -1646,7 +1655,7 @@ File: da4l_files/figure-latex/unnamed-chunk-90-1.pdf Graphic file (type pdf)
 File: images/task.png Graphic file (type bmp)
 <images/task.png>
 
-Underfull \hbox (badness 1394) in paragraph at lines 1568--1576
+Underfull \hbox (badness 1394) in paragraph at lines 1570--1578
 \TU/brill(1)/m/n/10 Отфильтруйте данные, произнесенные носителем \TU/iosevka-re
 gular(0)/bx/n/10 tt01 \TU/brill(1)/m/n/10 (переменная \TU/iosevka-regular(0)/bx
 /n/10 speaker\TU/brill(1)/m/n/10 ),
@@ -1658,13 +1667,13 @@ File: da4l_files/figure-latex/unnamed-chunk-93-1.pdf Graphic file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [50]
-Underfull \hbox (badness 1019) in paragraph at lines 1601--1603
+Underfull \hbox (badness 1019) in paragraph at lines 1603--1605
 []\TU/brill(1)/m/n/10 априорного/апосториорного распределены как бета распредел
 ение, значит
  []
 
 [51]
-Underfull \hbox (badness 10000) in paragraph at lines 1628--1630
+Underfull \hbox (badness 10000) in paragraph at lines 1630--1632
 []\TU/brill(1)/m/n/10 максимум апостериорного распределения (maximum a posterio
 ri
  []
@@ -1687,31 +1696,71 @@ File: da4l_files/figure-latex/unnamed-chunk-97-1.pdf Graphic file (type pdf)
 File: da4l_files/figure-latex/unnamed-chunk-98-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-98-1.pdf>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5217) has occurred while \output is active []
 
 [55] [56]
 File: da4l_files/figure-latex/unnamed-chunk-99-1.pdf Graphic file (type pdf)
 <use da4l_files/figure-latex/unnamed-chunk-99-1.pdf>
-(./da4l.bbl [57] [58
+File: images/task.png Graphic file (type bmp)
+<images/task.png>
 
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1802.
-[59]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1802.
-(./da4l.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1802.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1802.
+Underfull \hbox (badness 1394) in paragraph at lines 1803--1813
+\TU/brill(1)/m/n/10 Отфильтруйте данные, произнесенные носителем \TU/iosevka-re
+gular(0)/bx/n/10 tt01 \TU/brill(1)/m/n/10 (переменная \TU/iosevka-regular(0)/bx
+/n/10 speaker\TU/brill(1)/m/n/10 ),
+ []
 
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
- ) 
+Underfull \hbox (badness 4846) in paragraph at lines 1803--1813
+\TU/brill(1)/m/n/10 распределения используйте нормальное распределение со средн
+им 87 и
+ []
+
+File: da4l_files/figure-latex/unnamed-chunk-101-1.pdf Graphic file (type pdf)
+<use da4l_files/figure-latex/unnamed-chunk-101-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[57] [58]
+Глава 7.
+File: da4l_files/figure-latex/unnamed-chunk-103-1.pdf Graphic file (type pdf)
+<use da4l_files/figure-latex/unnamed-chunk-103-1.pdf>
+[59
+
+]
+Underfull \hbox (badness 2828) in paragraph at lines 1862--1863
+[]\TU/brill(1)/m/n/10 Коэффициент Байеса определяют как соотношение предельных 
+правдоподобий
+ []
+
+[60]
+Overfull \hbox (0.15906pt too wide) detected at line 1901
+[][][][][][][][][][] [] [] [] [][] [] [][] [] [][][] [] [] [] [][][][][][] [] [
+][] [] [][][][][][][] [] [][][][][][][][][][]
+ []
+
+File: da4l_files/figure-latex/unnamed-chunk-108-1.pdf Graphic file (type pdf)
+<use da4l_files/figure-latex/unnamed-chunk-108-1.pdf>
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 13.5314pt on input line 1929.
+LaTeX Font Info:    Font shape `TU/brill(1)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 1929.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 13.53273pt on input line 1929.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 13.52988pt on input line 1929.
+! Argument of \@sect has an extra }.
+<inserted text> 
+                \par 
+l.1929 ...42ux430-ux431ux430ux439ux435ux441ux430}}
+                                                   
 Here is how much of TeX's memory you used:
- 30412 strings out of 492909
- 562947 string characters out of 6132923
- 791179 words of memory out of 5000000
- 34135 multiletter control sequences out of 15000+600000
- 536380 words of font info for 81 fonts, out of 8000000 for 9000
+ 30376 strings out of 492909
+ 558117 string characters out of 6132923
+ 788540 words of memory out of 5000000
+ 34102 multiletter control sequences out of 15000+600000
+ 536933 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 58i,9n,118p,814b,636s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,9n,118p,809b,636s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on da4l.pdf (59 pages).
+Output written on da4l.pdf (60 pages).

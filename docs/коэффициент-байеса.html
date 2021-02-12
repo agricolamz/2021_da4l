@@ -227,16 +227,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">7</span> Коэффициент Байеса</h1>
 <div id="коэффициент-байеса-1" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Коэффициент Байеса</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="коэффициент-байеса.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="коэффициент-байеса.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>В прошлой лекции мы обсуждали значения правдоподобия. Важно понимать, что само по себе значение правдоподобия бессмысленно, оно важно для сравнения со значениями правдоподобия разных моделей. Представим, что мы пытаемся выбрать между двумя моделями:</p>
 <ul>
 <li><span class="math inline">\(H_1 = X \sim \ln\mathcal{N}(\mu = 3,\, \sigma^{2}= 0.37)\)</span></li>
 <li><span class="math inline">\(H_2 = X \sim \ln\mathcal{N}(\mu = 3.5,\, \sigma^{2}= 0.25)\)</span></li>
 </ul>
-<p><img src="da4l_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="коэффициент-байеса.html#cb2-1" aria-hidden="true" tabindex="-1"></a>L1 <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(<span class="dv">33</span>, <span class="dv">3</span>, <span class="fl">0.37</span>)<span class="sc">*</span><span class="fu">dlnorm</span>(<span class="dv">26</span>, <span class="dv">3</span>, <span class="fl">0.37</span>)</span>
-<span id="cb2-2"><a href="коэффициент-байеса.html#cb2-2" aria-hidden="true" tabindex="-1"></a>L2 <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(<span class="dv">33</span>, <span class="fl">3.5</span>, <span class="fl">0.25</span>)<span class="sc">*</span><span class="fu">dlnorm</span>(<span class="dv">26</span>, <span class="fl">3.5</span>, <span class="fl">0.25</span>)</span>
-<span id="cb2-3"><a href="коэффициент-байеса.html#cb2-3" aria-hidden="true" tabindex="-1"></a>L2<span class="sc">/</span>L1</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="коэффициент-байеса.html#cb77-1" aria-hidden="true" tabindex="-1"></a>L1 <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(<span class="dv">33</span>, <span class="dv">3</span>, <span class="fl">0.37</span>)<span class="sc">*</span><span class="fu">dlnorm</span>(<span class="dv">26</span>, <span class="dv">3</span>, <span class="fl">0.37</span>)</span>
+<span id="cb77-2"><a href="коэффициент-байеса.html#cb77-2" aria-hidden="true" tabindex="-1"></a>L2 <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(<span class="dv">33</span>, <span class="fl">3.5</span>, <span class="fl">0.25</span>)<span class="sc">*</span><span class="fu">dlnorm</span>(<span class="dv">26</span>, <span class="fl">3.5</span>, <span class="fl">0.25</span>)</span>
+<span id="cb77-3"><a href="коэффициент-байеса.html#cb77-3" aria-hidden="true" tabindex="-1"></a>L2<span class="sc">/</span>L1</span></code></pre></div>
 <pre><code>[1] 4.303835</code></pre>
 <p>Как мы видим, на основании наших (фейковых) данных <span class="math inline">\(H_2\)</span> в 4 раза более вероятнее, чем <span class="math inline">\(H_1\)</span>. Надо отметить, что не все тепло относятся к сравнению моделей (см. <a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.44.6443">Gelman, Rubin 1994</a>).</p>
 </div>
@@ -261,16 +261,16 @@ BF_{12} = \frac{P(Data | M_1 )}{P(Data | M_2)}
 <p><span class="math display">\[P(k | n, p) = \frac{n!}{k!(n-k)!} \times p^k \times (1-p)^{n-k} =  {n \choose k} \times p^k \times (1-p)^{n-k}\]</span></p>
 <p>Так что в случае наших моделей будет:</p>
 <p><span class="math display">\[P(Data | M_1) = {n \choose k} \times p^k \times (1-p)^{n-k} = {699 \choose 58} \times 0.08^{58} \times (1-0.08)^{699-58} = 0.0523985\]</span></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="коэффициент-байеса.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.08</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="коэффициент-байеса.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.08</span>)</span></code></pre></div>
 <pre><code>[1] 0.0523985</code></pre>
 <p><span class="math display">\[P(Data | M_2) = {n \choose k} \times p^k \times (1-p)^{n-k} = {699 \choose 58} \times 0.085^{58} \times (1-0.085)^{699-58} = 0.04402509\]</span></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="коэффициент-байеса.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.09</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="коэффициент-байеса.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.09</span>)</span></code></pre></div>
 <pre><code>[1] 0.04402509</code></pre>
 <p>Тогда коэфициент Байеса будет</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="коэффициент-байеса.html#cb8-1" aria-hidden="true" tabindex="-1"></a>BF_12 <span class="ot">=</span> <span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.08</span>)<span class="sc">/</span><span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.09</span>)</span>
-<span id="cb8-2"><a href="коэффициент-байеса.html#cb8-2" aria-hidden="true" tabindex="-1"></a>BF_12</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="коэффициент-байеса.html#cb83-1" aria-hidden="true" tabindex="-1"></a>BF_12 <span class="ot">=</span> <span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.08</span>)<span class="sc">/</span><span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.09</span>)</span>
+<span id="cb83-2"><a href="коэффициент-байеса.html#cb83-2" aria-hidden="true" tabindex="-1"></a>BF_12</span></code></pre></div>
 <pre><code>[1] 1.190196</code></pre>
-<p><img src="da4l_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 </div>
 <div id="интерпретация-коэффициента-байеса" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> <a href="https://en.wikipedia.org/wiki/Bayes_factor#Interpretation">Интерпретация коэффициента Байеса</a></h2>
@@ -278,22 +278,22 @@ BF_{12} = \frac{P(Data | M_1 )}{P(Data | M_2)}
 <div id="дискретный-вариант" class="section level2" number="7.5">
 <h2><span class="header-section-number">7.5</span> Дискретный вариант</h2>
 <p>Для примера обратися снова к датасету, который содержит спамерские и обычные смс-сообщения, выложенный UCI Machine Learning <a href="https://www.kaggle.com/uciml/sms-spam-collection-dataset">на kaggle</a> и при помощи пакета <code>udpipe</code> токенизировал и определил часть речи:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="коэффициент-байеса.html#cb10-1" aria-hidden="true" tabindex="-1"></a>sms_pos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/spam_sms_pos.csv&quot;</span>)</span>
-<span id="cb10-2"><a href="коэффициент-байеса.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sms_pos)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="коэффициент-байеса.html#cb85-1" aria-hidden="true" tabindex="-1"></a>sms_pos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/spam_sms_pos.csv&quot;</span>)</span>
+<span id="cb85-2"><a href="коэффициент-байеса.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sms_pos)</span></code></pre></div>
 <pre><code>Rows: 34
 Columns: 3
 $ type &lt;chr&gt; &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;…
 $ upos &lt;chr&gt; &quot;ADJ&quot;, &quot;ADP&quot;, &quot;ADV&quot;, &quot;AUX&quot;, &quot;CCONJ&quot;, &quot;DET&quot;, &quot;INTJ&quot;, &quot;NOUN&quot;, &quot;NUM…
 $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 114…</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="коэффициент-байеса.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sms_pos <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="коэффициент-байеса.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a href="коэффициент-байеса.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> n<span class="sc">/</span><span class="fu">sum</span>(n),</span>
-<span id="cb12-4"><a href="коэффициент-байеса.html#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">upos =</span> <span class="fu">fct_reorder</span>(upos, n, mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a href="коэффициент-байеса.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(type, ratio))<span class="sc">+</span></span>
-<span id="cb12-6"><a href="коэффициент-байеса.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
-<span id="cb12-7"><a href="коэффициент-байеса.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(ratio, <span class="dv">3</span>)), <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
-<span id="cb12-8"><a href="коэффициент-байеса.html#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>upos, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-8-1.png" width="864" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="коэффициент-байеса.html#cb87-1" aria-hidden="true" tabindex="-1"></a>sms_pos <span class="sc">%&gt;%</span> </span>
+<span id="cb87-2"><a href="коэффициент-байеса.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type) <span class="sc">%&gt;%</span> </span>
+<span id="cb87-3"><a href="коэффициент-байеса.html#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> n<span class="sc">/</span><span class="fu">sum</span>(n),</span>
+<span id="cb87-4"><a href="коэффициент-байеса.html#cb87-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">upos =</span> <span class="fu">fct_reorder</span>(upos, n, mean, <span class="at">.desc =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb87-5"><a href="коэффициент-байеса.html#cb87-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(type, ratio))<span class="sc">+</span></span>
+<span id="cb87-6"><a href="коэффициент-байеса.html#cb87-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
+<span id="cb87-7"><a href="коэффициент-байеса.html#cb87-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(ratio, <span class="dv">3</span>)), <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
+<span id="cb87-8"><a href="коэффициент-байеса.html#cb87-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>upos, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-109-1.png" width="864" /></p>
 <p>Давайте полученные доли считать нашей моделью: сумма всех чисел внутри каждого типа (<code>ham</code>/<code>spam</code>) дает в сумме 1. Мы получили новое сообщение:</p>
 <blockquote>
 <p>Call FREEPHONE 0800 542 0825 now!</p>
@@ -314,13 +314,13 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <li>представим, что у нас есть две модели, соогласно одной мы ожидаем долю 0.08, а вторая модель состоит из 7 равновероятных моделей: 0.60 0.65 0.70 0.75 0.80 0.85 0.90.</li>
 </ul>
 <p>Функцию правдоподобия для первой модели мы уже считали:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="коэффициент-байеса.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.08</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="коэффициент-байеса.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.08</span>)</span></code></pre></div>
 <pre><code>[1] 0.0523985</code></pre>
 <p>Функция правдоподобия второй модели – это среднее функций правдоподобия всех входящих моделей:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="коэффициент-байеса.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fu">seq</span>(<span class="fl">0.08</span>, <span class="fl">0.085</span>, <span class="fl">0.001</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="коэффициент-байеса.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fu">seq</span>(<span class="fl">0.08</span>, <span class="fl">0.085</span>, <span class="fl">0.001</span>)))</span></code></pre></div>
 <pre><code>[1] 0.05383749</code></pre>
 <p>Байес фактор:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="коэффициент-байеса.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fu">seq</span>(<span class="fl">0.08</span>, <span class="fl">0.085</span>, <span class="fl">0.001</span>)))<span class="sc">/</span><span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.08</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="коэффициент-байеса.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fu">seq</span>(<span class="fl">0.08</span>, <span class="fl">0.085</span>, <span class="fl">0.001</span>)))<span class="sc">/</span><span class="fu">dbinom</span>(<span class="dv">58</span>, <span class="dv">699</span>, <span class="at">prob =</span> <span class="fl">0.08</span>)</span></code></pre></div>
 <pre><code>[1] 1.027462</code></pre>
 <p>Как видим, наша распределенная модель немного предпочтительнее, чем точечная.</p>
 
