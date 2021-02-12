@@ -1,0 +1,179 @@
+---
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup06, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, comment = "")
+options(scipen=999)
+library(tidyverse)
+theme_set(theme_bw())
+```
+
+# Коэффициент Байеса
+
+
+## Коэффициент Байеса
+
+```{r}
+library(tidyverse)
+```
+
+В прошлой лекции мы обсуждали значения правдоподобия. Важно понимать, что само по себе значение правдоподобия бессмысленно, оно важно для сравнения со значениями правдоподобия разных моделей. Представим, что мы пытаемся выбрать между двумя моделями:
+
+* $H_1 = X \sim \ln\mathcal{N}(\mu = 3,\, \sigma^{2}= 0.37)$
+* $H_2 = X \sim \ln\mathcal{N}(\mu = 3.5,\, \sigma^{2}= 0.25)$
+
+```{r, echo= FALSE}
+tibble(x = 0:80) %>% 
+  ggplot(aes(x)) +
+  geom_abline(intercept = 0, slope = 0, linetype = 2)+
+  stat_function(fun = function(x) dlnorm(x, 3, 0.37))+
+  stat_function(fun = function(x) -dlnorm(x, 3.5, 0.25))+
+  geom_segment(aes(x = 33, xend = 33, y = 0, yend = dlnorm(33, 3, 0.37)), color = "red")+
+    geom_segment(aes(x = 33, xend = 33, y = 0, yend = -dlnorm(33, 3.5, 0.25)), color = "darkgreen")+
+  geom_segment(aes(x = 33, xend = 0, y = dlnorm(33, 3, 0.37), yend = dlnorm(33, 3, 0.37)), color = "red",
+               arrow = arrow(length = unit(0.03, "npc")))+
+    geom_segment(aes(x = 33, xend = 0, y = -dlnorm(33, 3.5, 0.25), yend = -dlnorm(33, 3.5, 0.25)), color = "darkgreen",
+               arrow = arrow(length = unit(0.03, "npc")))+
+  geom_segment(aes(x = 26, xend = 26, y = 0, yend = dlnorm(26, 3, 0.37)), color = "red")+
+  geom_segment(aes(x = 26, xend = 26, y = 0, yend = -dlnorm(26, 3.5, 0.25)), color = "darkgreen")+
+  geom_segment(aes(x = 26, xend = 0, y = dlnorm(26, 3, 0.37), yend = dlnorm(26, 3, 0.37)), color = "red",
+               arrow = arrow(length = unit(0.03, "npc")))+
+  geom_segment(aes(x = 26, xend = 0, y = -dlnorm(26, 3.5, 0.25), yend = -dlnorm(26, 3.5, 0.25)), color = "darkgreen",
+               arrow = arrow(length = unit(0.03, "npc")))+
+  scale_x_continuous(breaks = c(0:4*20, 33, 26))+
+  scale_y_continuous(breaks = c(-2:2*0.05, round(c(dlnorm(33, 3, 0.37), dlnorm(26, 3, 0.37), -dlnorm(33, 3.5, 0.25), -dlnorm(26, 3.5, 0.25)), 3)), labels = abs(c(-2:2*0.05, round(c(dlnorm(33, 3, 0.37), dlnorm(26, 3, 0.37), -dlnorm(33, 3.5, 0.25), -dlnorm(26, 3.5, 0.25)), 3))))+
+  annotate(geom = "text", x = 55, y = c(0.03, -0.03), label = c("lnN(μ = 3, σ²=0.37)", "lnN(μ = 3.5, σ²=0.25)"), size = 5)+
+  labs(title = "Количество согласных в языках мира",
+       caption = "по данным PHOIBLE (верхний)",
+       x = "количество согласных",
+       y = "")
+```
+
+```{r}
+L1 <- dlnorm(33, 3, 0.37)*dlnorm(26, 3, 0.37)
+L2 <- dlnorm(33, 3.5, 0.25)*dlnorm(26, 3.5, 0.25)
+L2/L1
+```
+
+Как мы видим, на основании наших (фейковых) данных $H_2$ в 4 раза более вероятнее, чем $H_1$. Надо отметить, что не все тепло относятся к сравнению моделей (см. [Gelman, Rubin 1994](https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.44.6443)).
+
+## Формула Байеса опять
+
+Представим себе, что у нас есть $k$ гипотез $M$. Тогда формула Байеса может выглядеть вот так:
+
+$$P(θ|Data, M_k) = \frac{P(Data|θ, M_k) \times  P(θ| M_k) }{P(Data|M_k)}$$
+
+Коэффициент Байеса определяют как соотношение предельных правдоподобий ($P(Data, M_k)$) моделей (в принципе их может быть больше двух):
+
+$$
+BF_{12} = \frac{P(Data | M_1 )}{P(Data | M_2)}
+$$
+
+Вычислять предельные правдоподобия порой достаточно сложно, так что иногда используют численную аппроксимацию.
+
+## Биномиальный вариант
+
+Рассмотрим пример эксперимента Бернулли:
+
+* мы посчитали количество букв "а" в рассказе А. П. Чехова и получили 58 букв из рассказа длинной 699 букв (пробелы и латинские буквы выкинуты);
+* представим, что у нас есть две модели, соогласно одной мы ожидаем долю 0.08, а согласно другой 0.085.
+
+Мы помним, что эксперимент Бернулли описывается биномиальным распределением:
+
+$$P(k | n, p) = \frac{n!}{k!(n-k)!} \times p^k \times (1-p)^{n-k} =  {n \choose k} \times p^k \times (1-p)^{n-k}$$ 
+
+Так что в случае наших моделей будет:
+
+$$P(Data | M_1) = {n \choose k} \times p^k \times (1-p)^{n-k} = {699 \choose 58} \times 0.08^{58} \times (1-0.08)^{699-58} = 0.0523985$$ 
+```{r}
+dbinom(58, 699, prob = 0.08)
+```
+
+$$P(Data | M_2) = {n \choose k} \times p^k \times (1-p)^{n-k} = {699 \choose 58} \times 0.085^{58} \times (1-0.085)^{699-58} = 0.04402509$$ 
+```{r}
+dbinom(58, 699, prob = 0.09)
+```
+
+Тогда коэфициент Байеса будет
+
+```{r}
+BF_12 = dbinom(58, 699, prob = 0.08)/dbinom(58, 699, prob = 0.09)
+BF_12
+```
+
+```{r, echo=FALSE}
+tibble(x = 0:699,
+       m_1 = dbinom(x, size = 699, prob = 0.08),
+       m_2 = -dbinom(x, size = 699, prob = 0.09)) %>%
+  gather(model, value, m_1:m_2) %>% 
+  mutate(model = ifelse(x == 58, "result", model)) %>% 
+  filter(x < 100) %>% 
+  ggplot(aes(x, value, fill = model))+
+  geom_col()+
+  scale_y_continuous(breaks = c(-0.03, 0, 0.03, 0.06), labels = c(0.03, 0, 0.03, 0.06))
+```
+
+## [Интерпретация коэффициента Байеса](https://en.wikipedia.org/wiki/Bayes_factor#Interpretation)
+
+
+## Дискретный вариант
+
+Для примера обратися снова к датасету, который содержит спамерские и обычные смс-сообщения, выложенный UCI Machine Learning [на kaggle](https://www.kaggle.com/uciml/sms-spam-collection-dataset) и при помощи пакета `udpipe` токенизировал и определил часть речи:
+
+```{r, fig.width=9, fig.height=7}
+sms_pos <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/spam_sms_pos.csv")
+glimpse(sms_pos)
+
+sms_pos %>% 
+  group_by(type) %>% 
+  mutate(ratio = n/sum(n),
+         upos = fct_reorder(upos, n, mean, .desc = TRUE)) %>%
+  ggplot(aes(type, ratio))+
+  geom_col()+
+  geom_label(aes(label = round(ratio, 3)), position = position_stack(vjust = 0.5))+
+  facet_wrap(~upos, scales = "free_y")
+```
+
+Давайте полученные доли считать нашей моделью: сумма всех чисел внутри каждого типа (`ham`/`spam`) дает в сумме 1. Мы получили новое сообщение: 
+
+> Call FREEPHONE 0800 542 0825 now! 
+
+Модель `udpipe` разобрала его следующим образом: 
+
+> VERB NUM NUM NUM NUM ADV PUNCT 
+
+
+$$L(VERB,\ NUM|ham) = 0.135 \times 0.016 = 0.00216$$
+
+$$L(VERB,\ NUM|spam) = 0.096 \times 0.117 = 0.011232$$
+
+$$BF_{ham\ spam} = \frac{L(VERB,\ NUM|ham)}{L(VERB,\ NUM|spam)} = \frac{0.00216}{0.011232} = 0.1923077$$
+
+## Несколько точечных моделей
+
+До сих пор мы рассматривали одну точечную модель, сравнивая доли 0.08 и 0.085.
+
+* Мы посчитали количество букв “а” в рассказе А. П. Чехова и получили 58 букв из рассказа длинной 699 букв (пробелы и латинские буквы выкинуты);
+* представим, что у нас есть две модели, соогласно одной мы ожидаем долю 0.08, а вторая модель состоит из 7 равновероятных моделей: 0.60 0.65 0.70 0.75 0.80 0.85 0.90.
+
+Функцию правдоподобия для первой модели мы уже считали:
+
+```{r}
+dbinom(58, 699, prob = 0.08)
+```
+
+Функция правдоподобия второй модели -- это среднее функций правдоподобия всех входящих моделей: 
+
+```{r}
+mean(dbinom(58, 699, prob = seq(0.08, 0.085, 0.001)))
+```
+
+Байес фактор:
+
+```{r}
+mean(dbinom(58, 699, prob = seq(0.08, 0.085, 0.001)))/dbinom(58, 699, prob = 0.08)
+```
+
+Как видим, наша распределенная модель немного предпочтительнее, чем точечная.

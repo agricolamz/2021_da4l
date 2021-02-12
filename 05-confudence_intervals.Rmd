@@ -89,7 +89,7 @@ tibble(x = seq(0, 1, by = 0.001),
 В базовом пакете функция `binom.test()` не позволяет выбирать тип доверительного интервала. `ci.method = "Clopper-Pearson"` возможна, если включить библиотеку `mosaic`. 
 
 ## Байесовский доверительный интервал
-Байесовский доверительный $k$-% интервал (по-английски credible interval) --- это интервал $[\frac{k}{2}, 1-\frac{k}{2}]$ от апостериорного распределения.
+Байесовский доверительный $(100-k)$-% интервал (по-английски credible interval) --- это интервал $[\frac{k}{2}, 1-\frac{k}{2}]$ от апостериорного распределения.
 
 ```{r}
 low_ci <- binom.test(x = 108+92, n = 108+92+12+28)$conf.int[1]
@@ -107,4 +107,39 @@ tibble(x = seq(0, 1, by = 0.001),
   labs(title = "Апостериорное распределение",
        subtitle = "красным фреквентисткий 95% доверительный интервал\nсиним байесовский 95% доверительный интервал",
        x = "", y = "")
+```
+
+```{block, type = "rmdtask"}
+В работе [@coretta2016] собраны [данные](https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv) длительности исландских гласных. Отфильтруйте данные, произнесенные носителем `tt01` (переменная `speaker`), произведите байесовский апдейт данных, моделируя  длительность гласных (переменная `vowel.dur`) нормальным распределением и постройте график. На графике отобразите 80% байесовский доверительный интервал (при построении интервала я использовал аргумент `width = 0.001`). В качестве априорного распределения используйте нормальное распределение со средним 87 и стандартным отклонением 25. 
+```
+
+```{r, echo=FALSE}
+read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv") %>% 
+  filter(speaker == "tt01") ->
+  vowels
+
+sd_prior <- 25
+sd_data <- sd(vowels$vowel.dur)
+sd_post <- 1/sqrt(1/sd_prior^2 + 1/sd_data^2)
+mean_prior <- 87
+mean_data <- mean(vowels$vowel.dur)
+mean_post <- weighted.mean(c(mean_prior, mean_data), c(1/sd_prior^2, 1/sd_data^2))
+
+cred_int_l_80 <- qnorm(0.1, mean_post, sd_post)
+cred_int_h_80 <- qnorm(0.9, mean_post, sd_post)
+
+cred_int_l_95 <- qnorm(0.025, mean_post, sd_post)
+cred_int_h_95 <- qnorm(0.975, mean_post, sd_post)
+
+diff <- cred_int_h_95-(cred_int_h_95-cred_int_l_95)/2
+
+vowels %>% 
+  ggplot(aes(vowel.dur)) +
+  geom_histogram(aes(y = ..density..), fill = "grey")+
+  stat_function(fun = dnorm, args = list(mean_prior,  sd_prior), color = "lightblue")+
+  stat_function(fun = dnorm, args = list(mean_post,  sd_post), color = "red")+
+  annotate(geom = "errorbar", y = 0, xmin = cred_int_l_80, xmax = cred_int_h_80, width = 0.001, size = 2)+
+  annotate(geom = "errorbar", y = -0.001, xmin = cred_int_l_95, xmax = cred_int_h_95, width = 0.001, size = 2)+
+  annotate(geom = "text", y = -0.002, x = diff, label = "95% credible interval")+
+  annotate(geom = "text", y = 0.001, x = diff, label = "80% credible interval")
 ```
