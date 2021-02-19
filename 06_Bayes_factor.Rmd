@@ -86,7 +86,7 @@ tibble(x = seq(0, 1, 0.001),
   ggplot(aes(x, posterior))+
   geom_line(color = "darkgreen", size = 2)+
   geom_line(aes(y = prior), color = "red")+
-  geom_line(linetype = 2, color = "yellow")
+  geom_line(aes(y = posterior_2), linetype = 2, color = "yellow")
 ```
 
 Представим себе, что у нас есть $k$ гипотез $M$. Тогда формула Байеса может выглядеть вот так:
