@@ -58,6 +58,7 @@ marginal_likelihood <- integrate(function(p){
   dbinom(92, 120, p) * dbeta(p, 120*0.9, 120*0.1)}, 
   lower = 0, 
   upper = 1)
+marginal_likelihood
 ```
 
 * ... и в результате получается апостериорное распределение!
