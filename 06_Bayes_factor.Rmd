@@ -140,17 +140,9 @@ first_update <- tibble(model = c("ham", "spam"),
                        prior = 0.5,
                        likelihood = c(0.135, 0.096),
                        product = prior*likelihood,
-                       posterior = product/sum(product))
+                       marginal_likelihood = sum(product),
+                       posterior = product/marginal_likelihood)
 first_update
-
-# Bayes factor
-first_update$product[1]/first_update$product[2]
-```
-
-Отметим, что так как мы принимаем, что наши модели равновероятны, то байесовский коэфициент не отличается от частоного фукнций правдоподобия:
-
-```{r}
-first_update$likelihood[1]/first_update$likelihood[2]
 ```
 
 Если же мы примем во внимание, что наши классы не равноправны, то сможем посчитать это нашим априорным распределением для моделей.
@@ -166,11 +158,12 @@ second_update <- tibble(model = c("ham", "spam"),
                        prior = class_ratio$ratio,
                        likelihood = c(0.135, 0.096),
                        product = prior*likelihood,
-                       posterior = product/sum(product))
+                       marginal_likelihood = sum(product),
+                       posterior = product/marginal_likelihood)
 second_update
 
 # Bayes factor
-second_update$product[1]/second_update$product[2]
+second_update$marginal_likelihood[1]/first_update$marginal_likelihood[1]
 ```
 
 ## [Интерпретация коэфициента Байеса](https://en.wikipedia.org/wiki/Bayes_factor#Interpretation)
