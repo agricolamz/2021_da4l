@@ -14,6 +14,80 @@ theme_set(theme_bw())
 
 ## Формула Байеса опять
 
+$$P(\theta|Data) = \frac{P(Data|\theta) \times  P(\theta) }{P(Data)}$$
+
+Рассмотрим какой-то простой случай, который мы уже видели много раз.
+
+```{block, type = "rmdtask"}
+Немного упрощая данные из статьи [@rosenbach03: 394], можно сказать что носители британского английского предпочитают *s*-генитив (90%) *of*-генитиву (10%). Проведите байесовский апдейт, если Вы наблюдаете в интервью британского актера из 120 контекстов 92 *s*-генитивов. Априорное распределение берите соразмерное данным.
+```
+
+Если мы не будем следовать простой дорожкой, которую мы обсуждали несколько разделов назад, а будем все делать согласно формуле Байеса, то получатся следующие компоненты:
+
+* априорное распределение
+```{r}
+tibble(x = seq(0, 1, 0.001),
+       prior = dbeta(x = x, shape1 = 120*0.9, shape2 = 120*0.1)) %>% 
+  ggplot(aes(x, prior))+
+  geom_line(color = "red")
+```
+
+* функция правдоподобия
+```{r}
+tibble(x = seq(0, 1, 0.001),
+       likelihood = dbinom(x = 92, size = 120, prob = x)) %>% 
+  ggplot(aes(x, likelihood))+
+  geom_line()
+```
+
+* их произведение (пропорционально апостериорному распределению)
+
+```{r}
+tibble(x = seq(0, 1, 0.001),
+       prior = dbeta(x = x, shape1 = 120*0.9, shape2 = 120*0.1),
+       likelihood = dbinom(x = 92, size = 120, prob = x),
+       product = prior*likelihood) %>% 
+  ggplot(aes(x, product))+
+  geom_line()
+```
+
+* предельное правдоподобие, которое позволяет сделать получившееся распределение распределением вероятностей
+
+```{r}
+marginal_likelihood <- integrate(function(p){
+  dbinom(92, 120, p) * dbeta(p, 120*0.9, 120*0.1)}, 
+  lower = 0, 
+  upper = 1)
+```
+
+* ... и в результате получается апостериорное распределение!
+
+```{r}
+tibble(x = seq(0, 1, 0.001),
+       prior = dbeta(x = x, shape1 = 120*0.9, shape2 = 120*0.1),
+       likelihood = dbinom(x = 92, size = 120, prob = x),
+       product = prior*likelihood,
+       posterior = product/marginal_likelihood[[1]]) %>% 
+  ggplot(aes(x, posterior))+
+  geom_line(color = "darkgreen")+
+  geom_line(aes(y = prior), color = "red")
+```
+
+... которое мы умеем доставать и быстрее:
+
+```{r}
+tibble(x = seq(0, 1, 0.001),
+       prior = dbeta(x = x, shape1 = 120*0.9, shape2 = 120*0.1),
+       likelihood = dbinom(x = 92, size = 120, prob = x),
+       product = prior*likelihood,
+       posterior = product/marginal_likelihood[[1]],
+       posterior_2 = dbeta(x = x, shape1 = 120*0.9+92, shape2 = 120*0.1+120-92)) %>% 
+  ggplot(aes(x, posterior))+
+  geom_line(color = "darkgreen", size = 2)+
+  geom_line(aes(y = prior), color = "red")+
+  geom_line(linetype = 2, color = "yellow")
+```
+
 Представим себе, что у нас есть $k$ гипотез $M$. Тогда формула Байеса может выглядеть вот так:
 
 $$P(M_k|Data) = \frac{P(Data|M_k) \times  P(M_k) }{P(Data)}$$
