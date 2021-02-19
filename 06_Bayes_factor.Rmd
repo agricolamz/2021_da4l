@@ -99,7 +99,7 @@ $$\underbrace{\frac{P(M_1 \mid Data)}{P(M_2 \mid Data)}}_{\text{posterior odds}}
 
 $$BF_{12}= \frac{P(M_1 \mid Data)/P(M_2 \mid Data)}{P(M_1)/P(M_2)}=\frac{P(M_1 \mid Data)\times P(M_2)}{P(M_2 \mid Data)\times P(M_1)}$$
 
-В результате получается, что коэффициент Байеса -- это соотношение предельных правдоподобий (числитель теоремы Байеса):
+В результате получается, что коэффициент Байеса -- это соотношение предельных правдоподобий (знаменатель теоремы Байеса):
 
 
 $$BF_{12}= \frac{P(Data|\theta, M_1))}{P(Data|\theta, M_2))}=\frac{\int P(Data|\theta, M_1)\times P(\theta|M_1)}{\int P(Data|\theta, M_2)\times P(\theta|M_2)}$$

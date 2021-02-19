@@ -298,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[\underbrace{\frac{P(M_1 \mid Data)}{P(M_2 \mid Data)}}_{\text{posterior odds}} = \frac{\frac{P(Data|M_1) \times  P(M_1) }{P(Data)}}{\frac{P(Data|M_2) \times  P(M_2) }{P(Data)}}=\underbrace{\frac{P(Data \mid M_1)}{P(Data \mid M_2)}}_{\text{Bayes factor}}\times\underbrace{\frac{P(M_1)}{P(M_2)}}_{\text{prior odds}}\]</span>
 Таким образом байесовский коэффициент это соотношение апосториорных распределений деленное на соотношение априорных распределений.</p>
 <p><span class="math display">\[BF_{12}= \frac{P(M_1 \mid Data)/P(M_2 \mid Data)}{P(M_1)/P(M_2)}=\frac{P(M_1 \mid Data)\times P(M_2)}{P(M_2 \mid Data)\times P(M_1)}\]</span></p>
-<p>В результате получается, что коэффициент Байеса – это соотношение предельных правдоподобий (числитель теоремы Байеса):</p>
+<p>В результате получается, что коэффициент Байеса – это соотношение предельных правдоподобий (знаменатель теоремы Байеса):</p>
 <p><span class="math display">\[BF_{12}= \frac{P(Data|\theta, M_1))}{P(Data|\theta, M_2))}=\frac{\int P(Data|\theta, M_1)\times P(\theta|M_1)}{\int P(Data|\theta, M_2)\times P(\theta|M_2)}\]</span></p>
 <p>Важно заметить, что если вероятности априорных моделей равны, то байесовский коэффициент равен просто соотношению функций правдоподобия.</p>
 <p>Надо отметить, что не все тепло относятся к сравнению моделей байесовским коэффициентом (см. <a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.44.6443">Gelman, Rubin 1994</a>).</p>
@@ -411,12 +411,12 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 Ответ округлите до трёх или менее знаков после запятой.
 </p>
 </div>
-<form name="form_29953" onsubmit="return validate_form_29953()" method="post">
-<input type="text" name="answer_29953"><br><input type="submit" value="check">
+<form name="form_55964" onsubmit="return validate_form_55964()" method="post">
+<input type="text" name="answer_55964"><br><input type="submit" value="check">
 </form>
-<p id="result_29953">
+<p id="result_55964">
 </p>
-<script> function validate_form_29953() {var x, text; var x = document.forms["form_29953"]["answer_29953"].value;if (x == "0.159"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_29953').innerHTML = text; return false;} </script>
+<script> function validate_form_55964() {var x, text; var x = document.forms["form_55964"]["answer_55964"].value;if (x == "0.159"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_55964').innerHTML = text; return false;} </script>
 
 </div>
 </div>
