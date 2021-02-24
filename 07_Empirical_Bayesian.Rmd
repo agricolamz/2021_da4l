@@ -16,7 +16,7 @@ library(tidyverse)
 ```
 
 
-Метод жмпирической байесовской оценки (Empirical Bayes estimation) --- один из байесовских методов, в рамках которого:
+Метод эмпирической байесовской оценки (Empirical Bayes estimation) --- один из байесовских методов, в рамках которого:
 
 * производят оценку априорного распределения вероятностей на основании имеющихся данных
 * используют полученное априорное распределение для получение апостериорной оценки для каждого наблюдения
@@ -112,8 +112,8 @@ mikhalevskaja %>%
 ```{r}
 mikhalevskaja %>% 
   filter(feature == "a-e") %>% 
-  mutate(alpha_prior = beta_est$estimate[1]*10,
-         beta_prior = beta_est$estimate[2]*10,
+  mutate(alpha_prior = beta_est$estimate[1]*40,
+         beta_prior = beta_est$estimate[2]*40,
          alpha_post = conservative+alpha_prior,
          beta_post  = innovative+beta_prior,
          mean_post = alpha_post/(alpha_post+beta_post),
@@ -123,6 +123,10 @@ mikhalevskaja %>%
   geom_point()+
   ggrepel::geom_text_repel()
 ```
+
+Или в формате гифки:
+
+![](images/empirical_bayes.gif)
 
 ```{block, type = "rmdtask"}
 В работе [@coretta2016] собраны [данные](https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv) длительности исландских гласных. Используя алгоритм максимального правдоподобия и идеи эмперической байесовской оценки, найдите априорное распределение для длительности гласных (переменная `vowel.dur`), используя все наблюдения в датасете и моделируя его нормальным распределением. Дальше проведите байесовский апдейт длительности гласных носителя `tt01` (переменная `speaker`) и нарисуйте 80% доверительный интервал апостериорного распределения.

@@ -225,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="эмпирическая-байесовская-оценка" class="section level1" number="8">
 <h1><span class="header-section-number">8</span> Эмпирическая байесовская оценка</h1>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="эмпирическая-байесовская-оценка.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<p>Метод жмпирической байесовской оценки (Empirical Bayes estimation) — один из байесовских методов, в рамках которого:</p>
+<p>Метод эмпирической байесовской оценки (Empirical Bayes estimation) — один из байесовских методов, в рамках которого:</p>
 <ul>
 <li>производят оценку априорного распределения вероятностей на основании имеющихся данных</li>
 <li>используют полученное априорное распределение для получение апостериорной оценки для каждого наблюдения</li>
@@ -315,8 +315,8 @@ shape2 5.445977  1.5766951</code></pre>
 <p><img src="da4l_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="эмпирическая-байесовская-оценка.html#cb104-1" aria-hidden="true" tabindex="-1"></a>mikhalevskaja <span class="sc">%&gt;%</span> </span>
 <span id="cb104-2"><a href="эмпирическая-байесовская-оценка.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(feature <span class="sc">==</span> <span class="st">&quot;a-e&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb104-3"><a href="эмпирическая-байесовская-оценка.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alpha_prior =</span> beta_est<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">*</span><span class="dv">10</span>,</span>
-<span id="cb104-4"><a href="эмпирическая-байесовская-оценка.html#cb104-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_prior =</span> beta_est<span class="sc">$</span>estimate[<span class="dv">2</span>]<span class="sc">*</span><span class="dv">10</span>,</span>
+<span id="cb104-3"><a href="эмпирическая-байесовская-оценка.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alpha_prior =</span> beta_est<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">*</span><span class="dv">40</span>,</span>
+<span id="cb104-4"><a href="эмпирическая-байесовская-оценка.html#cb104-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_prior =</span> beta_est<span class="sc">$</span>estimate[<span class="dv">2</span>]<span class="sc">*</span><span class="dv">40</span>,</span>
 <span id="cb104-5"><a href="эмпирическая-байесовская-оценка.html#cb104-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha_post =</span> conservative<span class="sc">+</span>alpha_prior,</span>
 <span id="cb104-6"><a href="эмпирическая-байесовская-оценка.html#cb104-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">beta_post  =</span> innovative<span class="sc">+</span>beta_prior,</span>
 <span id="cb104-7"><a href="эмпирическая-байесовская-оценка.html#cb104-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">mean_post =</span> alpha_post<span class="sc">/</span>(alpha_post<span class="sc">+</span>beta_post),</span>
@@ -326,6 +326,8 @@ shape2 5.445977  1.5766951</code></pre>
 <span id="cb104-11"><a href="эмпирическая-байесовская-оценка.html#cb104-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb104-12"><a href="эмпирическая-байесовская-оценка.html#cb104-12" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_text_repel</span>()</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
+<p>Или в формате гифки:</p>
+<p><img src="images/empirical_bayes.gif" /></p>
 <div class="rmdtask">
 <p>
 В работе <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-coretta2016" role="doc-biblioref">Coretta 2016</a>)</span></span> собраны <a href="https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv">данные</a> длительности исландских гласных. Используя алгоритм максимального правдоподобия и идеи эмперической байесовской оценки, найдите априорное распределение для длительности гласных (переменная <code>vowel.dur</code>), используя все наблюдения в датасете и моделируя его нормальным распределением. Дальше проведите байесовский апдейт длительности гласных носителя <code>tt01</code> (переменная <code>speaker</code>) и нарисуйте 80% доверительный интервал апостериорного распределения.
