@@ -26,6 +26,7 @@ biblio-style: apalike
 * [запись лекции 2021.02.10](https://youtu.be/9ltNRMQmt0U)
 * [запись лекции 2021.02.12](https://youtu.be/zCG_edAziVk)
 * [запись лекции 2021.02.19](https://youtu.be/6bERf7DMvfg)
+* [запись лекции 2021.02.24](https://youtu.be/I80UaVOmpxY)
 
 ## Домашние задания
 
