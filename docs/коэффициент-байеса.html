@@ -295,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="da4l_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 <p>Представим себе, что у нас есть <span class="math inline">\(k\)</span> гипотез <span class="math inline">\(M\)</span>. Тогда формула Байеса может выглядеть вот так:</p>
 <p><span class="math display">\[P(M_k|Data) = \frac{P(Data|M_k) \times  P(M_k) }{P(Data)}\]</span>
-В данном занятии мы рассмотрим только слычай двух модели, но можно рассматривать и случаи, когда моделей много. Посмотрим на соотношение апосториорных распределений двух моделей:</p>
+В данном занятии мы рассмотрим только случай двух модели, но можно рассматривать и случаи, когда моделей много. Посмотрим на соотношение апостериорных распределений двух моделей:</p>
 <p><span class="math display">\[\underbrace{\frac{P(M_1 \mid Data)}{P(M_2 \mid Data)}}_{\text{posterior odds}} = \frac{\frac{P(Data|M_1) \times  P(M_1) }{P(Data)}}{\frac{P(Data|M_2) \times  P(M_2) }{P(Data)}}=\underbrace{\frac{P(Data \mid M_1)}{P(Data \mid M_2)}}_{\text{Bayes factor}}\times\underbrace{\frac{P(M_1)}{P(M_2)}}_{\text{prior odds}}\]</span>
 Таким образом байесовский коэффициент это соотношение апосториорных распределений деленное на соотношение априорных распределений.</p>
 <p><span class="math display">\[BF_{12}= \frac{P(M_1 \mid Data)/P(M_2 \mid Data)}{P(M_1)/P(M_2)}=\frac{P(M_1 \mid Data)\times P(M_2)}{P(M_2 \mid Data)\times P(M_1)}\]</span></p>
@@ -306,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="категориальные-данные" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Категориальные данные</h2>
-<p>Для примера обратися снова к датасету, который содержит спамерские и обычные смс-сообщения, выложенный UCI Machine Learning <a href="https://www.kaggle.com/uciml/sms-spam-collection-dataset">на kaggle</a> и при помощи пакета <code>udpipe</code> токенизировал и определил часть речи:</p>
+<p>Для примера обратимся снова к датасету, который содержит спамерские и обычные смс-сообщения, выложенному UCI Machine Learning <a href="https://www.kaggle.com/uciml/sms-spam-collection-dataset">на kaggle</a>, и при помощи пакета <code>udpipe</code> токенизируем и определим часть речи:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="коэффициент-байеса.html#cb83-1" aria-hidden="true" tabindex="-1"></a>sms_pos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/spam_sms_pos.csv&quot;</span>)</span>
 <span id="cb83-2"><a href="коэффициент-байеса.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sms_pos)</span></code></pre></div>
 <pre><code>Rows: 34
@@ -380,7 +380,7 @@ $ n    &lt;dbl&gt; 4329, 5004, 5832, 5707, 1607, 3493, 1676, 12842, 1293, 2424, 
 <p>Рассмотрим простенькую задачу, которую мы видели раньше:</p>
 <div class="rmdtask">
 <p>
-Немного упрощая данные из статьи <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span>, можно сказать что носители британского английского предпочитают <em>s</em>-генитив (90%) <em>of</em>-генитиву (10%), а носители американского английского предпочитают <em>s</em>-генитив (85%) <em>of</em>-генитиву (15%). Мы наблюдаем актера, который в интервью из 120 контекстов использует в 92 случаях <em>s</em>-генитивы. Сравните модели при помощи байесовского коэффециента.
+Немного упрощая данные из статьи <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span>, можно сказать что носители британского английского предпочитают <em>s</em>-генитив (90%) <em>of</em>-генитиву (10%), а носители американского английского предпочитают <em>s</em>-генитив (85%) <em>of</em>-генитиву (15%). Мы наблюдаем актера, который в интервью из 120 контекстов использует в 92 случаях <em>s</em>-генитивы. Сравните модели при помощи байесовского коэффициента.
 </p>
 </div>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="коэффициент-байеса.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.001</span>),</span>
