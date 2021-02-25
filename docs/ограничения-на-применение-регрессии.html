@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9 Ограничения на применение регрессии | Анализ данных для лингвистов</title>
+  <meta name="description" content="9 Ограничения на применение регрессии | Анализ данных для лингвистов" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9 Ограничения на применение регрессии | Анализ данных для лингвистов" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 Ограничения на применение регрессии | Анализ данных для лингвистов" />
+  
+  
+  
+
+<meta name="author" content="Г. А. Мороз" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="эмпирическая-байесовская-оценка.html"/>
+<link rel="next" href="ссылки-на-литературу.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Анализ данных для лингвистов</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> О курсе</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#домашние-задания"><i class="fa fa-check"></i><b>1.1</b> Домашние задания</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#используемые-пакеты"><i class="fa fa-check"></i><b>1.2</b> Используемые пакеты</a></li>
+</ul></li>
+<li class="part"><span><b>I Основы байесовской статистики</b></span></li>
+<li class="chapter" data-level="2" data-path="распределения.html"><a href="распределения.html"><i class="fa fa-check"></i><b>2</b> Распределения</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="распределения.html"><a href="распределения.html#распределения-в-r"><i class="fa fa-check"></i><b>2.1</b> Распределения в R</a></li>
+<li class="chapter" data-level="2.2" data-path="распределения.html"><a href="распределения.html#дискретные-переменные"><i class="fa fa-check"></i><b>2.2</b> Дискретные переменные</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="распределения.html"><a href="распределения.html#биномиальное-распределение"><i class="fa fa-check"></i><b>2.2.1</b> Биномиальное распределение</a></li>
+<li class="chapter" data-level="2.2.2" data-path="распределения.html"><a href="распределения.html#геометрическое-распределение"><i class="fa fa-check"></i><b>2.2.2</b> Геометрическое распределение</a></li>
+<li class="chapter" data-level="2.2.3" data-path="распределения.html"><a href="распределения.html#распределение-пуассона"><i class="fa fa-check"></i><b>2.2.3</b> Распределение Пуассона</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="распределения.html"><a href="распределения.html#числовые-переменные"><i class="fa fa-check"></i><b>2.3</b> Числовые переменные</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="распределения.html"><a href="распределения.html#нормальное-распределение"><i class="fa fa-check"></i><b>2.3.1</b> Нормальное распределение</a></li>
+<li class="chapter" data-level="2.3.2" data-path="распределения.html"><a href="распределения.html#логнормальное-распределение"><i class="fa fa-check"></i><b>2.3.2</b> Логнормальное распределение</a></li>
+<li class="chapter" data-level="2.3.3" data-path="распределения.html"><a href="распределения.html#что-еще-почитать-про-распределения"><i class="fa fa-check"></i><b>2.3.3</b> Что еще почитать про распределения?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html"><i class="fa fa-check"></i><b>3</b> Метод максимального правдоподобия</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#оценка-вероятности"><i class="fa fa-check"></i><b>3.1</b> Оценка вероятности</a></li>
+<li class="chapter" data-level="3.2" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#функция-правдоподобия"><i class="fa fa-check"></i><b>3.2</b> Функция правдоподобия</a></li>
+<li class="chapter" data-level="3.3" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#пример-с-непрерывным-распределением"><i class="fa fa-check"></i><b>3.3</b> Пример с непрерывным распределением</a></li>
+<li class="chapter" data-level="3.4" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#метод-максимального-правдоподобия-mle"><i class="fa fa-check"></i><b>3.4</b> Метод максимального правдоподобия (MLE)</a></li>
+<li class="chapter" data-level="3.5" data-path="метод-максимального-правдоподобия.html"><a href="метод-максимального-правдоподобия.html#логорифм-функции-правдоподобия"><i class="fa fa-check"></i><b>3.5</b> Логорифм функции правдоподобия</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="модели-смеси-распределений.html"><a href="модели-смеси-распределений.html"><i class="fa fa-check"></i><b>4</b> Модели смеси распределений</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="модели-смеси-распределений.html"><a href="модели-смеси-распределений.html#cмеси-распределений"><i class="fa fa-check"></i><b>4.1</b> Cмеси распределений</a></li>
+<li class="chapter" data-level="4.2" data-path="модели-смеси-распределений.html"><a href="модели-смеси-распределений.html#модели-смеси-распределений-1"><i class="fa fa-check"></i><b>4.2</b> Модели смеси распределений</a></li>
+<li class="chapter" data-level="4.3" data-path="модели-смеси-распределений.html"><a href="модели-смеси-распределений.html#несколько-замечаний"><i class="fa fa-check"></i><b>4.3</b> Несколько замечаний</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html"><i class="fa fa-check"></i><b>5</b> Байесовский статистический вывод</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#нотация"><i class="fa fa-check"></i><b>5.1</b> Нотация</a></li>
+<li class="chapter" data-level="5.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#категориальный-пример"><i class="fa fa-check"></i><b>5.2</b> Категориальный пример</a></li>
+<li class="chapter" data-level="5.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#разница-между-фриквентиским-и-байесовским-подходами"><i class="fa fa-check"></i><b>5.3</b> Разница между фриквентиским и байесовским подходами</a></li>
+<li class="chapter" data-level="5.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#биномиальные-данные"><i class="fa fa-check"></i><b>5.4</b> Биномиальные данные</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#биномиальное-распределение-1"><i class="fa fa-check"></i><b>5.4.1</b> Биномиальное распределение</a></li>
+<li class="chapter" data-level="5.4.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#бета-распределение"><i class="fa fa-check"></i><b>5.4.2</b> Бета распределение</a></li>
+<li class="chapter" data-level="5.4.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных"><i class="fa fa-check"></i><b>5.4.3</b> Байесовский апдейт биномиальных данных</a></li>
+<li class="chapter" data-level="5.4.4" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-биномиальных-данных-несколько-моделей"><i class="fa fa-check"></i><b>5.4.4</b> Байесовский апдейт биномиальных данных: несколько моделей</a></li>
+<li class="chapter" data-level="5.4.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать"><i class="fa fa-check"></i><b>5.4.5</b> Что почитать?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения"><i class="fa fa-check"></i><b>5.5</b> Байесовский апдейт нормального распределения</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-выбор-из-нескольких-моделей"><i class="fa fa-check"></i><b>5.5.1</b> Байесовский апдейт нормального распределения: выбор из нескольких моделей</a></li>
+<li class="chapter" data-level="5.5.2" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#байесовский-апдейт-нормального-распределения-непрерывный-вариант"><i class="fa fa-check"></i><b>5.5.2</b> Байесовский апдейт нормального распределения: непрерывный вариант</a></li>
+<li class="chapter" data-level="5.5.3" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#что-почитать-1"><i class="fa fa-check"></i><b>5.5.3</b> Что почитать?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#другие-распределения"><i class="fa fa-check"></i><b>5.6</b> Другие распределения</a></li>
+<li class="chapter" data-level="5.7" data-path="байесовский-статистический-вывод.html"><a href="байесовский-статистический-вывод.html#вопросы-к-апостериорному-распределению"><i class="fa fa-check"></i><b>5.7</b> Вопросы к апостериорному распределению</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html"><i class="fa fa-check"></i><b>6</b> Байесовский доверительный интервал</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#фреквентисткий-доверительный-интервал"><i class="fa fa-check"></i><b>6.1</b> Фреквентисткий доверительный интервал</a></li>
+<li class="chapter" data-level="6.2" data-path="байесовский-доверительный-интервал.html"><a href="байесовский-доверительный-интервал.html#байесовский-доверительный-интервал-1"><i class="fa fa-check"></i><b>6.2</b> Байесовский доверительный интервал</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html"><i class="fa fa-check"></i><b>7</b> Коэффициент Байеса</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html#формула-байеса-опять"><i class="fa fa-check"></i><b>7.1</b> Формула Байеса опять</a></li>
+<li class="chapter" data-level="7.2" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html#категориальные-данные"><i class="fa fa-check"></i><b>7.2</b> Категориальные данные</a></li>
+<li class="chapter" data-level="7.3" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html#интерпретация-коэфициента-байеса"><i class="fa fa-check"></i><b>7.3</b> <span>Интерпретация коэфициента Байеса</span></a></li>
+<li class="chapter" data-level="7.4" data-path="коэффициент-байеса.html"><a href="коэффициент-байеса.html#биномиальные-данные-1"><i class="fa fa-check"></i><b>7.4</b> Биномиальные данные</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="эмпирическая-байесовская-оценка.html"><a href="эмпирическая-байесовская-оценка.html"><i class="fa fa-check"></i><b>8</b> Эмпирическая байесовская оценка</a></li>
+<li class="part"><span><b>II Продвинутый регрессионный анализ</b></span></li>
+<li class="chapter" data-level="9" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html"><i class="fa fa-check"></i><b>9</b> Ограничения на применение регрессии</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#введение"><i class="fa fa-check"></i><b>9.1</b> Введение</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#библиотеки"><i class="fa fa-check"></i><b>9.1.1</b> Библиотеки</a></li>
+<li class="chapter" data-level="9.1.2" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#lexical-decision-task-data"><i class="fa fa-check"></i><b>9.1.2</b> Lexical Decision Task data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#нелинейность-взаимосвязи"><i class="fa fa-check"></i><b>9.2</b> Нелинейность взаимосвязи</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#логарифмирование"><i class="fa fa-check"></i><b>9.2.1</b> Логарифмирование</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#нормальность-распределение-остатков"><i class="fa fa-check"></i><b>9.3</b> Нормальность распределение остатков</a></li>
+<li class="chapter" data-level="9.4" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#гетероскидастичность"><i class="fa fa-check"></i><b>9.4</b> Гетероскидастичность</a></li>
+<li class="chapter" data-level="9.5" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#мультиколлинеарность"><i class="fa fa-check"></i><b>9.5</b> Мультиколлинеарность</a></li>
+<li class="chapter" data-level="9.6" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#независимость-наблюдений"><i class="fa fa-check"></i><b>9.6</b> Независимость наблюдений</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Анализ данных для лингвистов</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ограничения-на-применение-регрессии" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Ограничения на применение регрессии</h1>
+<p>Некоторые думают, что линейная регрессия решит все их проблемы (по крайней мере те из них, которые связаны с предсказанием какой-то числовой переменной). Это так. Но нужно быть осторожным — у регрессии есть свои ограничения на применение.</p>
+<div id="введение" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Введение</h2>
+<div id="библиотеки" class="section level3" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Библиотеки</h3>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="ограничения-на-применение-регрессии.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb105-2"><a href="ограничения-на-применение-регрессии.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb105-3"><a href="ограничения-на-применение-регрессии.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmerTest)</span>
+<span id="cb105-4"><a href="ограничения-на-применение-регрессии.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggfortify)</span></code></pre></div>
+</div>
+<div id="lexical-decision-task-data" class="section level3" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Lexical Decision Task data</h3>
+<p>Dataset and description from <a href="https://benjamins.com/sites/z.195/content/package.html">Rling package by Natalia Levshina</a>. This data set contains 100 randomly selected words from the English Lexicon Project data (Balota et al. 2007), their lengths, mean reaction times and corpus frequencies.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="ограничения-на-применение-регрессии.html#cb106-1" aria-hidden="true" tabindex="-1"></a>ldt <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://goo.gl/ToxfU6&quot;</span>)</span>
+<span id="cb106-2"><a href="ограничения-на-применение-регрессии.html#cb106-2" aria-hidden="true" tabindex="-1"></a>ldt</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Freq"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Mean_RT"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"8","2":"131","3":"819.19"},{"1":"10","2":"82","3":"977.63"},{"1":"7","2":"0","3":"908.22"},{"1":"6","2":"592","3":"766.30"},{"1":"12","2":"2","3":"1125.42"},{"1":"12","2":"9","3":"948.33"},{"1":"3","2":"14013","3":"641.67"},{"1":"11","2":"15","3":"816.94"},{"1":"11","2":"48","3":"931.13"},{"1":"5","2":"290","3":"654.12"},{"1":"6","2":"3264","3":"583.81"},{"1":"6","2":"3523","3":"667.18"},{"1":"11","2":"46","3":"1054.77"},{"1":"4","2":"1733","3":"737.33"},{"1":"11","2":"192","3":"931.04"},{"1":"8","2":"78","3":"748.10"},{"1":"10","2":"640","3":"849.67"},{"1":"10","2":"6","3":"914.50"},{"1":"11","2":"7718","3":"620.79"},{"1":"10","2":"39","3":"910.72"},{"1":"11","2":"1412","3":"978.81"},{"1":"8","2":"256","3":"871.68"},{"1":"9","2":"75","3":"948.11"},{"1":"11","2":"0","3":"942.86"},{"1":"5","2":"4519","3":"636.56"},{"1":"6","2":"2089","3":"595.31"},{"1":"4","2":"716","3":"692.45"},{"1":"7","2":"23998","3":"751.29"},{"1":"12","2":"11","3":"1314.33"},{"1":"9","2":"2146","3":"787.81"},{"1":"6","2":"269","3":"676.72"},{"1":"6","2":"702","3":"762.75"},{"1":"9","2":"6742","3":"755.57"},{"1":"7","2":"331","3":"792.45"},{"1":"6","2":"1274","3":"652.24"},{"1":"8","2":"408","3":"759.32"},{"1":"8","2":"272","3":"819.93"},{"1":"8","2":"8","3":"997.33"},{"1":"8","2":"393","3":"817.45"},{"1":"7","2":"419","3":"728.34"},{"1":"8","2":"600","3":"752.41"},{"1":"10","2":"67","3":"832.55"},{"1":"7","2":"4687","3":"713.94"},{"1":"11","2":"21","3":"768.41"},{"1":"8","2":"1380","3":"816.67"},{"1":"10","2":"3749","3":"748.47"},{"1":"8","2":"183","3":"1013.69"},{"1":"4","2":"46405","3":"564.18"},{"1":"8","2":"472","3":"769.26"},{"1":"8","2":"33","3":"886.24"},{"1":"10","2":"3348","3":"849.00"},{"1":"10","2":"52","3":"798.36"},{"1":"6","2":"4796","3":"938.20"},{"1":"5","2":"226","3":"911.75"},{"1":"9","2":"138","3":"768.07"},{"1":"9","2":"44","3":"724.09"},{"1":"13","2":"0","3":"915.96"},{"1":"9","2":"57","3":"837.38"},{"1":"9","2":"0","3":"841.18"},{"1":"11","2":"185","3":"1089.00"},{"1":"9","2":"2","3":"913.53"},{"1":"4","2":"1614","3":"677.91"},{"1":"4","2":"75075","3":"594.15"},{"1":"10","2":"2760","3":"685.53"},{"1":"7","2":"279","3":"741.31"},{"1":"10","2":"11468","3":"716.90"},{"1":"14","2":"3601","3":"904.47"},{"1":"6","2":"110","3":"750.25"},{"1":"9","2":"127","3":"860.29"},{"1":"15","2":"4","3":"1216.81"},{"1":"8","2":"1898","3":"633.09"},{"1":"9","2":"3","3":"788.94"},{"1":"5","2":"8301","3":"721.96"},{"1":"7","2":"2713","3":"761.07"},{"1":"9","2":"39","3":"633.71"},{"1":"5","2":"1591","3":"733.74"},{"1":"10","2":"1538","3":"782.07"},{"1":"10","2":"11","3":"980.25"},{"1":"7","2":"0","3":"812.39"},{"1":"14","2":"19","3":"923.74"},{"1":"8","2":"148","3":"883.50"},{"1":"10","2":"1759","3":"669.24"},{"1":"10","2":"12","3":"907.39"},{"1":"3","2":"2850","3":"726.00"},{"1":"10","2":"54","3":"814.52"},{"1":"7","2":"86","3":"763.55"},{"1":"8","2":"10161","3":"663.79"},{"1":"7","2":"377","3":"872.55"},{"1":"7","2":"1394","3":"648.00"},{"1":"5","2":"10605","3":"681.13"},{"1":"6","2":"757","3":"641.06"},{"1":"6","2":"775","3":"775.59"},{"1":"5","2":"14860","3":"602.09"},{"1":"7","2":"31679","3":"576.58"},{"1":"10","2":"181","3":"792.93"},{"1":"6","2":"158","3":"876.56"},{"1":"8","2":"429","3":"710.63"},{"1":"11","2":"93","3":"875.27"},{"1":"6","2":"2434","3":"627.11"},{"1":"11","2":"162","3":"1458.75"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div id="нелинейность-взаимосвязи" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Нелинейность взаимосвязи</h2>
+<p>Давайте посмотрим на простой график:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="ограничения-на-применение-регрессии.html#cb107-1" aria-hidden="true" tabindex="-1"></a>ldt <span class="sc">%&gt;%</span> </span>
+<span id="cb107-2"><a href="ограничения-на-применение-регрессии.html#cb107-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Mean_RT, Freq))<span class="sc">+</span></span>
+<span id="cb107-3"><a href="ограничения-на-применение-регрессии.html#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb107-4"><a href="ограничения-на-применение-регрессии.html#cb107-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
+<p>Регрессия на таких данных будет супер неиформативна:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="ограничения-на-применение-регрессии.html#cb108-1" aria-hidden="true" tabindex="-1"></a>ldt <span class="sc">%&gt;%</span> </span>
+<span id="cb108-2"><a href="ограничения-на-применение-регрессии.html#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Mean_RT, Freq))<span class="sc">+</span></span>
+<span id="cb108-3"><a href="ограничения-на-применение-регрессии.html#cb108-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb108-4"><a href="ограничения-на-применение-регрессии.html#cb108-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)<span class="sc">+</span></span>
+<span id="cb108-5"><a href="ограничения-на-применение-регрессии.html#cb108-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="ограничения-на-применение-регрессии.html#cb109-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(Mean_RT<span class="sc">~</span>Freq, <span class="at">data =</span> ldt))</span>
+<span id="cb109-2"><a href="ограничения-на-применение-регрессии.html#cb109-2" aria-hidden="true" tabindex="-1"></a>m1</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = Mean_RT ~ Freq, data = ldt)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-224.93  -85.42  -30.52   81.90  632.66 
+
+Coefficients:
+              Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept) 826.998242  15.229783  54.301 &lt; 0.0000000000000002 ***
+Freq         -0.005595   0.001486  -3.765             0.000284 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 143.9 on 98 degrees of freedom
+Multiple R-squared:  0.1264,    Adjusted R-squared:  0.1174 
+F-statistic: 14.17 on 1 and 98 DF,  p-value: 0.0002843</code></pre>
+<div id="логарифмирование" class="section level3" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> Логарифмирование</h3>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="ограничения-на-применение-регрессии.html#cb111-1" aria-hidden="true" tabindex="-1"></a>ldt <span class="sc">%&gt;%</span> </span>
+<span id="cb111-2"><a href="ограничения-на-применение-регрессии.html#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Mean_RT, <span class="fu">log</span>(Freq)))<span class="sc">+</span></span>
+<span id="cb111-3"><a href="ограничения-на-применение-регрессии.html#cb111-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb111-4"><a href="ограничения-на-применение-регрессии.html#cb111-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)<span class="sc">+</span></span>
+<span id="cb111-5"><a href="ограничения-на-применение-регрессии.html#cb111-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="ограничения-на-применение-регрессии.html#cb112-1" aria-hidden="true" tabindex="-1"></a>ldt <span class="sc">%&gt;%</span> </span>
+<span id="cb112-2"><a href="ограничения-на-применение-регрессии.html#cb112-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Mean_RT, <span class="fu">log</span>(Freq<span class="sc">+</span><span class="dv">1</span>)))<span class="sc">+</span></span>
+<span id="cb112-3"><a href="ограничения-на-применение-регрессии.html#cb112-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb112-4"><a href="ограничения-на-применение-регрессии.html#cb112-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)<span class="sc">+</span></span>
+<span id="cb112-5"><a href="ограничения-на-применение-регрессии.html#cb112-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-131-2.png" width="672" /></p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="ограничения-на-применение-регрессии.html#cb113-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(Mean_RT<span class="sc">~</span><span class="fu">log</span>(Freq<span class="sc">+</span><span class="dv">1</span>), <span class="at">data =</span> ldt))</span>
+<span id="cb113-2"><a href="ограничения-на-применение-регрессии.html#cb113-2" aria-hidden="true" tabindex="-1"></a>m2</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = Mean_RT ~ log(Freq + 1), data = ldt)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-242.36  -76.66  -17.49   48.64  630.49 
+
+Coefficients:
+              Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept)    1001.60      29.79  33.627 &lt; 0.0000000000000002 ***
+log(Freq + 1)   -34.03       4.76  -7.149       0.000000000158 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 124.8 on 98 degrees of freedom
+Multiple R-squared:  0.3428,    Adjusted R-squared:  0.3361 
+F-statistic: 51.11 on 1 and 98 DF,  p-value: 0.0000000001576</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="ограничения-на-применение-регрессии.html#cb115-1" aria-hidden="true" tabindex="-1"></a>m1<span class="sc">$</span>adj.r.squared</span></code></pre></div>
+<pre><code>[1] 0.1174405</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="ограничения-на-применение-регрессии.html#cb117-1" aria-hidden="true" tabindex="-1"></a>m2<span class="sc">$</span>adj.r.squared</span></code></pre></div>
+<pre><code>[1] 0.336078</code></pre>
+<p>Отлогорифмировать можно и другую переменную.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="ограничения-на-применение-регрессии.html#cb119-1" aria-hidden="true" tabindex="-1"></a>ldt <span class="sc">%&gt;%</span> </span>
+<span id="cb119-2"><a href="ограничения-на-применение-регрессии.html#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">log</span>(Mean_RT), <span class="fu">log</span>(Freq  <span class="sc">+</span> <span class="dv">1</span>)))<span class="sc">+</span></span>
+<span id="cb119-3"><a href="ограничения-на-применение-регрессии.html#cb119-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb119-4"><a href="ограничения-на-применение-регрессии.html#cb119-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)<span class="sc">+</span></span>
+<span id="cb119-5"><a href="ограничения-на-применение-регрессии.html#cb119-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="ограничения-на-применение-регрессии.html#cb120-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log</span>(Mean_RT)<span class="sc">~</span><span class="fu">log</span>(Freq<span class="sc">+</span><span class="dv">1</span>), <span class="at">data =</span> ldt))</span>
+<span id="cb120-2"><a href="ограничения-на-применение-регрессии.html#cb120-2" aria-hidden="true" tabindex="-1"></a>m1<span class="sc">$</span>adj.r.squared</span></code></pre></div>
+<pre><code>[1] 0.1174405</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="ограничения-на-применение-регрессии.html#cb122-1" aria-hidden="true" tabindex="-1"></a>m2<span class="sc">$</span>adj.r.squared</span></code></pre></div>
+<pre><code>[1] 0.336078</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="ограничения-на-применение-регрессии.html#cb124-1" aria-hidden="true" tabindex="-1"></a>m3<span class="sc">$</span>adj.r.squared</span></code></pre></div>
+<pre><code>[1] 0.3838649</code></pre>
+<p>Как интерпретировать полученную регрессию с двумя отлогорифмированными значениями?</p>
+<p>В обычной линейной регресии мы узнаем отношения между <span class="math inline">\(x\)</span> и <span class="math inline">\(y\)</span>:
+<span class="math display">\[y_i = \beta_0+\beta_1\times x_i\]</span></p>
+<p>Как изменится <span class="math inline">\(y_j\)</span>, если мы увеличем <span class="math inline">\(x_i + 1 = x_j\)</span>?
+<span class="math display">\[y_j = \beta_0+\beta_1\times x_j\]</span></p>
+<p><span class="math display">\[y_j - y_i = \beta_0+\beta_1\times x_j - (\beta_0+\beta_1\times x_i)  = \beta_1(x_j - x_i)\]</span></p>
+<p>Т. е. <span class="math inline">\(y\)</span> увеличится на <span class="math inline">\(\beta_1\)</span> , если <span class="math inline">\(x\)</span> увеличится на 1. Что же будет с логарифмированными переменными? Как изменится <span class="math inline">\(y_j\)</span>, если мы увеличем <span class="math inline">\(x_i + 1 = x_j\)</span>?</p>
+<p><span class="math display">\[\log(y_j) - \log(y_i) = \beta_1\times (\log(x_j) - \log(x_i))\]</span></p>
+<p><span class="math display">\[\log\left(\frac{y_j}{y_i}\right) = \beta_1\times \log\left(\frac{x_j}{x_i}\right) = \log\left(\left(\frac{x_j}{x_i}\right) ^ {\beta_1}\right)\]</span></p>
+<p><span class="math display">\[\frac{y_j}{y_i}= \left(\frac{x_j}{x_i}\right) ^ {\beta_1}\]</span></p>
+<p>Т. е. <span class="math inline">\(y\)</span> увеличится на <span class="math inline">\(\beta_1\)</span> процентов, если <span class="math inline">\(x\)</span> увеличится на 1 процент.</p>
+<p>Логарифмирование — не единственный вид траснформации:</p>
+<ul>
+<li>трансформация Тьюки</li>
+</ul>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="ограничения-на-применение-регрессии.html#cb126-1" aria-hidden="true" tabindex="-1"></a>shiny<span class="sc">::</span><span class="fu">runGitHub</span>(<span class="st">&quot;agricolamz/tukey_transform&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
+<ul>
+<li>трансформация Бокса — Кокса</li>
+<li>…</li>
+</ul>
+</div>
+</div>
+<div id="нормальность-распределение-остатков" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Нормальность распределение остатков</h2>
+<p>Линейная регрессия предполагает нормальность распределения остатков. Когда связь не линейна, то остатки тоже будут распределены не нормально.</p>
+<p>Можно смотреть на певрый график используя функцию <code>plot(m1)</code> — график остатков. Интерпретаций этого графика достаточно много (см. <a href="http://docs.statwing.com/interpreting-residual-plots-to-improve-your-regression/">статью про это</a>).</p>
+<p>Можно смотреть на qqplot:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="ограничения-на-применение-регрессии.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m1<span class="sc">$</span>residuals)</span>
+<span id="cb127-2"><a href="ограничения-на-применение-регрессии.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m1<span class="sc">$</span>residuals)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="ограничения-на-применение-регрессии.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m2<span class="sc">$</span>residuals)</span>
+<span id="cb128-2"><a href="ограничения-на-применение-регрессии.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m2<span class="sc">$</span>residuals)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-135-2.png" width="672" /></p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="ограничения-на-применение-регрессии.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m3<span class="sc">$</span>residuals)</span>
+<span id="cb129-2"><a href="ограничения-на-применение-регрессии.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m3<span class="sc">$</span>residuals)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-135-3.png" width="672" /></p>
+</div>
+<div id="гетероскидастичность" class="section level2" number="9.4">
+<h2><span class="header-section-number">9.4</span> Гетероскидастичность</h2>
+<p>Распределение остатков непостоянно (т. е. не гомоскидастичны):</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="ограничения-на-применение-регрессии.html#cb130-1" aria-hidden="true" tabindex="-1"></a>ldt <span class="sc">%&gt;%</span> </span>
+<span id="cb130-2"><a href="ограничения-на-применение-регрессии.html#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Mean_RT, Freq))<span class="sc">+</span></span>
+<span id="cb130-3"><a href="ограничения-на-применение-регрессии.html#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb130-4"><a href="ограничения-на-применение-регрессии.html#cb130-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<p>Тоже решается преобазованием данных.</p>
+</div>
+<div id="мультиколлинеарность" class="section level2" number="9.5">
+<h2><span class="header-section-number">9.5</span> Мультиколлинеарность</h2>
+<p>Линейная связь между некоторыми предикторами в модели.</p>
+<ul>
+<li>корреляционная матрица</li>
+<li>VIF (Variance inflation factor), <code>car::vif()</code>
+<ul>
+<li>VIF = 1 (Not correlated)</li>
+<li>1 &lt; VIF &lt; 5 (Moderately correlated)</li>
+<li>VIF &gt;=5 (Highly correlated)</li>
+</ul></li>
+</ul>
+</div>
+<div id="независимость-наблюдений" class="section level2" number="9.6">
+<h2><span class="header-section-number">9.6</span> Независимость наблюдений</h2>
+<p>Наблюдения должны быть независимы. В ином случае нужно использовать модель со смешанными эффектами.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="эмпирическая-байесовская-оценка.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ссылки-на-литературу.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/agricolamz/2021_da4l/edit/master/08_advanced_regression.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["da4l.pdf"],
+"toc": {
+"collapse": "section"
+},
+"self_contained": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
