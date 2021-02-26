@@ -10,6 +10,9 @@ editor_options:
 Некоторые думают, что линейная регрессия решит все их проблемы (по крайней мере те из них, которые связаны с предсказанием какой-то числовой переменной). Это так. Но нужно быть осторожным --- у регрессии есть свои ограничения на применение.
 
 ## Введение
+
+[Ссылка](https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/linear_regression_intro.Rmd) на RMD с обсуждением.
+
 ### Библиотеки
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
