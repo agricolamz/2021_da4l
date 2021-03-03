@@ -134,7 +134,29 @@ bandwidth = seq(-5, 5, 0.01)) %>%
 * трансформация Бокса — Кокса
 * ...
 
+```{block, type = "rmdtask"}
+В [датасет](https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/freq_dict_2009.csv) собрана частотность разных лемм на основании корпуса НКРЯ [@lyashevskaya09] (в датасете только значения больше ipm > 10). Известно, что частотность слова связана с рангом слова (см. закон Ципфа). Постройте переменную ранга и визуализируйте связь ранга и логорифма частотности с разбивкой по частям речи. Какие части речи так и не приобрели после трансформации "приемлимую" линейную форму? (я насчитал 5 таких)
+```
 
+```{r, include=FALSE}
+df <- read_tsv("data/freq_dict_2009.csv")
+```
+
+```{r, eval= FALSE}
+df <- read_tsv("data/freq_dict_2009.csv")
+df %>%
+  group_by(pos) %>% 
+  mutate(id = 1:n()) %>% 
+  ggplot(aes(id, log(freq_ipm)))+
+  geom_point()+
+  facet_wrap(~pos, scale = "free")
+```
+
+
+```{r, results='asis', echo=FALSE}
+library(checkdown)
+check_question(answer = c("a", "adv", "s", "s.PROP", "v"), options = sort(unique(df$pos)), type = "checkbox")
+```
 
 ## Нормальность распределение остатков
 
@@ -144,11 +166,26 @@ bandwidth = seq(-5, 5, 0.01)) %>%
 
 Можно смотреть на qqplot:
 
-```{r}
+```{r, message=FALSE}
+tibble(res = m1$residuals) %>% 
+  ggplot(aes(res))+
+  geom_histogram(aes(y = ..density..))+
+  stat_function(fun = dnorm, args = list(mean = 0, sd = sd(m1$residuals)), color = "red")
+
 qqnorm(m1$residuals)
 qqline(m1$residuals)
+
+tibble(res = m2$residuals) %>% 
+  ggplot(aes(res))+
+  geom_histogram(aes(y = ..density..))+
+  stat_function(fun = dnorm, args = list(mean = 0, sd = sd(m2$residuals)), color = "red")
 qqnorm(m2$residuals)
 qqline(m2$residuals)
+
+tibble(res = m3$residuals) %>% 
+  ggplot(aes(res))+
+  geom_histogram(aes(y = ..density..))+
+  stat_function(fun = dnorm, args = list(mean = 0, sd = sd(m3$residuals)), color = "red")
 qqnorm(m3$residuals)
 qqline(m3$residuals)
 ```

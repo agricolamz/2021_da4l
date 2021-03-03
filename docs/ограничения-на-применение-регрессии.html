@@ -373,6 +373,24 @@ F-statistic: 51.11 on 1 and 98 DF,  p-value: 0.0000000001576</code></pre>
 <li>трансформация Бокса — Кокса</li>
 <li>…</li>
 </ul>
+<div class="rmdtask">
+<p>
+В <a href="https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/freq_dict_2009.csv">датасет</a> собрана частотность разных лемм на основании корпуса НКРЯ <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-lyashevskaya09" role="doc-biblioref">Ляшевская and Шаров 2009</a>)</span></span> (в датасете только значения больше ipm &gt; 10). Известно, что частотность слова связана с рангом слова (см. закон Ципфа). Постройте переменную ранга и визуализируйте связь ранга и логорифма частотности с разбивкой по частям речи. Какие части речи так и не приобрели после трансформации “приемлимую” линейную форму? (я насчитал 5 таких)
+</p>
+</div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="ограничения-на-применение-регрессии.html#cb127-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;data/freq_dict_2009.csv&quot;</span>)</span>
+<span id="cb127-2"><a href="ограничения-на-применение-регрессии.html#cb127-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb127-3"><a href="ограничения-на-применение-регрессии.html#cb127-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(pos) <span class="sc">%&gt;%</span> </span>
+<span id="cb127-4"><a href="ограничения-на-применение-регрессии.html#cb127-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb127-5"><a href="ограничения-на-применение-регрессии.html#cb127-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(id, <span class="fu">log</span>(freq_ipm)))<span class="sc">+</span></span>
+<span id="cb127-6"><a href="ограничения-на-применение-регрессии.html#cb127-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb127-7"><a href="ограничения-на-применение-регрессии.html#cb127-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>pos, <span class="at">scale =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
+<form name="form_89860" onsubmit="return validate_form_89860()" method="post">
+<input type="checkbox" id="answer_89860_1" value="a"><label for="answer_89860_1">a</label><br><input type="checkbox" id="answer_89860_2" value="adv"><label for="answer_89860_2">adv</label><br><input type="checkbox" id="answer_89860_3" value="advpro"><label for="answer_89860_3">advpro</label><br><input type="checkbox" id="answer_89860_4" value="anum"><label for="answer_89860_4">anum</label><br><input type="checkbox" id="answer_89860_5" value="apro"><label for="answer_89860_5">apro</label><br><input type="checkbox" id="answer_89860_6" value="conj"><label for="answer_89860_6">conj</label><br><input type="checkbox" id="answer_89860_7" value="intj"><label for="answer_89860_7">intj</label><br><input type="checkbox" id="answer_89860_8" value="num"><label for="answer_89860_8">num</label><br><input type="checkbox" id="answer_89860_9" value="part"><label for="answer_89860_9">part</label><br><input type="checkbox" id="answer_89860_10" value="pr"><label for="answer_89860_10">pr</label><br><input type="checkbox" id="answer_89860_11" value="s"><label for="answer_89860_11">s</label><br><input type="checkbox" id="answer_89860_12" value="s.PROP"><label for="answer_89860_12">s.PROP</label><br><input type="checkbox" id="answer_89860_13" value="spro"><label for="answer_89860_13">spro</label><br><input type="checkbox" id="answer_89860_14" value="v"><label for="answer_89860_14">v</label><br><input type="submit" value="check">
+</form>
+<p id="result_89860">
+</p>
+<script> function validate_form_89860() {var text;var x1 = document.getElementById("answer_89860_1");var x2 = document.getElementById("answer_89860_2");var x3 = document.getElementById("answer_89860_3");var x4 = document.getElementById("answer_89860_4");var x5 = document.getElementById("answer_89860_5");var x6 = document.getElementById("answer_89860_6");var x7 = document.getElementById("answer_89860_7");var x8 = document.getElementById("answer_89860_8");var x9 = document.getElementById("answer_89860_9");var x10 = document.getElementById("answer_89860_10");var x11 = document.getElementById("answer_89860_11");var x12 = document.getElementById("answer_89860_12");var x13 = document.getElementById("answer_89860_13");var x14 = document.getElementById("answer_89860_14");if (x1.checked == true&x2.checked == true&x3.checked == false&x4.checked == false&x5.checked == false&x6.checked == false&x7.checked == false&x8.checked == false&x9.checked == false&x10.checked == false&x11.checked == true&x12.checked == true&x13.checked == false&x14.checked == true){text = "Correct";} else {text = "I have a different answer";} document.getElementById("result_89860").innerHTML = text; return false;}</script>
 </div>
 </div>
 <div id="нормальность-распределение-остатков" class="section level2" number="9.3">
@@ -380,24 +398,39 @@ F-statistic: 51.11 on 1 and 98 DF,  p-value: 0.0000000001576</code></pre>
 <p>Линейная регрессия предполагает нормальность распределения остатков. Когда связь не линейна, то остатки тоже будут распределены не нормально.</p>
 <p>Можно смотреть на певрый график используя функцию <code>plot(m1)</code> — график остатков. Интерпретаций этого графика достаточно много (см. <a href="http://docs.statwing.com/interpreting-residual-plots-to-improve-your-regression/">статью про это</a>).</p>
 <p>Можно смотреть на qqplot:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="ограничения-на-применение-регрессии.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m1<span class="sc">$</span>residuals)</span>
-<span id="cb127-2"><a href="ограничения-на-применение-регрессии.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m1<span class="sc">$</span>residuals)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="ограничения-на-применение-регрессии.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m2<span class="sc">$</span>residuals)</span>
-<span id="cb128-2"><a href="ограничения-на-применение-регрессии.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m2<span class="sc">$</span>residuals)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-135-2.png" width="672" /></p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="ограничения-на-применение-регрессии.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m3<span class="sc">$</span>residuals)</span>
-<span id="cb129-2"><a href="ограничения-на-применение-регрессии.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m3<span class="sc">$</span>residuals)</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-135-3.png" width="672" /></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="ограничения-на-применение-регрессии.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">res =</span> m1<span class="sc">$</span>residuals) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-2"><a href="ограничения-на-применение-регрессии.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(res))<span class="sc">+</span></span>
+<span id="cb128-3"><a href="ограничения-на-применение-регрессии.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..))<span class="sc">+</span></span>
+<span id="cb128-4"><a href="ограничения-на-применение-регрессии.html#cb128-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sd</span>(m1<span class="sc">$</span>residuals)), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="ограничения-на-применение-регрессии.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m1<span class="sc">$</span>residuals)</span>
+<span id="cb129-2"><a href="ограничения-на-применение-регрессии.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m1<span class="sc">$</span>residuals)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-139-2.png" width="672" /></p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="ограничения-на-применение-регрессии.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">res =</span> m2<span class="sc">$</span>residuals) <span class="sc">%&gt;%</span> </span>
+<span id="cb130-2"><a href="ограничения-на-применение-регрессии.html#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(res))<span class="sc">+</span></span>
+<span id="cb130-3"><a href="ограничения-на-применение-регрессии.html#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..))<span class="sc">+</span></span>
+<span id="cb130-4"><a href="ограничения-на-применение-регрессии.html#cb130-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sd</span>(m2<span class="sc">$</span>residuals)), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-139-3.png" width="672" /></p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="ограничения-на-применение-регрессии.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m2<span class="sc">$</span>residuals)</span>
+<span id="cb131-2"><a href="ограничения-на-применение-регрессии.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m2<span class="sc">$</span>residuals)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-139-4.png" width="672" /></p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="ограничения-на-применение-регрессии.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">res =</span> m3<span class="sc">$</span>residuals) <span class="sc">%&gt;%</span> </span>
+<span id="cb132-2"><a href="ограничения-на-применение-регрессии.html#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(res))<span class="sc">+</span></span>
+<span id="cb132-3"><a href="ограничения-на-применение-регрессии.html#cb132-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..))<span class="sc">+</span></span>
+<span id="cb132-4"><a href="ограничения-на-применение-регрессии.html#cb132-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fu">sd</span>(m3<span class="sc">$</span>residuals)), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-139-5.png" width="672" /></p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="ограничения-на-применение-регрессии.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m3<span class="sc">$</span>residuals)</span>
+<span id="cb133-2"><a href="ограничения-на-применение-регрессии.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m3<span class="sc">$</span>residuals)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-139-6.png" width="672" /></p>
 </div>
 <div id="гетероскидастичность" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> Гетероскидастичность</h2>
 <p>Распределение остатков непостоянно (т. е. не гомоскидастичны):</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="ограничения-на-применение-регрессии.html#cb130-1" aria-hidden="true" tabindex="-1"></a>ldt <span class="sc">%&gt;%</span> </span>
-<span id="cb130-2"><a href="ограничения-на-применение-регрессии.html#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Mean_RT, Freq))<span class="sc">+</span></span>
-<span id="cb130-3"><a href="ограничения-на-применение-регрессии.html#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb130-4"><a href="ограничения-на-применение-регрессии.html#cb130-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="da4l_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="ограничения-на-применение-регрессии.html#cb134-1" aria-hidden="true" tabindex="-1"></a>ldt <span class="sc">%&gt;%</span> </span>
+<span id="cb134-2"><a href="ограничения-на-применение-регрессии.html#cb134-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Mean_RT, Freq))<span class="sc">+</span></span>
+<span id="cb134-3"><a href="ограничения-на-применение-регрессии.html#cb134-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb134-4"><a href="ограничения-на-применение-регрессии.html#cb134-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
 <p>Тоже решается преобазованием данных.</p>
 </div>
 <div id="мультиколлинеарность" class="section level2" number="9.5">
