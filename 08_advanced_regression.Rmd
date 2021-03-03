@@ -140,10 +140,6 @@ bandwidth = seq(-5, 5, 0.01)) %>%
 
 ```{r, include=FALSE}
 df <- read_tsv("data/freq_dict_2009.csv")
-```
-
-```{r, eval= FALSE}
-df <- read_tsv("data/freq_dict_2009.csv")
 df %>%
   group_by(pos) %>% 
   mutate(id = 1:n()) %>% 
