@@ -264,7 +264,7 @@ ud %>%
 
 ```{r}
 fit2 <- lmer(n_tokens~n_words+(1+n_words|corpus), data = ud)
-summary(fit1)
+summary(fit2)
 
 ud %>% 
   mutate(predicted = predict(fit2)) %>% 
@@ -281,7 +281,7 @@ ud %>%
 
 ```{r}
 fit3 <- lmer(n_tokens~n_words+(0+n_words|corpus), data = ud)
-summary(fit1)
+summary(fit3)
 
 ud %>% 
   mutate(predicted = predict(fit3)) %>% 
