@@ -46,4 +46,6 @@ biblio-style: apalike
 packageVersion("tidyverse")
 packageVersion("fitdistrplus")
 packageVersion("mixtools")
+packageVersion("lme4")
+packageVersion("lmerTest")
 ```

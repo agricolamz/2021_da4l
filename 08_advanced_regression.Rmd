@@ -16,9 +16,6 @@ editor_options:
 ### Библиотеки
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
-library(lme4)
-library(lmerTest)
-library(ggfortify)
 ```
 
 ### Lexical Decision Task data
@@ -210,4 +207,15 @@ ldt %>%
 
 ## Независимость наблюдений
 Наблюдения должны быть независимы. В ином случае нужно использовать модель со смешанными эффектами.
+
+### Линейная модель со смешанными эффектами
+
+Если в данных есть некоторая группировка, тогда 
+
+
+```{r}
+library(lme4)
+library(lmerTest)
+library(ggfortify)
+```
 
