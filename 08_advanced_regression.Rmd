@@ -212,10 +212,38 @@ ldt %>%
 
 Если в данных есть некоторая группировка, тогда 
 
-
-```{r}
+```{r, eval=FALSE}
 library(lme4)
 library(lmerTest)
-library(ggfortify)
+
+vowels <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/Coretta_2017_icelandic.csv")
+ph <- lingtypology::phoible.feature()
+
+ph %>% 
+  group_by(inventoryid, language, glottocode) %>% 
+  count(segmentclass) %>% 
+  pivot_wider(names_from = segmentclass, values_from = n) %>% 
+  select(-tone) %>% 
+  mutate(area = lingtypology::area.lang(language)) ->
+  res
+
+res  %>% 
+  group_by(language) %>% 
+  sample_n(1) %>% 
+  na.omit() ->
+  res_2
+
+res_2 %>% 
+  ggplot(aes(consonant, vowel))+
+  geom_point()+
+  facet_wrap(~area)+
+  geom_smooth()
+
+vowels %>% 
+  filter(aspiration == "yes", vowel == "e") %>% 
+  ggplot(aes(word.dur, closure.dur))+
+  geom_point()+
+  facet_wrap(~speaker, scales = "free")+
+  geom_smooth(method = "lm", se = FALSE)
 ```
 
