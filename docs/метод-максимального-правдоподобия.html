@@ -225,9 +225,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6.1" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#линейная-модель-со-смешанными-эффектами"><i class="fa fa-check"></i><b>9.6.1</b> Линейная модель со смешанными эффектами</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="логистическая-и-мультиномиальная-регрессия.html"><a href="логистическая-и-мультиномиальная-регрессия.html"><i class="fa fa-check"></i><b>10</b> Логистическая и мультиномиальная регрессия</a>
+<li class="chapter" data-level="10" data-path="логистическая-порядковая-и-мультиномиальная-регрессия.html"><a href="логистическая-порядковая-и-мультиномиальная-регрессия.html"><i class="fa fa-check"></i><b>10</b> Логистическая, порядковая и мультиномиальная регрессия</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="логистическая-и-мультиномиальная-регрессия.html"><a href="логистическая-и-мультиномиальная-регрессия.html#логистическая-регрессия"><i class="fa fa-check"></i><b>10.1</b> Логистическая регрессия</a></li>
+<li class="chapter" data-level="10.1" data-path="логистическая-порядковая-и-мультиномиальная-регрессия.html"><a href="логистическая-порядковая-и-мультиномиальная-регрессия.html#логистическая-регрессия"><i class="fa fa-check"></i><b>10.1</b> Логистическая регрессия</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="логистическая-порядковая-и-мультиномиальная-регрессия.html"><a href="логистическая-порядковая-и-мультиномиальная-регрессия.html#теория"><i class="fa fa-check"></i><b>10.1.1</b> Теория</a></li>
+<li class="chapter" data-level="10.1.2" data-path="логистическая-порядковая-и-мультиномиальная-регрессия.html"><a href="логистическая-порядковая-и-мультиномиальная-регрессия.html#практика"><i class="fa fa-check"></i><b>10.1.2</b> Практика</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="логистическая-порядковая-и-мультиномиальная-регрессия.html"><a href="логистическая-порядковая-и-мультиномиальная-регрессия.html#порядковая-логистическая-регрессия"><i class="fa fa-check"></i><b>10.2</b> Порядковая логистическая регрессия</a></li>
+<li class="chapter" data-level="10.3" data-path="логистическая-порядковая-и-мультиномиальная-регрессия.html"><a href="логистическая-порядковая-и-мультиномиальная-регрессия.html#мультиномиальная-регрессия"><i class="fa fa-check"></i><b>10.3</b> Мультиномиальная регрессия</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
@@ -268,12 +274,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
-<form name="form_72247" onsubmit="return validate_form_72247()" method="post">
-<input type="text" name="answer_72247"><br><input type="submit" value="check">
+<form name="form_68411" onsubmit="return validate_form_68411()" method="post">
+<input type="text" name="answer_68411"><br><input type="submit" value="check">
 </form>
-<p id="result_72247">
+<p id="result_68411">
 </p>
-<script> function validate_form_72247() {var x, text; var x = document.forms["form_72247"]["answer_72247"].value;if (x == "0.267"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_72247').innerHTML = text; return false;} </script>
+<script> function validate_form_68411() {var x, text; var x = document.forms["form_68411"]["answer_68411"].value;if (x == "0.267"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_68411').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 Если принять на веру, что биномиальное распределение с параметрами <span class="math inline"><span class="math inline">\(p =\)</span></span> 0.9 описывает, согласно <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span> употребление <em>s</em>-генитивов в британском английском, то какова вероятность наблюдать значения между 300 и 350 генитивов в интервью, содержащее 400 генитивных контекстов? То же самое можно записать, используя математическую нотацию:
@@ -282,12 +288,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="math display"><span class="math display">\[P\left(X \in [300,\, 350] | X \sim Binom(n = 400, p = 0.9)\right) = ??\]</span></span> Ответ округлите до трех и меньше знаков после запятой.
 </p>
 </div>
-<form name="form_18658" onsubmit="return validate_form_18658()" method="post">
-<input type="text" name="answer_18658"><br><input type="submit" value="check">
+<form name="form_76125" onsubmit="return validate_form_76125()" method="post">
+<input type="text" name="answer_76125"><br><input type="submit" value="check">
 </form>
-<p id="result_18658">
+<p id="result_76125">
 </p>
-<script> function validate_form_18658() {var x, text; var x = document.forms["form_18658"]["answer_18658"].value;if (x == "0.06"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_18658').innerHTML = text; return false;} </script>
+<script> function validate_form_76125() {var x, text; var x = document.forms["form_76125"]["answer_76125"].value;if (x == "0.06"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_76125').innerHTML = text; return false;} </script>
 </div>
 <div id="функция-правдоподобия" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Функция правдоподобия</h2>

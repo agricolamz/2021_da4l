@@ -9,7 +9,7 @@ theme_set(theme_bw())
 ```
 
 
-# Логистическая и мультиномиальная регрессия
+# Логистическая, порядковая и мультиномиальная регрессия
 
 ```{r}
 library(tidyverse)
@@ -18,6 +18,7 @@ library(tidyverse)
 Логистическая (logit, logistic) и мультиномиальная (multinomial) регрессия применяются в случаях, когда зависимая переменная является категориальной:
 
 * с двумя значениями (логистическая регрессия)
+* с более чем двумя значениями, упорядоченными в иерархию (порядковая регрессия)
 * с более чем двумя значениями (мультиномиальная регрессия)
 
 ## Логистическая регрессия
@@ -240,6 +241,29 @@ check_question("logit_1", options = paste0("logit_", 0:3), alignment = TRUE, typ
 pscl::pR2(logit_1)
 ```
 
+```{block, type = "rmdtask"}
+Проанализируйте в датасете с языками связь количества сегментов и наличия ударения. Постройте регрессию, визуализируйте связь. Какой вывод вы можете сделать?
+```
+
+```{r, include=FALSE}
+phonological_profiles %>% 
+  mutate(phonemes = consonants+vowels) %>% 
+  glm(stress~phonemes, family = "binomial", data = .) ->
+  logit_new
+summary(logit_new)
+logit_new$coefficients
+
+phonological_profiles %>% 
+  mutate(phonemes = consonants+vowels,
+         stress = as.double(stress)) %>% 
+  ggplot(aes(phonemes, stress)) +
+  geom_smooth(method = "glm", 
+              method.args = list(family = "binomial"),
+              se = FALSE)+
+  geom_point()
+```
+
+
 ## Порядковая логистическая регрессия
 
 Данные взяты из [исследования [Endresen, Janda 2015]](https://goo.gl/GC4RjQ), посвященное исследованию маргинальных глаголов изменения состояния в русском языке. Испытуемые (70 школьников, 51 взрослый) оценивали по [шкале Ликерта (1...5)](https://goo.gl/R4gHiq) приемлемость глаголов с приставками _о-_ и _у-_:
@@ -249,7 +273,7 @@ pscl::pR2(logit_1)
 * искусственные слова (_ономить_, _укампить_)
 
 ```{r, message=FALSE}
-marginal_verbs <- read_csv("https://goo.gl/6Phok3")
+marginal_verbs <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/marginal_verbs.csv")
 head(marginal_verbs)
 ```
 
@@ -281,14 +305,23 @@ ordinal$coefficients
 (exp(ordinal$coefficients)-1)*100
 ```
 
-$$\log(\frac{p(A)}{p(B|C|D|E)}) = -2.6275 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce -$$    
-$$-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency$$
-$$\log(\frac{p(A|B)}{p(C|D|E)}) = -1.4531 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce$$
-$$-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency$$
-$$\log(\frac{p(A|B|C)}{p(D|E)}) = -0.2340 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce$$
-$$-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency$$
-$$\log(\frac{p(A|B|C|D)}{p(E)}) = 0.7324 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce$$
-$$-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency$$
+$$\log(\frac{p(A)}{p(B|C|D|E)}) = -2.6275 + 0.136619412 \times Prefixu +$$
+$$+ 1.340602696 \times WordTypenonce -$$    
+$$-4.655327418 \times WordTypestandard - $$
+$$ - 0.001014583\times CorpusFrequency$$
+$$\log(\frac{p(A|B)}{p(C|D|E)}) = -1.4531 + 0.136619412 \times Prefixu + $$
+$$ + 1.340602696 \times WordTypenonce-$$
+$$-4.655327418 \times WordTypestandard -$$
+$$ -0.001014583\times CorpusFrequency$$
+$$\log(\frac{p(A|B|C)}{p(D|E)}) = -0.2340 + 0.136619412 \times Prefixu + $$
+$$ + 1.340602696 \times WordTypenonce-$$
+$$-4.655327418 \times WordTypestandard - $$
+$$-0.001014583\times CorpusFrequency$$
+
+$$\log(\frac{p(A|B|C|D)}{p(E)}) = 0.7324 + 0.136619412 \times Prefixu +$$
+$$ + 1.340602696 \times WordTypenonce-$$
+$$-4.655327418 \times WordTypestandard -$$
+$$=0.001014583\times CorpusFrequency$$
 
 ```{r}
 head(predict(ordinal))
@@ -308,7 +341,7 @@ ordinal %>%
   plot()
 ```
 
-### 3. Мультиномиальная регрессия
+## Мультиномиальная регрессия
 
 В этом датасете представлены три нанайских гласных  i, ɪ и e, произнесенные нанайским носителем мужского пола из селения Джуен. Каждая строчка --- отдельное произнесение. Переменные:
 
@@ -316,7 +349,7 @@ ordinal %>%
 * f2 --- вторая форманта
 
 ```{r}
-nanai <- read_csv("https://goo.gl/9uGBoQ")
+nanai <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/nanai_vowels.csv")
 nanai %>% 
   ggplot(aes(f2, f1, label = sound, color = sound))+
   geom_text()+
@@ -337,7 +370,7 @@ mult
 $$\log(\frac{p(e)}{p(ɪ)}) = -41.46147 + 0.02360077\times f1 +0.01937067\times f2$$
 $$\log(\frac{p(i)}{p(ɪ)}) = -22.85202 -0.04263175\times f1 +  0.02315226\times f2$$
 
-```{r}
+```{r, warning=FALSE}
 nanai %>% 
   mutate(prediction = predict(mult),
          correctness = sound == prediction) %>% 
