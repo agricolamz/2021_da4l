@@ -3,11 +3,16 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Логистическая и мультиномиальная регрессия
-
 ```{r, include=FALSE}
 library(tidyverse)
 theme_set(theme_bw())
+```
+
+
+# Логистическая и мультиномиальная регрессия
+
+```{r}
+library(tidyverse)
 ```
 
 Логистическая (logit, logistic) и мультиномиальная (multinomial) регрессия применяются в случаях, когда зависимая переменная является категориальной:
@@ -82,3 +87,129 @@ tibble(p = seq(0, 1, 0.001),
 
 ### Практика
 
+В датасет собрано 19 языков, со следующими переменными:
+
+* `language` --- переменная, содержащая язык
+* `tone` --- бинарная переменная, обозначающая наличие тонов
+* `long_vowels` --- бинарная переменная, обозначающая наличие долгих гласных
+* `stress` --- бинарная переменная, обозначающая наличие ударения
+* `ejectives` --- бинарная переменная, обозначающая наличие абруптивных
+* `consonants` --- переменная, содержащая информацию о количестве согласных
+* `vowels` --- переменная, содержащая информацию о количестве гласных
+
+```{r, message = FALSE}
+phonological_profiles <- read_csv("https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/phonological_profiles.csv")
+glimpse(phonological_profiles)
+set.seed(42)
+phonological_profiles %>% 
+  ggplot(aes(ejectives, consonants))+
+  geom_boxplot(aes(fill = ejectives), show.legend = FALSE, outlier.alpha = 0)+ 
+  # по умолчанию боксплот рисует выбросы, outlier.alpha = 0 -- это отключает
+  geom_jitter(size = 3)
+```
+
+#### Почему не линейную регрессию?
+
+```{r}
+lm_0 <- lm(as.double(ejectives)~1, data = phonological_profiles)
+lm_1 <- lm(as.double(ejectives)~consonants, data = phonological_profiles)
+lm_0
+lm_1
+```
+Первая модель:
+$$ejectives = 0.3158 \times consonants$$
+Вторая модель:
+$$ejectives = -0.5389 + 0.0353 \times consonants$$
+
+```{r, message=FALSE}
+phonological_profiles %>% 
+  ggplot(aes(consonants, as.double(ejectives)))+
+  geom_point()+
+  geom_smooth(method = "lm")+
+  theme_bw()+
+  labs(y = "ejectives (yes = 2, no = 1)")
+```
+
+#### Логит: модель без предиктора
+
+```{r}
+logit_0 <- glm(ejectives~1, family = "binomial", data = phonological_profiles)
+summary(logit_0)
+logit_0$coefficients
+table(phonological_profiles$ejectives)
+log(6/13) # β0
+6/(13+6) # p
+exp(log(6/13))/(1+exp(log(6/13))) # p
+```
+
+```{block, type = "rmdtask"}
+Какой коэфициент логистической регрессии, мы получим, запустив модель, предсказывающую количество *s*-генитивов, если наши данные состоят из 620 *s*-генитивов из 699 генетивных контекстов?
+
+Ответ округлите до трех и меньше знаков после запятой.
+```
+
+```{r, echo=FALSE, results='asis'}
+check_question(round(log(620/(699-620)), 3))
+```
+
+#### Логит: модель c одним числовым предиктором
+```{r, message=FALSE}
+logit_1 <- glm(ejectives~consonants, family = "binomial", data = phonological_profiles)
+summary(logit_1)
+logit_1$coefficients
+
+phonological_profiles %>% 
+  mutate(ejectives = as.double(ejectives)) %>% 
+  ggplot(aes(consonants, ejectives)) +
+  geom_smooth(method = "glm", 
+              method.args = list(family = "binomial"),
+              se = FALSE)+
+  geom_point()
+```
+
+Какова вероятность, что в языке с 29 согласными есть абруптивные?
+```{r}
+logit_1$coefficients
+```
+
+$$\log\left({\frac{p}{1-p}}\right)_i=\beta_0+\beta_1\times consinants_i + \epsilon_i$$
+$$\log\left({\frac{p}{1-p}}\right)=-12.1123347 + 0.4576095 \times 29 = 1.158341$$
+$$p = \frac{e^{1.158341}}{1+e^{1.158341}} = 0.7610311$$
+
+```{r}
+# log(odds)
+predict(logit_1, newdata = data.frame(consonants = 29))
+# p
+predict(logit_1, newdata = data.frame(consonants = 29), type = "response")
+```
+
+```{block, type = "rmdtask"}
+Какой логорифм шансов предсказывает наша модель для языка с 25 согласными (6 знаков после запятой)?
+```
+
+```{r, results='asis', echo = FALSE}
+check_question(round(predict(logit_1, newdata = data.frame(consonants = 25)), 6))
+```
+
+```{block, type = "rmdtask"}
+Какую вероятность предсказывает наша модель для языка с 25 согласными (6 знаков после запятой)?
+```
+```{r, results='asis', echo = FALSE}
+check_question(round(predict(logit_1, newdata = data.frame(consonants = 25), type = "response"), 6))
+```
+
+#### Логит: модель c одним категориальным предиктором
+```{r}
+logit_2 <- glm(ejectives~area, family = "binomial", data = phonological_profiles)
+summary(logit_2)
+logit_2$coefficients
+table(phonological_profiles$ejectives, phonological_profiles$area)
+log(1/6) # Eurasia
+log(3/1) # North America
+```
+
+#### Логит: множественная регрессия
+```{r}
+logit_3 <- glm(ejectives~consonants+area, family = "binomial", data = phonological_profiles)
+summary(logit_3)
+```
