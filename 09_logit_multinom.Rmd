@@ -54,7 +54,7 @@ $$p = \frac{\exp(\log(odds))}{1+\exp(\log(odds))}$$
 
 ```{r, results='asis', echo = FALSE}
 library(checkdown)
-log_odds <- log(5/20)
+log_odds <- 5/20
 check_question(answer = exp(log_odds)/(1+exp(log_odds)))
 ```
 
