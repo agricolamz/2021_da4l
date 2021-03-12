@@ -50,4 +50,8 @@ packageVersion("fitdistrplus")
 packageVersion("mixtools")
 packageVersion("lme4")
 packageVersion("lmerTest")
+packageVersion("car")
+packageVersion("pscl")
+packageVersion("nnet")
+packageVersion("MASS")
 ```

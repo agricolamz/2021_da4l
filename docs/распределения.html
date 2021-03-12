@@ -225,6 +225,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6.1" data-path="ограничения-на-применение-регрессии.html"><a href="ограничения-на-применение-регрессии.html#линейная-модель-со-смешанными-эффектами"><i class="fa fa-check"></i><b>9.6.1</b> Линейная модель со смешанными эффектами</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="логистическая-и-мультиномиальная-регрессия.html"><a href="логистическая-и-мультиномиальная-регрессия.html"><i class="fa fa-check"></i><b>10</b> Логистическая и мультиномиальная регрессия</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="логистическая-и-мультиномиальная-регрессия.html"><a href="логистическая-и-мультиномиальная-регрессия.html#логистическая-регрессия"><i class="fa fa-check"></i><b>10.1</b> Логистическая регрессия</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
 
@@ -245,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="распределения" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Распределения</h1>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="распределения.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="распределения.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <div id="распределения-в-r" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Распределения в R</h2>
 <p>В R встроено какое-то количество известных распределений. Все они представлены четырьмя функциями:</p>
@@ -256,31 +260,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>и <code>r...</code> (рандомные числа из заданного распределения).</li>
 </ul>
 <p>Рассмотрим все это на примере нормального распределения.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="распределения.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
-<span id="cb12-2"><a href="распределения.html#cb12-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">PDF =</span> <span class="fu">dnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a href="распределения.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, PDF))<span class="sc">+</span></span>
-<span id="cb12-4"><a href="распределения.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb12-5"><a href="распределения.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb12-6"><a href="распределения.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;PDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="распределения.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb20-2"><a href="распределения.html#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">PDF =</span> <span class="fu">dnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="распределения.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, PDF))<span class="sc">+</span></span>
+<span id="cb20-4"><a href="распределения.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb20-5"><a href="распределения.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb20-6"><a href="распределения.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;PDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="распределения.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
-<span id="cb13-2"><a href="распределения.html#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">CDF =</span> <span class="fu">pnorm</span>(x, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a href="распределения.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, CDF))<span class="sc">+</span></span>
-<span id="cb13-4"><a href="распределения.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb13-5"><a href="распределения.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb13-6"><a href="распределения.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;CDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="распределения.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb21-2"><a href="распределения.html#cb21-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">CDF =</span> <span class="fu">pnorm</span>(x, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="распределения.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, CDF))<span class="sc">+</span></span>
+<span id="cb21-4"><a href="распределения.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb21-5"><a href="распределения.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb21-6"><a href="распределения.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;CDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="распределения.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">quantiles =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>),</span>
-<span id="cb14-2"><a href="распределения.html#cb14-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">value =</span> <span class="fu">qnorm</span>(quantiles, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-3"><a href="распределения.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(quantiles, value))<span class="sc">+</span></span>
-<span id="cb14-4"><a href="распределения.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb14-5"><a href="распределения.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb14-6"><a href="распределения.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;inverse CDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="распределения.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">quantiles =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.01</span>),</span>
+<span id="cb22-2"><a href="распределения.html#cb22-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">value =</span> <span class="fu">qnorm</span>(quantiles, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="распределения.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(quantiles, value))<span class="sc">+</span></span>
+<span id="cb22-4"><a href="распределения.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb22-5"><a href="распределения.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb22-6"><a href="распределения.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;inverse CDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="распределения.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">sample =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="распределения.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(sample))<span class="sc">+</span></span>
-<span id="cb15-3"><a href="распределения.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb15-4"><a href="распределения.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;выборка нормально распределенных чисел (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="распределения.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">sample =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="распределения.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(sample))<span class="sc">+</span></span>
+<span id="cb23-3"><a href="распределения.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb23-4"><a href="распределения.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;выборка нормально распределенных чисел (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-3-4.png" width="672" /></p>
 <p>Если не использовать <code>set.seed()</code>, то результат работы рандомизатора нельзя будет повторить.</p>
 <div class="rmdtask">
@@ -288,32 +292,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Какое значение имеет 25% квантиль нормального распределения со средним в 20 и стандартным отклонением 90? Ответ округлите до трех знаков после запятой.
 </p>
 </div>
-<form name="form_97154" onsubmit="return validate_form_97154()" method="post">
-<input type="text" name="answer_97154"><br><input type="submit" value="check">
+<form name="form_34280" onsubmit="return validate_form_34280()" method="post">
+<input type="text" name="answer_34280"><br><input type="submit" value="check">
 </form>
-<p id="result_97154">
+<p id="result_34280">
 </p>
-<script> function validate_form_97154() {var x, text; var x = document.forms["form_97154"]["answer_97154"].value;if (x == "-40.704"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_97154').innerHTML = text; return false;} </script>
+<script> function validate_form_34280() {var x, text; var x = document.forms["form_34280"]["answer_34280"].value;if (x == "-40.704"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_34280').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 Данные из базы данных фонетических инвентарей PHOIBLE <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-phoible" role="doc-biblioref">Moran, McCloy, and Wright 2014</a>)</span></span>, достаточно сильно упрощая, можно описать нормальным распределением со средним 35 фонем и стандартным отклонением 13. Если мы ничего не знаем про язык, оцените с какой вероятностью, согласно этой модели произвольно взятый язык окажется в промежутке между 25 и 50 фонемами? Ответ округлите до трех знаков после запятой.
 </p>
 </div>
-<form name="form_56893" onsubmit="return validate_form_56893()" method="post">
-<input type="text" name="answer_56893"><br><input type="submit" value="check">
+<form name="form_94466" onsubmit="return validate_form_94466()" method="post">
+<input type="text" name="answer_94466"><br><input type="submit" value="check">
 </form>
-<p id="result_56893">
+<p id="result_94466">
 </p>
-<script> function validate_form_56893() {var x, text; var x = document.forms["form_56893"]["answer_56893"].value;if (x == "0.655"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_56893').innerHTML = text; return false;} </script>
+<script> function validate_form_94466() {var x, text; var x = document.forms["form_94466"]["answer_94466"].value;if (x == "0.655"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_94466').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 Какие есть недостатки у модели из предыдущего задания?
 </p>
 </div>
-<p id="hint_135802", onclick="return show_hint_135802()">ответы:</p>
-<p id="result_135802">
+<p id="hint_102291", onclick="return show_hint_102291()">ответы:</p>
+<p id="result_102291">
 </p>
-<script> function show_hint_135802() {var x = document.getElementById("result_135802").innerHTML;if(!x){document.getElementById('result_135802').innerHTML = '<p id="hint_12879", onclick="return show_hint_12879()">недостаток 1</p><p id="result_12879"></p><p id="hint_46864", onclick="return show_hint_46864()">недостаток 2</p><p id="result_46864"></p>';}else {document.getElementById("result_135802").innerHTML = "";}}function show_hint_12879() {var x = document.getElementById("result_12879").innerHTML;if(!x){document.getElementById('result_12879').innerHTML = 'Согласно данной модели, количество фонем в языках может принимать значение равное любому действительному числу, в то время как в данных мы наблюдаем только целые числа.';}else {document.getElementById("result_12879").innerHTML = "";}}function show_hint_46864() {var x = document.getElementById("result_46864").innerHTML;if(!x){document.getElementById('result_46864').innerHTML = 'Данная модель предсказывает, что количество фонем 0.4% языков  меньше нуля, что представляется невозможным с точки зрения лингвистики.';}else {document.getElementById("result_46864").innerHTML = "";}}</script>
+<script> function show_hint_102291() {var x = document.getElementById("result_102291").innerHTML;if(!x){document.getElementById('result_102291').innerHTML = '<p id="hint_79525", onclick="return show_hint_79525()">недостаток 1</p><p id="result_79525"></p><p id="hint_56936", onclick="return show_hint_56936()">недостаток 2</p><p id="result_56936"></p>';}else {document.getElementById("result_102291").innerHTML = "";}}function show_hint_79525() {var x = document.getElementById("result_79525").innerHTML;if(!x){document.getElementById('result_79525').innerHTML = 'Согласно данной модели, количество фонем в языках может принимать значение равное любому действительному числу, в то время как в данных мы наблюдаем только целые числа.';}else {document.getElementById("result_79525").innerHTML = "";}}function show_hint_56936() {var x = document.getElementById("result_56936").innerHTML;if(!x){document.getElementById('result_56936').innerHTML = 'Данная модель предсказывает, что количество фонем 0.4% языков  меньше нуля, что представляется невозможным с точки зрения лингвистики.';}else {document.getElementById("result_56936").innerHTML = "";}}</script>
 </div>
 <div id="дискретные-переменные" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Дискретные переменные</h2>
@@ -322,88 +326,88 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Биномиальное распределение — распределение количетсва успехов эксперементов Бернулли из <em>n</em> попыток с вероятностью успеха <em>p</em>.</p>
 <p><span class="math display">\[P(k | n, p) = \frac{n!}{k!(n-k)!} \times p^k \times (1-p)^{n-k} =  {n \choose k} \times p^k \times (1-p)^{n-k}\]</span>
 <span class="math display">\[ 0 \leq p \leq 1; n, k &gt; 0\]</span></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="распределения.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>,</span>
-<span id="cb16-2"><a href="распределения.html#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">density =</span> <span class="fu">dbinom</span>(<span class="at">x =</span> x, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="fl">0.16</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-3"><a href="распределения.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, density))<span class="sc">+</span></span>
-<span id="cb16-4"><a href="распределения.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb16-5"><a href="распределения.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb16-6"><a href="распределения.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Биномиальное распределение p = 0.16, n = 50&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="распределения.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>,</span>
+<span id="cb24-2"><a href="распределения.html#cb24-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">density =</span> <span class="fu">dbinom</span>(<span class="at">x =</span> x, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="fl">0.16</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="распределения.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, density))<span class="sc">+</span></span>
+<span id="cb24-4"><a href="распределения.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb24-5"><a href="распределения.html#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb24-6"><a href="распределения.html#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Биномиальное распределение p = 0.16, n = 50&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <div class="rmdtask">
 <p>
 Немного упрощая данные из статьи <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span>, можно сказать что носители британского английского предпочитают <em>s</em>-генитив (90%) <em>of</em>-генитиву (10%). Какова вероятность, согласно этим данным, что в интервью британского актера из 118 контекстов будет 102 <em>s</em>-генитивов? Ответ округлите до трёх или менее знаков после запятой.
 </p>
 </div>
-<form name="form_51956" onsubmit="return validate_form_51956()" method="post">
-<input type="text" name="answer_51956"><br><input type="submit" value="check">
+<form name="form_91174" onsubmit="return validate_form_91174()" method="post">
+<input type="text" name="answer_91174"><br><input type="submit" value="check">
 </form>
-<p id="result_51956">
+<p id="result_91174">
 </p>
-<script> function validate_form_51956() {var x, text; var x = document.forms["form_51956"]["answer_51956"].value;if (x == "0.05"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_51956').innerHTML = text; return false;} </script>
+<script> function validate_form_91174() {var x, text; var x = document.forms["form_91174"]["answer_91174"].value;if (x == "0.05"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_91174').innerHTML = text; return false;} </script>
 <div class="rmdtask">
 <p>
 А какое значение количества <em>s</em>-генитивов наиболее ожидаемо, согласно этой модели?
 </p>
 </div>
-<form name="form_13646" onsubmit="return validate_form_13646()" method="post">
-<input type="text" name="answer_13646"><br><input type="submit" value="check">
+<form name="form_5262" onsubmit="return validate_form_5262()" method="post">
+<input type="text" name="answer_5262"><br><input type="submit" value="check">
 </form>
-<p id="result_13646">
+<p id="result_5262">
 </p>
-<script> function validate_form_13646() {var x, text; var x = document.forms["form_13646"]["answer_13646"].value;if (x == "107"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_13646').innerHTML = text; return false;} </script>
+<script> function validate_form_5262() {var x, text; var x = document.forms["form_5262"]["answer_5262"].value;if (x == "107"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_5262').innerHTML = text; return false;} </script>
 </div>
 <div id="геометрическое-распределение" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Геометрическое распределение</h3>
 <p>Геометрическое распределение — распределение количетсва эксперементов Бернулли с вероятностью успеха <em>p</em> до первого успеха.</p>
 <p><span class="math display">\[P(k | p) = (1-p)^k\times p\]</span>
 <span class="math display">\[k\in\{1, 2, \dots\}\]</span></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="распределения.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>,</span>
-<span id="cb17-2"><a href="распределения.html#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">density =</span> <span class="fu">dgeom</span>(<span class="at">x =</span> x, <span class="at">prob =</span> <span class="fl">0.16</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="распределения.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, density))<span class="sc">+</span></span>
-<span id="cb17-4"><a href="распределения.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb17-5"><a href="распределения.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb17-6"><a href="распределения.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Геометрическое распределение p = 0.16, n = 50&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="распределения.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>,</span>
+<span id="cb25-2"><a href="распределения.html#cb25-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">density =</span> <span class="fu">dgeom</span>(<span class="at">x =</span> x, <span class="at">prob =</span> <span class="fl">0.16</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="распределения.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, density))<span class="sc">+</span></span>
+<span id="cb25-4"><a href="распределения.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb25-5"><a href="распределения.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb25-6"><a href="распределения.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Геометрическое распределение p = 0.16, n = 50&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <div class="rmdtask">
 <p>
 Приняв модель из <span class="citation"><span class="citation">(<a href="ссылки-на-литературу.html#ref-rosenbach03" role="doc-biblioref">Rosenbach 2003</a>: 394)</span></span>, какова вероятность, что в интервью с британским актером первый <em>of</em>-генитив будет третьим по счету?
 </p>
 </div>
-<form name="form_38038" onsubmit="return validate_form_38038()" method="post">
-<input type="text" name="answer_38038"><br><input type="submit" value="check">
+<form name="form_3476" onsubmit="return validate_form_3476()" method="post">
+<input type="text" name="answer_3476"><br><input type="submit" value="check">
 </form>
-<p id="result_38038">
+<p id="result_3476">
 </p>
-<script> function validate_form_38038() {var x, text; var x = document.forms["form_38038"]["answer_38038"].value;if (x == "0.081"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_38038').innerHTML = text; return false;} </script>
+<script> function validate_form_3476() {var x, text; var x = document.forms["form_3476"]["answer_3476"].value;if (x == "0.081"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_3476').innerHTML = text; return false;} </script>
 </div>
 <div id="распределение-пуассона" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Распределение Пуассона</h3>
 <p>Распределение дискретной переменной, обозначающей количество случаев <span class="math inline">\(k\)</span> некоторого события, которое происходит с некоторой заданной частотой <span class="math inline">\(\lambda\)</span>.</p>
 <p><span class="math display">\[P(\lambda) = \frac{e^{-\lambda}\times\lambda^k}{k!}\]</span></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="распределения.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">k =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>,</span>
-<span id="cb18-2"><a href="распределения.html#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">density =</span> <span class="fu">dpois</span>(<span class="at">x =</span> k, <span class="at">lambda =</span> <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href="распределения.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(k, density))<span class="sc">+</span></span>
-<span id="cb18-4"><a href="распределения.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb18-5"><a href="распределения.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb18-6"><a href="распределения.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Распределение Пуассона с параметром λ = 5&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="распределения.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">k =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">50</span>,</span>
+<span id="cb26-2"><a href="распределения.html#cb26-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">density =</span> <span class="fu">dpois</span>(<span class="at">x =</span> k, <span class="at">lambda =</span> <span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="распределения.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(k, density))<span class="sc">+</span></span>
+<span id="cb26-4"><a href="распределения.html#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb26-5"><a href="распределения.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb26-6"><a href="распределения.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Распределение Пуассона с параметром λ = 5&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>Параметр <span class="math inline">\(\lambda\)</span> в модели Пуассона одновременно является и средним, и дисперсией.</p>
 <p>Попробуем воспользоваться распределением Пуассона для моделирования количества слогов в андийском языке. Количество слогов – это всегда натуральное число (т. е. не бывает 2.5 слогов, не бывает -3 слогов и т. д., но в теории может быть 0 слогов), так что модель Пуассона здесь применима. Согласно модели Пуассона все слова независимо друг от друга получают сколько-то слогов согласно распределению Пуассона. Посмотрим на данные:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="распределения.html#cb19-1" aria-hidden="true" tabindex="-1"></a>andic_syllables <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/andic_syllables.csv&quot;</span>) </span>
-<span id="cb19-2"><a href="распределения.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="распределения.html#cb19-3" aria-hidden="true" tabindex="-1"></a>andic_syllables <span class="sc">%&gt;%</span> </span>
-<span id="cb19-4"><a href="распределения.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n_syllables, count))<span class="sc">+</span></span>
-<span id="cb19-5"><a href="распределения.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
-<span id="cb19-6"><a href="распределения.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>language, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="распределения.html#cb27-1" aria-hidden="true" tabindex="-1"></a>andic_syllables <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/andic_syllables.csv&quot;</span>) </span>
+<span id="cb27-2"><a href="распределения.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="распределения.html#cb27-3" aria-hidden="true" tabindex="-1"></a>andic_syllables <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="распределения.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n_syllables, count))<span class="sc">+</span></span>
+<span id="cb27-5"><a href="распределения.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
+<span id="cb27-6"><a href="распределения.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>language, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Птичка напела (мы научимся узнавать, откуда птичка это знает на следующем занятии), что андийские данные можно описать при помощи распределения Пуассона с параметром <span class="math inline">\(\lambda\)</span> = 2.783.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="распределения.html#cb20-1" aria-hidden="true" tabindex="-1"></a>andic_syllables <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="распределения.html#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;Andi&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="распределения.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">observed =</span> count) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-4"><a href="распределения.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predicted =</span> <span class="fu">dpois</span>(n_syllables, <span class="at">lambda =</span> <span class="fl">2.783</span>)<span class="sc">*</span><span class="fu">sum</span>(observed)) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-5"><a href="распределения.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>, <span class="at">cols =</span> <span class="fu">c</span>(observed, predicted)) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-6"><a href="распределения.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n_syllables, value, <span class="at">fill =</span> type))<span class="sc">+</span></span>
-<span id="cb20-7"><a href="распределения.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="распределения.html#cb28-1" aria-hidden="true" tabindex="-1"></a>andic_syllables <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="распределения.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;Andi&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="распределения.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">observed =</span> count) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="распределения.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predicted =</span> <span class="fu">dpois</span>(n_syllables, <span class="at">lambda =</span> <span class="fl">2.783</span>)<span class="sc">*</span><span class="fu">sum</span>(observed)) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-5"><a href="распределения.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;type&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>, <span class="at">cols =</span> <span class="fu">c</span>(observed, predicted)) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-6"><a href="распределения.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n_syllables, value, <span class="at">fill =</span> type))<span class="sc">+</span></span>
+<span id="cb28-7"><a href="распределения.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <div class="rmdtask">
 <p>
@@ -432,31 +436,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.3.1</span> Нормальное распределение</h3>
 <p><span class="math display">\[P(x) = \frac{1}{\sigma\sqrt{2\pi}}\times e^{-\frac{\left(x-\mu\right)^2}{2\sigma^2}}\]</span></p>
 <p><span class="math display">\[\mu \in \mathbb{R}; \sigma^2 &gt; 0\]</span></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="распределения.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
-<span id="cb21-2"><a href="распределения.html#cb21-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">PDF =</span> <span class="fu">dnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="распределения.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, PDF))<span class="sc">+</span></span>
-<span id="cb21-4"><a href="распределения.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb21-5"><a href="распределения.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb21-6"><a href="распределения.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;PDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="распределения.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb29-2"><a href="распределения.html#cb29-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">PDF =</span> <span class="fu">dnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="распределения.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, PDF))<span class="sc">+</span></span>
+<span id="cb29-4"><a href="распределения.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb29-5"><a href="распределения.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb29-6"><a href="распределения.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;PDF нормального распределения (μ = 50, sd = 10)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p>Птичка напела, что длительность гласных американского английского из <span class="citation">(<a href="ссылки-на-литературу.html#ref-hillenbrand95" role="doc-biblioref">Hillenbrand et al. 1995</a>)</span> можно описать нормальным распределением с параметрами <span class="math inline">\(\mu =\)</span> 274.673 и <span class="math inline">\(\sigma =\)</span> 64.482. Посмотрим, как можно совместить данные и это распределение:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="распределения.html#cb22-1" aria-hidden="true" tabindex="-1"></a>vowels <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/phonTools_hillenbrand_1995.csv&quot;</span>) </span>
-<span id="cb22-2"><a href="распределения.html#cb22-2" aria-hidden="true" tabindex="-1"></a>vowels <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a href="распределения.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(dur)) <span class="sc">+</span> </span>
-<span id="cb22-4"><a href="распределения.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span>..density..)) <span class="sc">+</span> <span class="co"># обратите внимание на аргумент ..density..</span></span>
-<span id="cb22-5"><a href="распределения.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">274.673</span>, <span class="at">sd =</span> <span class="fl">64.482</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="распределения.html#cb30-1" aria-hidden="true" tabindex="-1"></a>vowels <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/phonTools_hillenbrand_1995.csv&quot;</span>) </span>
+<span id="cb30-2"><a href="распределения.html#cb30-2" aria-hidden="true" tabindex="-1"></a>vowels <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="распределения.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(dur)) <span class="sc">+</span> </span>
+<span id="cb30-4"><a href="распределения.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span>..density..)) <span class="sc">+</span> <span class="co"># обратите внимание на аргумент ..density..</span></span>
+<span id="cb30-5"><a href="распределения.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fl">274.673</span>, <span class="at">sd =</span> <span class="fl">64.482</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 </div>
 <div id="логнормальное-распределение" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Логнормальное распределение</h3>
 <p><span class="math display">\[P(x) = \frac{1}{\sqrt{x\sigma2\pi}}\times e^{-\frac{\left(\ln(x)-\mu\right)^2}{2\sigma^2}}\]</span></p>
 <p><span class="math display">\[\mu \in \mathbb{R}; \sigma^2 &gt; 0\]</span></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="распределения.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
-<span id="cb23-2"><a href="распределения.html#cb23-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">PDF =</span> <span class="fu">dlnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href="распределения.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, PDF))<span class="sc">+</span></span>
-<span id="cb23-4"><a href="распределения.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb23-5"><a href="распределения.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb23-6"><a href="распределения.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;PDF логнормального распределения (μ = 3, σ = 0.5)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="распределения.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb31-2"><a href="распределения.html#cb31-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">PDF =</span> <span class="fu">dlnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-3"><a href="распределения.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, PDF))<span class="sc">+</span></span>
+<span id="cb31-4"><a href="распределения.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb31-5"><a href="распределения.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb31-6"><a href="распределения.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;PDF логнормального распределения (μ = 3, σ = 0.5)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <div class="rmdtask">
 <p>

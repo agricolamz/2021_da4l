@@ -1,0 +1,84 @@
+---
+editor_options: 
+  chunk_output_type: console
+---
+
+# Логистическая и мультиномиальная регрессия
+
+```{r, include=FALSE}
+library(tidyverse)
+theme_set(theme_bw())
+```
+
+Логистическая (logit, logistic) и мультиномиальная (multinomial) регрессия применяются в случаях, когда зависимая переменная является категориальной:
+
+* с двумя значениями (логистическая регрессия)
+* с более чем двумя значениями (мультиномиальная регрессия)
+
+## Логистическая регрессия
+### Теория
+Мы хотим чего-то такого:
+$$\underbrace{y}_{[-\infty, +\infty]}=\underbrace{\mbox{β}_0+\mbox{β}_1\cdot x_1+\mbox{β}_2\cdot x_2 + \dots +\mbox{β}_k\cdot x_k +\mbox{ε}_i}_{[-\infty, +\infty]}$$
+Вероятность — отношение количества успехов к общему числу событий:
+$$p = \frac{\mbox{# успехов}}{\mbox{# неудач} + \mbox{# успехов}}, p \in [0, 1]$$
+Шансы — отношение количества успехов к количеству неудач:
+$$odds = \frac{p}{1-p} = \frac{p\mbox{(успеха)}}{p\mbox{(неудачи)}}, odds \in [0, +\infty]$$
+Натуральный логарифм шансов:
+$$\log(odds) \in [-\infty, +\infty]$$
+
+Но, что нам говорит логарифм шансов? Как нам его интерпретировать?
+
+```{r}
+tibble(n = 10,
+           success = 1:9,
+           failure = n - success,
+           prob.1 = success/(success+failure),
+           odds = success/failure,
+           log_odds = log(odds),
+           prob.2 = exp(log_odds)/(1+exp(log_odds)))
+```
+
+Как связаны вероятность и логарифм шансов:
+$$\log(odds) = \log\left(\frac{p}{1-p}\right)$$
+$$p = \frac{\exp(\log(odds))}{1+\exp(\log(odds))}$$
+
+```{block, type = "rmdtask"}
+Логарифм шансов равен 0.25. Посчитайте вероятность успеха:
+```
+
+```{r, results='asis', echo = FALSE}
+library(checkdown)
+log_odds <- log(5/20)
+check_question(answer = exp(log_odds)/(1+exp(log_odds)))
+```
+
+Как связаны вероятность и логарифм шансов:
+
+```{r, echo=FALSE}
+tibble(p = seq(0, 1, 0.001),
+       log_odds = log(p/(1-p))) %>% 
+  ggplot(aes(log_odds, p))+
+  geom_line()+
+  labs(x = latex2exp::TeX("$\\log\\left(\\frac{p}{1-p}\\right)$"))
+
+tibble(p = seq(0, 1, 0.001),
+       log_odds = log(p/(1-p))+2) %>% 
+  ggplot(aes(log_odds, p))+
+  geom_line()+
+  labs(x = latex2exp::TeX("$\\log\\left(\\frac{p}{1-p}\\right)+2$"))
+
+tibble(p = seq(0, 1, 0.001),
+       log_odds = 2*log(p/(1-p))) %>% 
+  ggplot(aes(log_odds, p))+
+  geom_line()+
+  labs(x = latex2exp::TeX("$2\\times\\log\\left(\\frac{p}{1-p}\\right)$"))
+
+tibble(p = seq(0, 1, 0.001),
+       log_odds = -2*log(p/(1-p))) %>% 
+  ggplot(aes(log_odds, p))+
+  geom_line()+
+  labs(x = latex2exp::TeX("$-2\\times\\log\\left(\\frac{p}{1-p}\\right)$"))
+```
+
+### Практика
+

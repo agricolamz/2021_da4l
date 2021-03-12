@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Анализ данных для лингвистов</title>
-  <meta name="description" content="Анализ данных для лингвистов" />
+  <title>10 Логистическая и мультиномиальная регрессия | Анализ данных для лингвистов</title>
+  <meta name="description" content="10 Логистическая и мультиномиальная регрессия | Анализ данных для лингвистов" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Анализ данных для лингвистов" />
+  <meta property="og:title" content="10 Логистическая и мультиномиальная регрессия | Анализ данных для лингвистов" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Анализ данных для лингвистов" />
+  <meta name="twitter:title" content="10 Логистическая и мультиномиальная регрессия | Анализ данных для лингвистов" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="распределения.html"/>
+<link rel="prev" href="ограничения-на-применение-регрессии.html"/>
+<link rel="next" href="ссылки-на-литературу.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -247,77 +247,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Анализ данных для лингвистов</h1>
-<p class="author"><em>Г. А. Мороз</em></p>
-</div>
-<div id="о-курсе" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> О курсе</h1>
-<p>Материалы для курса Анализа данных для лингвистов, Школа лингвистики НИУ ВШЭ.</p>
+<div id="логистическая-и-мультиномиальная-регрессия" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Логистическая и мультиномиальная регрессия</h1>
+<p>Логистическая (logit, logistic) и мультиномиальная (multinomial) регрессия применяются в случаях, когда зависимая переменная является категориальной:</p>
 <ul>
-<li><a href="https://youtu.be/HmLcBJnfipk">запись лекции 2021.01.13</a></li>
-<li><a href="https://youtu.be/V_c_K_wBMuY">запись лекции 2021.01.15</a></li>
-<li><a href="https://youtu.be/cRc5z9F3XNw">запись лекции 2021.01.20</a></li>
-<li><a href="https://youtu.be/zj-1-invsGM">запись лекции 2021.01.22</a></li>
-<li><a href="https://youtu.be/2YRAdMLT4N0">запись лекции 2021.01.27</a></li>
-<li><a href="https://youtu.be/FA-_Qbpmb6s">запись лекции 2021.01.29</a></li>
-<li><a href="https://youtu.be/DkNnGeJT2K0">запись лекции 2021.02.03</a></li>
-<li><a href="https://youtu.be/c2mej30JnRM">запись лекции 2021.02.05</a></li>
-<li><a href="https://youtu.be/9ltNRMQmt0U">запись лекции 2021.02.10</a></li>
-<li><a href="https://youtu.be/zCG_edAziVk">запись лекции 2021.02.12</a></li>
-<li><a href="https://youtu.be/6bERf7DMvfg">запись лекции 2021.02.19</a></li>
-<li><a href="https://youtu.be/I80UaVOmpxY">запись лекции 2021.02.24</a></li>
-<li><a href="https://youtu.be/daQGjRbDFRA">запись лекции 2021.02.26</a></li>
-<li><a href="https://youtu.be/mIhT4y4FigY">запись лекции 2021.03.03</a></li>
-<li><a href="https://youtu.be/m06AOJBU9Bo">запись лекции 2021.03.05</a></li>
-<li><a href="https://youtu.be/XkEm4SHcYbg">запись лекции 2021.03.05</a></li>
+<li>с двумя значениями (логистическая регрессия)</li>
+<li>с более чем двумя значениями (мультиномиальная регрессия)</li>
 </ul>
-<div id="домашние-задания" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Домашние задания</h2>
-<ul>
-<li>домашнее задание к лекции 29.01.2021:
-<ul>
-<li>вспомните пожалуйста, условные вероятности, формулу Байеса и при каких условиях ее применяют;</li>
-<li>посмотрите освежающие материалы про <a href="http://setosa.io/conditional/">условную вероятность</a> и <a href="https://www.youtube.com/watch?v=HZGCoVF3YvM">формулу Байеса</a>.</li>
-</ul></li>
-<li><a href="https://classroom.github.com/a/4HZBlHhX">домашнее задание 1. (дедлайны: 2021.02.10, 2021.02.13)</a></li>
-<li><a href="https://classroom.github.com/a/cKQ8zOX3">домашнее задание 2. (дедлайны: 2021.03.05, 2021.03.08)</a></li>
-<li>домашнее задание 3. (дедлайны: 2021.03.23, 2021.03.26)</li>
-</ul>
+<div id="логистическая-регрессия" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Логистическая регрессия</h2>
+<p>Мы хотим чего-то такого:
+<span class="math display">\[\underbrace{y}_{[-\infty, +\infty]}=\underbrace{\mbox{β}_0+\mbox{β}_1\cdot x_1+\mbox{β}_2\cdot x_2 + \dots +\mbox{β}_k\cdot x_k +\mbox{ε}_i}_{[-\infty, +\infty]}\]</span>
+Вероятность — отношение количества успехов к общему числу событий:
+<span class="math display">\[p = \frac{\mbox{# успехов}}{\mbox{# неудач} + \mbox{# успехов}}, p \in [0, 1]\]</span>
+Шансы — отношение количества успехов к количеству неудач:
+<span class="math display">\[odds = \frac{p}{1-p} = \frac{p\mbox{(успеха)}}{p\mbox{(неудачи)}}, odds \in [0, +\infty]\]</span>
+Натуральный логарифм шансов:
+<span class="math display">\[\log(odds) \in [-\infty, +\infty]\]</span></p>
+<p>Но, что нам говорит логарифм шансов? Как нам его интерпретировать?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">n =</span> <span class="dv">10</span>,</span>
+<span id="cb1-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb1-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">success =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,</span>
+<span id="cb1-3"><a href="логистическая-и-мультиномиальная-регрессия.html#cb1-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">failure =</span> n <span class="sc">-</span> success,</span>
+<span id="cb1-4"><a href="логистическая-и-мультиномиальная-регрессия.html#cb1-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">prob.1 =</span> success<span class="sc">/</span>(success<span class="sc">+</span>failure),</span>
+<span id="cb1-5"><a href="логистическая-и-мультиномиальная-регрессия.html#cb1-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">odds =</span> success<span class="sc">/</span>failure,</span>
+<span id="cb1-6"><a href="логистическая-и-мультиномиальная-регрессия.html#cb1-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">log_odds =</span> <span class="fu">log</span>(odds),</span>
+<span id="cb1-7"><a href="логистическая-и-мультиномиальная-регрессия.html#cb1-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">prob.2 =</span> <span class="fu">exp</span>(log_odds)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(log_odds)))</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["n"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["success"],"name":[2],"type":["int"],"align":["right"]},{"label":["failure"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["prob.1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["odds"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["log_odds"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["prob.2"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"10","2":"1","3":"9","4":"0.1","5":"0.1111111","6":"-2.1972246","7":"0.1"},{"1":"10","2":"2","3":"8","4":"0.2","5":"0.2500000","6":"-1.3862944","7":"0.2"},{"1":"10","2":"3","3":"7","4":"0.3","5":"0.4285714","6":"-0.8472979","7":"0.3"},{"1":"10","2":"4","3":"6","4":"0.4","5":"0.6666667","6":"-0.4054651","7":"0.4"},{"1":"10","2":"5","3":"5","4":"0.5","5":"1.0000000","6":"0.0000000","7":"0.5"},{"1":"10","2":"6","3":"4","4":"0.6","5":"1.5000000","6":"0.4054651","7":"0.6"},{"1":"10","2":"7","3":"3","4":"0.7","5":"2.3333333","6":"0.8472979","7":"0.7"},{"1":"10","2":"8","3":"2","4":"0.8","5":"4.0000000","6":"1.3862944","7":"0.8"},{"1":"10","2":"9","3":"1","4":"0.9","5":"9.0000000","6":"2.1972246","7":"0.9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
-<div id="используемые-пакеты" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Используемые пакеты</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;1.3.0&#39;</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;fitdistrplus&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;1.1.3&#39;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;mixtools&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;1.2.0&#39;</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;lme4&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;1.1.26&#39;</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;lmerTest&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;3.1.3&#39;</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;car&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;3.0.10&#39;</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="index.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;pscl&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;1.5.5&#39;</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="index.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;nnet&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;7.3.14&#39;</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="index.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">&quot;MASS&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &#39;7.3.53&#39;</code></pre>
+<p>Как связаны вероятность и логарифм шансов:
+<span class="math display">\[\log(odds) = \log\left(\frac{p}{1-p}\right)\]</span>
+<span class="math display">\[p = \frac{\exp(\log(odds))}{1+\exp(\log(odds))}\]</span></p>
+<div class="rmdtask">
+<p>
+Логарифм шансов равен 0.25. Посчитайте вероятность успеха:
+</p>
+</div>
+<form name="form_63700" onsubmit="return validate_form_63700()" method="post">
+<input type="text" name="answer_63700"><br><input type="submit" value="check">
+</form>
+<p id="result_63700">
+</p>
+<script> function validate_form_63700() {var x, text; var x = document.forms["form_63700"]["answer_63700"].value;if (x == "0.2"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_63700').innerHTML = text; return false;} </script>
+<p>Как связаны вероятность и логарифм шансов:</p>
+<p><img src="da4l_files/figure-html/unnamed-chunk-5-1.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-5-2.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-5-3.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-5-4.png" width="672" /></p>
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="распределения.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ограничения-на-применение-регрессии.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ссылки-на-литературу.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -339,7 +324,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/agricolamz/2021_da4l/edit/master/index.Rmd",
+"link": "https://github.com/agricolamz/2021_da4l/edit/master/09_logit_multinom.Rmd",
 "text": "Edit"
 },
 "history": {
