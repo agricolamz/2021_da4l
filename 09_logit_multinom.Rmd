@@ -130,7 +130,7 @@ phonological_profiles %>%
   labs(y = "ejectives (yes = 2, no = 1)")
 ```
 
-#### Логит: модель без предиктора
+#### Модель без предиктора
 
 ```{r}
 logit_0 <- glm(ejectives~1, family = "binomial", data = phonological_profiles)
@@ -152,7 +152,7 @@ exp(log(6/13))/(1+exp(log(6/13))) # p
 check_question(round(log(620/(699-620)), 3))
 ```
 
-#### Логит: модель c одним числовым предиктором
+#### Модель c одним числовым предиктором
 ```{r, message=FALSE}
 logit_1 <- glm(ejectives~consonants, family = "binomial", data = phonological_profiles)
 summary(logit_1)
@@ -198,7 +198,7 @@ check_question(round(predict(logit_1, newdata = data.frame(consonants = 25)), 6)
 check_question(round(predict(logit_1, newdata = data.frame(consonants = 25), type = "response"), 6))
 ```
 
-#### Логит: модель c одним категориальным предиктором
+#### Модель c одним категориальным предиктором
 ```{r}
 logit_2 <- glm(ejectives~area, family = "binomial", data = phonological_profiles)
 summary(logit_2)
@@ -208,8 +208,145 @@ log(1/6) # Eurasia
 log(3/1) # North America
 ```
 
-#### Логит: множественная регрессия
+#### Множественная регрессия
 ```{r}
 logit_3 <- glm(ejectives~consonants+area, family = "binomial", data = phonological_profiles)
 summary(logit_3)
 ```
+
+#### Cравнение моделей
+
+```{r}
+AIC(logit_0, logit_1, logit_2, logit_3)
+BIC(logit_0, logit_1, logit_2, logit_3)
+```
+
+```{block, type = "rmdtask"}
+Выберите наилучшую модель согласно AIC и BIC:
+```
+
+```{r, results='asis', echo = FALSE}
+check_question("logit_1", options = paste0("logit_", 0:3), alignment = TRUE, type = "radio")
+```
+
+Для того, чтобы интерпретировать коэффициенты нужно проделать трансформацию:
+```{r}
+(exp(logit_1$coefficients)-1)*100
+```
+Перед нами процентное изменние шансов при увеличении независимой переменной на 1.
+
+Было предложено много аналогов R$^2$, например, McFadden's R squared:
+```{r}
+pscl::pR2(logit_1)
+```
+
+## Порядковая логистическая регрессия
+
+Данные взяты из [исследования [Endresen, Janda 2015]](https://goo.gl/GC4RjQ), посвященное исследованию маргинальных глаголов изменения состояния в русском языке. Испытуемые (70 школьников, 51 взрослый) оценивали по [шкале Ликерта (1...5)](https://goo.gl/R4gHiq) приемлемость глаголов с приставками _о-_ и _у-_:
+
+* широко используемуе в СРЛЯ (_освежить_, _уточнить_)
+* встретившие всего несколько раз в корпусе (_оржавить_, _увкуснить_)
+* искусственные слова (_ономить_, _укампить_)
+
+```{r, message=FALSE}
+marginal_verbs <- read_csv("https://goo.gl/6Phok3")
+head(marginal_verbs)
+```
+
+Переменные в датасете:
+
+* Gender
+* Age
+* AgeGroup — взрослые или школьники
+* Education
+* City
+* SubjectCode — код испытуемого
+* Score — оценка, поставленная испытуемым (A — самая высокая, E  — самая низкая)
+* GivenScore — оценка, поставленная испытуемым (5 — самая высокая, 1  — самая низкая)
+* Stimulus
+* Prefix
+* WordType — тип слова: частотное, редкое, искусственное
+* CorpusFrequency — частотность в корпусе
+
+```{r}
+marginal_verbs$Score <- factor(marginal_verbs$Score)
+levels(marginal_verbs$Score)
+ordinal <- MASS::polr(Score~Prefix+WordType+CorpusFrequency, data = marginal_verbs)
+summary(ordinal)
+ordinal$coefficients
+```
+
+Как и раньше, можно преобразовать коэффициенты:
+```{r}
+(exp(ordinal$coefficients)-1)*100
+```
+
+$$\log(\frac{p(A)}{p(B|C|D|E)}) = -2.6275 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce -$$    
+$$-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency$$
+$$\log(\frac{p(A|B)}{p(C|D|E)}) = -1.4531 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce$$
+$$-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency$$
+$$\log(\frac{p(A|B|C)}{p(D|E)}) = -0.2340 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce$$
+$$-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency$$
+$$\log(\frac{p(A|B|C|D)}{p(E)}) = 0.7324 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce$$
+$$-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency$$
+
+```{r}
+head(predict(ordinal))
+head(predict(ordinal, type = "probs"))
+marginal_verbs %>%
+  bind_cols(as_tibble(predict(ordinal, type = "probs"))) %>% 
+  gather(score, predictions, A:E) %>% 
+  ggplot(aes(x = score, y = predictions, fill = score)) +
+  geom_col(position = "dodge")+
+  facet_grid(Prefix~WordType)
+```
+
+```{r}
+library(ggeffects)
+ordinal %>% 
+  ggpredict(terms = c("Prefix", "WordType")) %>% 
+  plot()
+```
+
+### 3. Мультиномиальная регрессия
+
+В этом датасете представлены три нанайских гласных  i, ɪ и e, произнесенные нанайским носителем мужского пола из селения Джуен. Каждая строчка --- отдельное произнесение. Переменные:
+
+* f1 --- первая форманта
+* f2 --- вторая форманта
+
+```{r}
+nanai <- read_csv("https://goo.gl/9uGBoQ")
+nanai %>% 
+  ggplot(aes(f2, f1, label = sound, color = sound))+
+  geom_text()+
+  geom_rug()+
+  scale_y_reverse()+
+  scale_x_reverse()+
+  stat_ellipse()+
+  theme_bw()+
+  theme(legend.position = "none")+
+  labs(title = "Нанайские гласные в произнесении мужчины из селения Джуен")
+```
+
+```{r}
+mult <- nnet::multinom(sound~f1+f2, data = nanai)
+mult
+```
+
+$$\log(\frac{p(e)}{p(ɪ)}) = -41.46147 + 0.02360077\times f1 +0.01937067\times f2$$
+$$\log(\frac{p(i)}{p(ɪ)}) = -22.85202 -0.04263175\times f1 +  0.02315226\times f2$$
+
+```{r}
+nanai %>% 
+  mutate(prediction = predict(mult),
+         correctness = sound == prediction) %>% 
+  ggplot(aes(f1, f2, label = sound, color = correctness))+
+  geom_text(aes(size = !correctness), show.legend = FALSE)+
+  scale_y_reverse()+
+  scale_x_reverse()+
+  theme_bw()+
+  labs(title = "Нанайские гласные в произнесении мужчины из селения Джуен",
+       subtitle = "мультиномиальная регрессия")
+```
+

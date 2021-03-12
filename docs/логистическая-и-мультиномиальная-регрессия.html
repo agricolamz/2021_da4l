@@ -232,6 +232,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.1" data-path="логистическая-и-мультиномиальная-регрессия.html"><a href="логистическая-и-мультиномиальная-регрессия.html#теория"><i class="fa fa-check"></i><b>10.1.1</b> Теория</a></li>
 <li class="chapter" data-level="10.1.2" data-path="логистическая-и-мультиномиальная-регрессия.html"><a href="логистическая-и-мультиномиальная-регрессия.html#практика"><i class="fa fa-check"></i><b>10.1.2</b> Практика</a></li>
 </ul></li>
+<li class="chapter" data-level="10.2" data-path="логистическая-и-мультиномиальная-регрессия.html"><a href="логистическая-и-мультиномиальная-регрессия.html#порядковая-логистическая-регрессия"><i class="fa fa-check"></i><b>10.2</b> Порядковая логистическая регрессия</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="логистическая-и-мультиномиальная-регрессия.html"><a href="логистическая-и-мультиномиальная-регрессия.html#мультиномиальная-регрессия"><i class="fa fa-check"></i><b>10.2.1</b> 3. Мультиномиальная регрессия</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ссылки-на-литературу.html"><a href="ссылки-на-литературу.html"><i class="fa fa-check"></i>Ссылки на литературу</a></li>
 </ul>
@@ -292,12 +296,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Логарифм шансов равен 0.25. Посчитайте вероятность успеха:
 </p>
 </div>
-<form name="form_8418" onsubmit="return validate_form_8418()" method="post">
-<input type="text" name="answer_8418"><br><input type="submit" value="check">
+<form name="form_33376" onsubmit="return validate_form_33376()" method="post">
+<input type="text" name="answer_33376"><br><input type="submit" value="check">
 </form>
-<p id="result_8418">
+<p id="result_33376">
 </p>
-<script> function validate_form_8418() {var x, text; var x = document.forms["form_8418"]["answer_8418"].value;if (x == "0.2"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_8418').innerHTML = text; return false;} </script>
+<script> function validate_form_33376() {var x, text; var x = document.forms["form_33376"]["answer_33376"].value;if (x == "0.2"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_33376').innerHTML = text; return false;} </script>
 <p>Как связаны вероятность и логарифм шансов:</p>
 <p><img src="da4l_files/figure-html/unnamed-chunk-6-1.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-6-2.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-6-3.png" width="672" /><img src="da4l_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
 </div>
@@ -316,14 +320,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb3-1" aria-hidden="true" tabindex="-1"></a>phonological_profiles <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/phonological_profiles.csv&quot;</span>)</span>
 <span id="cb3-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(phonological_profiles)</span></code></pre></div>
 <pre><code>## Rows: 19
-## Columns: 7
+## Columns: 8
 ## $ language    &lt;chr&gt; &quot;Turkish&quot;, &quot;Korean&quot;, &quot;Tiwi&quot;, &quot;Liberia Kpelle&quot;, &quot;Tulu&quot;, &quot;M…
 ## $ tone        &lt;lgl&gt; FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, FALSE, TRU…
 ## $ long_vowels &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, TRUE…
 ## $ stress      &lt;lgl&gt; TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, TRUE, …
 ## $ ejectives   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, F…
 ## $ consonants  &lt;dbl&gt; 25, 21, 22, 22, 24, 20, 22, 24, 15, 18, 17, 8, 26, 28, 30…
-## $ vowels      &lt;dbl&gt; 8, 11, 4, 12, 13, 6, 20, 12, 5, 11, 8, 5, 14, 6, 7, 7, 5,…</code></pre>
+## $ vowels      &lt;dbl&gt; 8, 11, 4, 12, 13, 6, 20, 12, 5, 11, 8, 5, 14, 6, 7, 7, 5,…
+## $ area        &lt;chr&gt; &quot;Eurasia&quot;, &quot;Eurasia&quot;, &quot;Australia&quot;, &quot;Africa&quot;, &quot;Eurasia&quot;, &quot;…</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
 <span id="cb5-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb5-2" aria-hidden="true" tabindex="-1"></a>phonological_profiles <span class="sc">%&gt;%</span> </span>
 <span id="cb5-3"><a href="логистическая-и-мультиномиальная-регрессия.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(ejectives, consonants))<span class="sc">+</span></span>
@@ -363,8 +368,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-6"><a href="логистическая-и-мультиномиальная-регрессия.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;ejectives (yes = 2, no = 1)&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
-<div id="логит-модель-без-предиктора" class="section level4" number="10.1.2.2">
-<h4><span class="header-section-number">10.1.2.2</span> Логит: модель без предиктора</h4>
+<div id="модель-без-предиктора" class="section level4" number="10.1.2.2">
+<h4><span class="header-section-number">10.1.2.2</span> Модель без предиктора</h4>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb11-1" aria-hidden="true" tabindex="-1"></a>logit_0 <span class="ot">&lt;-</span> <span class="fu">glm</span>(ejectives<span class="sc">~</span><span class="dv">1</span>, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="at">data =</span> phonological_profiles)</span>
 <span id="cb11-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logit_0)</span></code></pre></div>
 <pre><code>## 
@@ -414,8 +419,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 <script> function validate_form_28559() {var x, text; var x = document.forms["form_28559"]["answer_28559"].value;if (x == "2.06"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_28559').innerHTML = text; return false;} </script>
 </div>
-<div id="логит-модель-c-одним-числовым-предиктором" class="section level4" number="10.1.2.3">
-<h4><span class="header-section-number">10.1.2.3</span> Логит: модель c одним числовым предиктором</h4>
+<div id="модель-c-одним-числовым-предиктором" class="section level4" number="10.1.2.3">
+<h4><span class="header-section-number">10.1.2.3</span> Модель c одним числовым предиктором</h4>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb23-1" aria-hidden="true" tabindex="-1"></a>logit_1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(ejectives<span class="sc">~</span>consonants, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="at">data =</span> phonological_profiles)</span>
 <span id="cb23-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logit_1)</span></code></pre></div>
 <pre><code>## 
@@ -488,8 +493,278 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p id="result_11224">
 </p>
 <script> function validate_form_11224() {var x, text; var x = document.forms["form_11224"]["answer_11224"].value;if (x == "0.338028"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_11224').innerHTML = text; return false;} </script>
-
 </div>
+<div id="модель-c-одним-категориальным-предиктором" class="section level4" number="10.1.2.4">
+<h4><span class="header-section-number">10.1.2.4</span> Модель c одним категориальным предиктором</h4>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb34-1" aria-hidden="true" tabindex="-1"></a>logit_2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(ejectives<span class="sc">~</span>area, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="at">data =</span> phonological_profiles)</span>
+<span id="cb34-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logit_2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = ejectives ~ area, family = &quot;binomial&quot;, data = phonological_profiles)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -1.66511  -0.55525  -0.00013   0.75853   1.97277  
+## 
+## Coefficients:
+##                     Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)        1.507e-16  1.000e+00   0.000    1.000
+## areaAustralia     -1.857e+01  6.523e+03  -0.003    0.998
+## areaEurasia       -1.792e+00  1.472e+00  -1.217    0.224
+## areaNorth America  1.099e+00  1.528e+00   0.719    0.472
+## areaPapunesia     -1.857e+01  6.523e+03  -0.003    0.998
+## areaSouth America -1.857e+01  4.612e+03  -0.004    0.997
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 23.699  on 18  degrees of freedom
+## Residual deviance: 15.785  on 13  degrees of freedom
+## AIC: 27.785
+## 
+## Number of Fisher Scoring iterations: 17</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb36-1" aria-hidden="true" tabindex="-1"></a>logit_2<span class="sc">$</span>coefficients</span></code></pre></div>
+<pre><code>##       (Intercept)     areaAustralia       areaEurasia areaNorth America 
+##      1.506700e-16     -1.856607e+01     -1.791759e+00      1.098612e+00 
+##     areaPapunesia areaSouth America 
+##     -1.856607e+01     -1.856607e+01</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(phonological_profiles<span class="sc">$</span>ejectives, phonological_profiles<span class="sc">$</span>area)</span></code></pre></div>
+<pre><code>##        
+##         Africa Australia Eurasia North America Papunesia South America
+##   FALSE      2         1       6             1         1             2
+##   TRUE       2         0       1             3         0             0</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>) <span class="co"># Eurasia</span></span></code></pre></div>
+<pre><code>## [1] -1.791759</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">1</span>) <span class="co"># North America</span></span></code></pre></div>
+<pre><code>## [1] 1.098612</code></pre>
+</div>
+<div id="множественная-регрессия" class="section level4" number="10.1.2.5">
+<h4><span class="header-section-number">10.1.2.5</span> Множественная регрессия</h4>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb44-1" aria-hidden="true" tabindex="-1"></a>logit_3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(ejectives<span class="sc">~</span>consonants<span class="sc">+</span>area, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="at">data =</span> phonological_profiles)</span>
+<span id="cb44-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logit_3)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = ejectives ~ consonants + area, family = &quot;binomial&quot;, 
+##     data = phonological_profiles)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -1.54011  -0.18623  -0.00012   0.00023   1.53307  
+## 
+## Coefficients:
+##                     Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)         -21.1760    15.1089  -1.402    0.161
+## consonants            0.8137     0.5653   1.439    0.150
+## areaAustralia       -16.2910 10754.0138  -0.002    0.999
+## areaEurasia          -1.2069     3.9399  -0.306    0.759
+## areaNorth America     4.0966     4.8563   0.844    0.399
+## areaPapunesia        -4.8995 10754.0184   0.000    1.000
+## areaSouth America   -17.1162  7065.6839  -0.002    0.998
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 23.6989  on 18  degrees of freedom
+## Residual deviance:  6.7901  on 12  degrees of freedom
+## AIC: 20.79
+## 
+## Number of Fisher Scoring iterations: 18</code></pre>
+</div>
+<div id="cравнение-моделей" class="section level4" number="10.1.2.6">
+<h4><span class="header-section-number">10.1.2.6</span> Cравнение моделей</h4>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(logit_0, logit_1, logit_2, logit_3)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["AIC"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"25.69888","_rn_":"logit_0"},{"1":"2","2":"16.19167","_rn_":"logit_1"},{"1":"6","2":"27.78549","_rn_":"logit_2"},{"1":"7","2":"20.79005","_rn_":"logit_3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(logit_0, logit_1, logit_2, logit_3)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"26.64332","_rn_":"logit_0"},{"1":"2","2":"18.08055","_rn_":"logit_1"},{"1":"6","2":"33.45212","_rn_":"logit_2"},{"1":"7","2":"27.40113","_rn_":"logit_3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="rmdtask">
+<p>
+Выберите наилучшую модель согласно AIC и BIC:
+</p>
+</div>
+<form name="form_33713" onsubmit="return validate_form_33713()" method="post">
+<input type="radio" name="answer_33713" id="33713_1" value="logit_0"><label for="1">logit_0</label> <input type="radio" name="answer_33713" id="33713_2" value="logit_1"><label for="2">logit_1</label> <input type="radio" name="answer_33713" id="33713_3" value="logit_2"><label for="3">logit_2</label> <input type="radio" name="answer_33713" id="33713_4" value="logit_3"><label for="4">logit_3</label> <br><input type="submit" value="check">
+</form>
+<p id="result_33713">
+</p>
+<script> function validate_form_33713() {var x, text; var x = document.forms["form_33713"]["answer_33713"].value;if (x == "logit_1"){text = 'Correct';} else {text = 'I have a different answer';} document.getElementById('result_33713').innerHTML = text; return false;} </script>
+<p>Для того, чтобы интерпретировать коэффициенты нужно проделать трансформацию:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb48-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(logit_1<span class="sc">$</span>coefficients)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## (Intercept)  consonants 
+##   -99.99945    58.02918</code></pre>
+<p>Перед нами процентное изменние шансов при увеличении независимой переменной на 1.</p>
+<p>Было предложено много аналогов R<span class="math inline">\(^2\)</span>, например, McFadden’s R squared:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb50-1" aria-hidden="true" tabindex="-1"></a>pscl<span class="sc">::</span><span class="fu">pR2</span>(logit_1)</span></code></pre></div>
+<pre><code>## fitting null model for pseudo-r2</code></pre>
+<pre><code>##         llh     llhNull          G2    McFadden        r2ML        r2CU 
+##  -6.0958355 -11.8494421  11.5072132   0.4855593   0.4542765   0.6373812</code></pre>
+</div>
+</div>
+</div>
+<div id="порядковая-логистическая-регрессия" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Порядковая логистическая регрессия</h2>
+<p>Данные взяты из <a href="https://goo.gl/GC4RjQ">исследования [Endresen, Janda 2015]</a>, посвященное исследованию маргинальных глаголов изменения состояния в русском языке. Испытуемые (70 школьников, 51 взрослый) оценивали по <a href="https://goo.gl/R4gHiq">шкале Ликерта (1…5)</a> приемлемость глаголов с приставками <em>о-</em> и <em>у-</em>:</p>
+<ul>
+<li>широко используемуе в СРЛЯ (<em>освежить</em>, <em>уточнить</em>)</li>
+<li>встретившие всего несколько раз в корпусе (<em>оржавить</em>, <em>увкуснить</em>)</li>
+<li>искусственные слова (<em>ономить</em>, <em>укампить</em>)</li>
+</ul>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb53-1" aria-hidden="true" tabindex="-1"></a>marginal_verbs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://goo.gl/6Phok3&quot;</span>)</span>
+<span id="cb53-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(marginal_verbs)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Gender"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Age"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["AgeGroup"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Education"],"name":[4],"type":["chr"],"align":["left"]},{"label":["City"],"name":[5],"type":["chr"],"align":["left"]},{"label":["SubjectCode"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Score"],"name":[7],"type":["chr"],"align":["left"]},{"label":["GivenScore"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["Stimulus"],"name":[9],"type":["chr"],"align":["left"]},{"label":["Prefix"],"name":[10],"type":["chr"],"align":["left"]},{"label":["WordType"],"name":[11],"type":["chr"],"align":["left"]},{"label":["CorpusFrequency"],"name":[12],"type":["dbl"],"align":["right"]}],"data":[{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"A","8":"5","9":"utochnit","10":"u","11":"standard","12":"2860"},{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"A","8":"5","9":"ozhestochit","10":"o","11":"standard","12":"686"},{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"E","8":"1","9":"ovneshnit","10":"o","11":"marginal","12":"4"},{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"E","8":"1","9":"oblusit","10":"o","11":"nonce","12":"0"},{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"A","8":"5","9":"osvezhit","10":"o","11":"standard","12":"280"},{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"A","8":"5","9":"oschastlivit","10":"o","11":"standard","12":"343"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Переменные в датасете:</p>
+<ul>
+<li>Gender</li>
+<li>Age</li>
+<li>AgeGroup — взрослые или школьники</li>
+<li>Education</li>
+<li>City</li>
+<li>SubjectCode — код испытуемого</li>
+<li>Score — оценка, поставленная испытуемым (A — самая высокая, E — самая низкая)</li>
+<li>GivenScore — оценка, поставленная испытуемым (5 — самая высокая, 1 — самая низкая)</li>
+<li>Stimulus</li>
+<li>Prefix</li>
+<li>WordType — тип слова: частотное, редкое, искусственное</li>
+<li>CorpusFrequency — частотность в корпусе</li>
+</ul>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb54-1" aria-hidden="true" tabindex="-1"></a>marginal_verbs<span class="sc">$</span>Score <span class="ot">&lt;-</span> <span class="fu">factor</span>(marginal_verbs<span class="sc">$</span>Score)</span>
+<span id="cb54-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(marginal_verbs<span class="sc">$</span>Score)</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb56-1" aria-hidden="true" tabindex="-1"></a>ordinal <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">polr</span>(Score<span class="sc">~</span>Prefix<span class="sc">+</span>WordType<span class="sc">+</span>CorpusFrequency, <span class="at">data =</span> marginal_verbs)</span>
+<span id="cb56-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ordinal)</span></code></pre></div>
+<pre><code>## 
+## Re-fitting to get Hessian</code></pre>
+<pre><code>## Call:
+## MASS::polr(formula = Score ~ Prefix + WordType + CorpusFrequency, 
+##     data = marginal_verbs)
+## 
+## Coefficients:
+##                      Value Std. Error t value
+## Prefixu           0.136619  5.286e-02   2.584
+## WordTypenonce     1.340603  5.693e-02  23.549
+## WordTypestandard -4.655327  1.251e-01 -37.211
+## CorpusFrequency  -0.001015  7.879e-05 -12.876
+## 
+## Intercepts:
+##     Value    Std. Error t value 
+## A|B  -2.6275   0.0753   -34.8784
+## B|C  -1.4531   0.0552   -26.3246
+## C|D  -0.2340   0.0479    -4.8853
+## D|E   0.7324   0.0492    14.8986
+## 
+## Residual Deviance: 13138.47 
+## AIC: 13154.47</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb59-1" aria-hidden="true" tabindex="-1"></a>ordinal<span class="sc">$</span>coefficients</span></code></pre></div>
+<pre><code>##          Prefixu    WordTypenonce WordTypestandard  CorpusFrequency 
+##      0.136619412      1.340602696     -4.655327418     -0.001014583</code></pre>
+<p>Как и раньше, можно преобразовать коэффициенты:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb61-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">exp</span>(ordinal<span class="sc">$</span>coefficients)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>##          Prefixu    WordTypenonce WordTypestandard  CorpusFrequency 
+##       14.6391763      282.1345921      -99.0489201       -0.1014068</code></pre>
+<p><span class="math display">\[\log(\frac{p(A)}{p(B|C|D|E)}) = -2.6275 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce -\]</span><br />
+<span class="math display">\[-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency\]</span>
+<span class="math display">\[\log(\frac{p(A|B)}{p(C|D|E)}) = -1.4531 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce\]</span>
+<span class="math display">\[-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency\]</span>
+<span class="math display">\[\log(\frac{p(A|B|C)}{p(D|E)}) = -0.2340 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce\]</span>
+<span class="math display">\[-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency\]</span>
+<span class="math display">\[\log(\frac{p(A|B|C|D)}{p(E)}) = 0.7324 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce\]</span>
+<span class="math display">\[-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency\]</span></p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">predict</span>(ordinal))</span></code></pre></div>
+<pre><code>## [1] A A E E A A
+## Levels: A B C D E</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">predict</span>(ordinal, <span class="at">type =</span> <span class="st">&quot;probs&quot;</span>))</span></code></pre></div>
+<pre><code>##            A           B           C            D            E
+## 1 0.99178000 0.005665533 0.001798242 0.0004683707 0.0002878525
+## 2 0.93841926 0.041706786 0.013917668 0.0036817261 0.0022745617
+## 3 0.06764594 0.122509282 0.252611927 0.2334448870 0.3237879649
+## 4 0.01855865 0.039108932 0.113894002 0.1808984667 0.6475399508
+## 5 0.90986002 0.060436871 0.020738032 0.0055351143 0.0034299624
+## 6 0.91496678 0.057117954 0.019500629 0.0051963745 0.0032182669</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb67-1" aria-hidden="true" tabindex="-1"></a>marginal_verbs <span class="sc">%&gt;%</span></span>
+<span id="cb67-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(<span class="fu">as_tibble</span>(<span class="fu">predict</span>(ordinal, <span class="at">type =</span> <span class="st">&quot;probs&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-3"><a href="логистическая-и-мультиномиальная-регрессия.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(score, predictions, A<span class="sc">:</span>E) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-4"><a href="логистическая-и-мультиномиальная-регрессия.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> score, <span class="at">y =</span> predictions, <span class="at">fill =</span> score)) <span class="sc">+</span></span>
+<span id="cb67-5"><a href="логистическая-и-мультиномиальная-регрессия.html#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)<span class="sc">+</span></span>
+<span id="cb67-6"><a href="логистическая-и-мультиномиальная-регрессия.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Prefix<span class="sc">~</span>WordType)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggeffects)</span>
+<span id="cb68-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb68-2" aria-hidden="true" tabindex="-1"></a>ordinal <span class="sc">%&gt;%</span> </span>
+<span id="cb68-3"><a href="логистическая-и-мультиномиальная-регрессия.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggpredict</span>(<span class="at">terms =</span> <span class="fu">c</span>(<span class="st">&quot;Prefix&quot;</span>, <span class="st">&quot;WordType&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb68-4"><a href="логистическая-и-мультиномиальная-регрессия.html#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code></pre></div>
+<pre><code>## 
+## Re-fitting to get Hessian</code></pre>
+<p><img src="da4l_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div id="мультиномиальная-регрессия" class="section level3" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> 3. Мультиномиальная регрессия</h3>
+<p>В этом датасете представлены три нанайских гласных i, ɪ и e, произнесенные нанайским носителем мужского пола из селения Джуен. Каждая строчка — отдельное произнесение. Переменные:</p>
+<ul>
+<li>f1 — первая форманта</li>
+<li>f2 — вторая форманта</li>
+</ul>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb70-1" aria-hidden="true" tabindex="-1"></a>nanai <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://goo.gl/9uGBoQ&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   sound = col_character(),
+##   f1 = col_double(),
+##   f2 = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb72-1" aria-hidden="true" tabindex="-1"></a>nanai <span class="sc">%&gt;%</span> </span>
+<span id="cb72-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(f2, f1, <span class="at">label =</span> sound, <span class="at">color =</span> sound))<span class="sc">+</span></span>
+<span id="cb72-3"><a href="логистическая-и-мультиномиальная-регрессия.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>()<span class="sc">+</span></span>
+<span id="cb72-4"><a href="логистическая-и-мультиномиальная-регрессия.html#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>()<span class="sc">+</span></span>
+<span id="cb72-5"><a href="логистическая-и-мультиномиальная-регрессия.html#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb72-6"><a href="логистическая-и-мультиномиальная-регрессия.html#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb72-7"><a href="логистическая-и-мультиномиальная-регрессия.html#cb72-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ellipse</span>()<span class="sc">+</span></span>
+<span id="cb72-8"><a href="логистическая-и-мультиномиальная-регрессия.html#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb72-9"><a href="логистическая-и-мультиномиальная-регрессия.html#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="sc">+</span></span>
+<span id="cb72-10"><a href="логистическая-и-мультиномиальная-регрессия.html#cb72-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Нанайские гласные в произнесении мужчины из селения Джуен&quot;</span>)</span></code></pre></div>
+<p><img src="da4l_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb73-1" aria-hidden="true" tabindex="-1"></a>mult <span class="ot">&lt;-</span> nnet<span class="sc">::</span><span class="fu">multinom</span>(sound<span class="sc">~</span>f1<span class="sc">+</span>f2, <span class="at">data =</span> nanai)</span></code></pre></div>
+<pre><code>## # weights:  12 (6 variable)
+## initial  value 462.515774 
+## iter  10 value 51.522626
+## iter  20 value 46.817442
+## iter  30 value 44.829080
+## iter  40 value 44.807654
+## iter  40 value 44.807654
+## final  value 44.807654 
+## converged</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb75-1" aria-hidden="true" tabindex="-1"></a>mult</span></code></pre></div>
+<pre><code>## Call:
+## nnet::multinom(formula = sound ~ f1 + f2, data = nanai)
+## 
+## Coefficients:
+##   (Intercept)          f1         f2
+## i   -22.85202 -0.04263175 0.02315226
+## ɪ   -41.46147  0.02360077 0.01937067
+## 
+## Residual Deviance: 89.61531 
+## AIC: 101.6153</code></pre>
+<p><span class="math display">\[\log(\frac{p(e)}{p(ɪ)}) = -41.46147 + 0.02360077\times f1 +0.01937067\times f2\]</span>
+<span class="math display">\[\log(\frac{p(i)}{p(ɪ)}) = -22.85202 -0.04263175\times f1 +  0.02315226\times f2\]</span></p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="логистическая-и-мультиномиальная-регрессия.html#cb77-1" aria-hidden="true" tabindex="-1"></a>nanai <span class="sc">%&gt;%</span> </span>
+<span id="cb77-2"><a href="логистическая-и-мультиномиальная-регрессия.html#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prediction =</span> <span class="fu">predict</span>(mult),</span>
+<span id="cb77-3"><a href="логистическая-и-мультиномиальная-регрессия.html#cb77-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">correctness =</span> sound <span class="sc">==</span> prediction) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-4"><a href="логистическая-и-мультиномиальная-регрессия.html#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(f1, f2, <span class="at">label =</span> sound, <span class="at">color =</span> correctness))<span class="sc">+</span></span>
+<span id="cb77-5"><a href="логистическая-и-мультиномиальная-регрессия.html#cb77-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="sc">!</span>correctness), <span class="at">show.legend =</span> <span class="cn">FALSE</span>)<span class="sc">+</span></span>
+<span id="cb77-6"><a href="логистическая-и-мультиномиальная-регрессия.html#cb77-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>()<span class="sc">+</span></span>
+<span id="cb77-7"><a href="логистическая-и-мультиномиальная-регрессия.html#cb77-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>()<span class="sc">+</span></span>
+<span id="cb77-8"><a href="логистическая-и-мультиномиальная-регрессия.html#cb77-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb77-9"><a href="логистическая-и-мультиномиальная-регрессия.html#cb77-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Нанайские гласные в произнесении мужчины из селения Джуен&quot;</span>,</span>
+<span id="cb77-10"><a href="логистическая-и-мультиномиальная-регрессия.html#cb77-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;мультиномиальная регрессия&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Using size for a discrete variable is not advised.</code></pre>
+<p><img src="da4l_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+
 </div>
 </div>
 </div>
