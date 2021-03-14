@@ -261,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>производят оценку априорного распределения вероятностей на основании имеющихся данных</li>
 <li>используют полученное априорное распределение для получение апостериорной оценки для каждого наблюдения</li>
 </ul>
-<p>Рассмотрим пример данных из статьи <span class="citation">(<a href="ссылки-на-литературу.html#ref-daniel19" role="doc-biblioref">Daniel et al. 2019</a>)</span>, в которой аннализировались интервью с людьми из деревени Михалёвская и анализировали ряд консервативных и инновативных черт в их речи.</p>
+<p>Рассмотрим пример данных из статьи <span class="citation">(<a href="ссылки-на-литературу.html#ref-daniel19" role="doc-biblioref">Daniel et al. 2019</a>)</span>, в которой аннализировались интервью с людьми из деревени Михалёвская и исследовался ряд консервативных и инновативных черт в их речи.</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="эмпирическая-байесовская-оценка.html#cb107-1" aria-hidden="true" tabindex="-1"></a>mikhalevskaja <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2021_da4l/master/data/ustya_data.csv&quot;</span>)</span>
 <span id="cb107-2"><a href="эмпирическая-байесовская-оценка.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mikhalevskaja)</span></code></pre></div>
 <pre><code>Rows: 359
@@ -330,7 +330,7 @@ shape2 5.445977  1.5766951</code></pre>
 <span id="cb114-11"><a href="эмпирическая-байесовская-оценка.html#cb114-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb114-12"><a href="эмпирическая-байесовская-оценка.html#cb114-12" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_text_repel</span>()</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
-<p>Как видно байесовская оценка не сильно отличается от старой оценки средним, однако таким образом мы можем видеть, что после байесовского апдейта наблюдения с маленьким количеством наблюдений льнут к среднему априорного распределения. Мы можем даже умножить параметры нашего априорного распределения на 10, чтобы показать это:</p>
+<p>Как видно, байесовская оценка не сильно отличается от старой оценки средним, однако таким образом мы можем видеть, что после байесовского апдейта наблюдения с маленьким количеством наблюдений льнут к среднему априорного распределения. Мы можем даже умножить параметры нашего априорного распределения на 10, чтобы показать это:</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="эмпирическая-байесовская-оценка.html#cb115-1" aria-hidden="true" tabindex="-1"></a>mikhalevskaja <span class="sc">%&gt;%</span> </span>
 <span id="cb115-2"><a href="эмпирическая-байесовская-оценка.html#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(feature <span class="sc">==</span> <span class="st">&quot;a-e&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb115-3"><a href="эмпирическая-байесовская-оценка.html#cb115-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alpha_prior =</span> beta_est<span class="sc">$</span>estimate[<span class="dv">1</span>]<span class="sc">*</span><span class="dv">10</span>,</span>

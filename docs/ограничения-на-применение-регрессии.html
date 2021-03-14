@@ -399,7 +399,7 @@ F-statistic: 51.11 on 1 and 98 DF,  p-value: 0.0000000001576</code></pre>
 <div id="нормальность-распределение-остатков" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Нормальность распределение остатков</h2>
 <p>Линейная регрессия предполагает нормальность распределения остатков. Когда связь не линейна, то остатки тоже будут распределены не нормально.</p>
-<p>Можно смотреть на певрый график используя функцию <code>plot(m1)</code> — график остатков. Интерпретаций этого графика достаточно много (см. <a href="http://docs.statwing.com/interpreting-residual-plots-to-improve-your-regression/">статью про это</a>).</p>
+<p>Можно смотреть на первый график используя функцию <code>plot(m1)</code> — график остатков. Интерпретаций этого графика достаточно много (см. <a href="http://docs.statwing.com/interpreting-residual-plots-to-improve-your-regression/">статью про это</a>).</p>
 <p>Можно смотреть на qqplot:</p>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="ограничения-на-применение-регрессии.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">res =</span> m1<span class="sc">$</span>residuals) <span class="sc">%&gt;%</span> </span>
 <span id="cb139-2"><a href="ограничения-на-применение-регрессии.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(res))<span class="sc">+</span></span>
@@ -428,7 +428,7 @@ F-statistic: 51.11 on 1 and 98 DF,  p-value: 0.0000000001576</code></pre>
 </div>
 <div id="гетероскидастичность" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> Гетероскидастичность</h2>
-<p>Распределение остатков непостоянно (т. е. не гомоскидастичны):</p>
+<p>Распределение остатков непостоянно (т.е. не гомоскидастичны):</p>
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="ограничения-на-применение-регрессии.html#cb145-1" aria-hidden="true" tabindex="-1"></a>ldt <span class="sc">%&gt;%</span> </span>
 <span id="cb145-2"><a href="ограничения-на-применение-регрессии.html#cb145-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Mean_RT, Freq))<span class="sc">+</span></span>
 <span id="cb145-3"><a href="ограничения-на-применение-регрессии.html#cb145-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
@@ -516,7 +516,7 @@ n_words -0.079</code></pre>
 <span id="cb149-8"><a href="ограничения-на-применение-регрессии.html#cb149-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;количество уникальных слов&quot;</span>,</span>
 <span id="cb149-9"><a href="ограничения-на-применение-регрессии.html#cb149-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;данные корпусов Universal Dependencies&quot;</span>)</span></code></pre></div>
 <p><img src="da4l_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
-<p>В данном случае мы предполагаем, что случайный эффект имеет случайный свободный член. Т. е. все получающиеся линии параллельны, так как имеют общий угловой коэффициент. Можно допустить большую свободу и сделать так, чтобы в случайном эффекте были не только интерсепт, но и свободный член:</p>
+<p>В данном случае мы предполагаем, что случайный эффект имеет случайный свободный член. Т.е. все получающиеся линии параллельны, так как имеют общий угловой коэффициент. Можно допустить большую свободу и сделать так, чтобы в случайном эффекте были не только интерсепт, но и свободный член:</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="ограничения-на-применение-регрессии.html#cb150-1" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lmer</span>(n_tokens<span class="sc">~</span>n_words<span class="sc">+</span>(<span class="dv">1</span><span class="sc">+</span>n_words<span class="sc">|</span>corpus), <span class="at">data =</span> ud)</span>
 <span id="cb150-2"><a href="ограничения-на-применение-регрессии.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span></code></pre></div>
 <pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
@@ -620,7 +620,7 @@ n_words -0.132</code></pre>
 </div>
 <div class="rmdtask">
 <p>
-Пользуясь знаниями из предыдущих заданий, смоделируйте связь количества слов и количества существительных. С какими проблемами вы столкнулись.
+Пользуясь знаниями из предыдущих заданий, смоделируйте связь количества слов и количества существительных. С какими проблемами вы столкнулись?
 </p>
 </div>
 
