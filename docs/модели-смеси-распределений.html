@@ -32,7 +32,7 @@
   
 <link rel="prev" href="метод-максимального-правдоподобия.html"/>
 <link rel="next" href="байесовский-статистический-вывод.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -58,6 +58,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -263,8 +264,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb48-3"><a href="модели-смеси-распределений.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(spam_sms)</span></code></pre></div>
 <pre><code>Rows: 5,572
 Columns: 2
-$ type    &lt;chr&gt; &quot;ham&quot;, &quot;ham&quot;, &quot;spam&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;spam&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;sp…
-$ message &lt;chr&gt; &quot;Go until jurong point, crazy.. Available only in bugis n gre…</code></pre>
+$ type    &lt;chr&gt; &quot;ham&quot;, &quot;ham&quot;, &quot;spam&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;spam&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;spa…
+$ message &lt;chr&gt; &quot;Go until jurong point, crazy.. Available only in bugis n grea…</code></pre>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="модели-смеси-распределений.html#cb50-1" aria-hidden="true" tabindex="-1"></a>spam_sms <span class="sc">%&gt;%</span> </span>
 <span id="cb50-2"><a href="модели-смеси-распределений.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_char =</span> <span class="fu">nchar</span>(message)) <span class="ot">-&gt;</span></span>
 <span id="cb50-3"><a href="модели-смеси-распределений.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  spam_sms</span>
@@ -272,9 +273,9 @@ $ message &lt;chr&gt; &quot;Go until jurong point, crazy.. Available only in bug
 <span id="cb50-5"><a href="модели-смеси-распределений.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(spam_sms)</span></code></pre></div>
 <pre><code>Rows: 5,572
 Columns: 3
-$ type    &lt;chr&gt; &quot;ham&quot;, &quot;ham&quot;, &quot;spam&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;spam&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;sp…
-$ message &lt;chr&gt; &quot;Go until jurong point, crazy.. Available only in bugis n gre…
-$ n_char  &lt;int&gt; 111, 29, 155, 49, 61, 147, 77, 160, 157, 154, 109, 136, 155, …</code></pre>
+$ type    &lt;chr&gt; &quot;ham&quot;, &quot;ham&quot;, &quot;spam&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;spam&quot;, &quot;ham&quot;, &quot;ham&quot;, &quot;spa…
+$ message &lt;chr&gt; &quot;Go until jurong point, crazy.. Available only in bugis n grea…
+$ n_char  &lt;int&gt; 111, 29, 155, 49, 61, 147, 77, 160, 157, 154, 109, 136, 155, 1…</code></pre>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="модели-смеси-распределений.html#cb52-1" aria-hidden="true" tabindex="-1"></a>spam_sms <span class="sc">%&gt;%</span> </span>
 <span id="cb52-2"><a href="модели-смеси-распределений.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n_char))<span class="sc">+</span></span>
 <span id="cb52-3"><a href="модели-смеси-распределений.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;gray90&quot;</span>)<span class="sc">+</span></span>
